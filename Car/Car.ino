@@ -1,3 +1,5 @@
+#include <Wire.h>
+
 void setup() {
 
 	/* add setup code here */
