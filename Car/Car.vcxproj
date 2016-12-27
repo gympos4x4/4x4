@@ -47,7 +47,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>c:\arduino\libraries;c:\arduino\hardware\arduino\avr\libraries;C:\Users\Juraj\Documents\Arduino\libraries;c:\arduino\hardware\arduino\avr\cores\arduino;c:\arduino\hardware\arduino\avr\variants\standard;C:\Users\Juraj\Documents\Arduino\4x4\Car;c:\arduino\hardware\tools\avr/avr/include/;c:\arduino\hardware\tools\avr//avr/include/avr/;c:\arduino\hardware\tools\avr/lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>c:\arduino\hardware\arduino\avr\libraries\Wire\src;c:\arduino\hardware\arduino\avr\libraries\Wire\src\utility;c:\arduino\libraries;c:\arduino\hardware\arduino\avr\libraries;C:\Users\Juraj\Documents\Arduino\libraries;c:\arduino\hardware\arduino\avr\cores\arduino;c:\arduino\hardware\arduino\avr\variants\standard;C:\Users\Juraj\Documents\Arduino\4x4\Car;c:\arduino\hardware\tools\avr/avr/include/;c:\arduino\hardware\tools\avr//avr/include/avr/;c:\arduino\hardware\tools\avr/lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>C:\Users\Juraj\Documents\Arduino\Car\__vm\.Car.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
       <PreprocessorDefinitions>__AVR_ATmega328p__;__AVR_ATmega328P__;F_CPU=16000000L;ARDUINO=106012;ARDUINO_AVR_UNO;ARDUINO_ARCH_AVR;__cplusplus=201103L;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -79,6 +79,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Lights.h" />
+    <ClInclude Include="TiltAlarm.h" />
     <ClInclude Include="__vm\.Car.vsarduino.h" />
   </ItemGroup>
   <PropertyGroup>
