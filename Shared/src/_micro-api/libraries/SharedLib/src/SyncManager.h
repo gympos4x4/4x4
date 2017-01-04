@@ -11,6 +11,7 @@
 #include "ISerializable.h"
 #include "libs/mrf24j.h"
 
+//Stores configuration for RF module
 struct RadioConfig
 {
 	word my_address;
@@ -19,14 +20,14 @@ struct RadioConfig
 
 	struct
 	{
-		const int pin_reset = 6;
-		const int pin_cs = 10;
-		const int pin_interrupt = 2;
+		int pin_reset = 6;
+		int pin_cs = 10;
+		int pin_interrupt = 2;
 	} pin_layout;
 };
 
 //Main class for handling communivation of 2 devices
-//TODO: Optimise library for MTF24J to enable amplification
+//TODO: Optimise library for MTF24J - enable amplification
 class SyncManager
 {
 private:
@@ -51,13 +52,16 @@ public:
 	SyncManager() = delete;
 	~SyncManager();
 
-	void Sync();
-
+	//call this interrupt routine - handles all stuff for communication
 	void interrupt_routine();
 
+	//call at start of main arduino loop - handles exchange of information
+	//WARNING: So far doesn't guarantee error-free communication. 
 	void loop();
 
 private:
+	void Sync();
+
 	void EncodeMessage(char* buffer) const;
 	void DecodeMessage(char* buffer) const;
 
