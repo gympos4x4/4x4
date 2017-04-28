@@ -1,7 +1,7 @@
 #pragma once
 
 #define TA_CHECK_COUNT 100
-#define TA_ALERT_TRESHOLD 0.1 // treshold as decimal number; enable: value, disable: 1-value
+#define TA_ALERT_TRESHOLD 10 // treshold as percentage; enable: value, disable: 100-value
 #define TA_ALERT_ANGLE alertAngle // minimal alert angle (value;infinite)
 #define TA_MPU_ADDR 0x68 // MPU-6050 #1 IC2 address
 #define TA_PWR_MGMT_1 0x6B // PWR_MGMT_1 register
@@ -102,10 +102,10 @@ public:
 				trueChecks++; // counts how many checks are true
 		if (alreadyTilted) {
 			// if car is already tilted then checks if true checks count is over alert disable treshold
-			alreadyTilted = trueChecks > TA_CHECK_COUNT * (1 - TA_ALERT_TRESHOLD);
+			alreadyTilted = trueChecks > TA_CHECK_COUNT * (100 - TA_ALERT_TRESHOLD) / 100;
 		} else {
 			// if car is't tilted then checks if true checks count is over alert enable treshold
-			alreadyTilted = trueChecks > TA_CHECK_COUNT * TA_ALERT_TRESHOLD;
+			alreadyTilted = trueChecks > TA_CHECK_COUNT * TA_ALERT_TRESHOLD / 100;
 		}
 		return alreadyTilted;
 	}
