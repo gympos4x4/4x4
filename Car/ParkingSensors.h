@@ -97,16 +97,13 @@ public:
 		}
 		if (highest > calibratedTreshold) {
 			beeping = false;
-		}
-		else
-		{
+		} else {
 			if (beeping) {
 				if (milisstart + PS_BEEP_LENGHT <= millis()) {
 					beeping = false;
 					milisstart = millis();
 				}
-			}
-			else {
+			} else {
 				if (milisstart + highest <= millis()) {
 					beeping = true;
 					milisstart = millis();
@@ -115,8 +112,7 @@ public:
 		}
 		if (beeping) {
 			digitalWrite(PS_BEEP_PIN, PS_BEEP_STATE_HIGH);
-		}
-		else {
+		} else {
 			digitalWrite(PS_BEEP_PIN, PS_BEEP_STATE_LOW);
 		}
 	}
