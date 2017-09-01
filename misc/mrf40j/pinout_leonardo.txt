@@ -1,0 +1,17 @@
+Funguje to pri takomto zapojeni na leonarde zo SOSu
+
+MRF UNO:
+	2 (RESET) 	-> 13
+	4 (INT)		-> 2 (interrupt 1)
+	5 (SDI)		-> MOSI
+	6 (SCK)		-> SCLK
+	7 (SDO)		-> MISO
+	8 (CS)		-> 11
+
+MRF LEONARDO:
+	2 (RESET) 	-> 8
+	4 (INT)		-> 3 (interrupt 0)
+	5 (SDI)		-> MOSI
+	6 (SCK)		-> SCLK
+	7 (SDO)		-> MISO
+	8 (CS)		-> 10
