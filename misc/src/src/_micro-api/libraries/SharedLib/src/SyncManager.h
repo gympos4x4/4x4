@@ -47,8 +47,6 @@ private:
 	Mrf24j rf_radio;
 	RadioConfig radio_config;
 
-	bool bDidTransmit;
-
 public:
 	explicit SyncManager(size_t count, ISerializable** classes, RadioConfig rc);
 	SyncManager() = delete;

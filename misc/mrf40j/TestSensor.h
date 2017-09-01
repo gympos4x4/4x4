@@ -8,7 +8,10 @@ private:
     long deltaTime = 0;
 
 public:
-    TestSensor() { lastTime = millis(); }
+    TestSensor(bool send) {
+        lastTime = millis();
+        bSendData = send;
+    }
 
     void loop() {
         totalTime = millis();

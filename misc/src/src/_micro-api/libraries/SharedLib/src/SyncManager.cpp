@@ -1,8 +1,7 @@
 #include <assert.h>
 #include "SyncManager.h"
 
-SyncManager::SyncManager(size_t count, ISerializable ** classes, RadioConfig rc)
-	: rf_radio(rc.pin_layout.pin_reset, rc.pin_layout.pin_cs, rc.pin_layout.interrupt), radio_config(rc)
+SyncManager::SyncManager(size_t count, ISerializable ** classes, RadioConfig rc) : rf_radio(rc.pin_layout.pin_reset, rc.pin_layout.pin_cs, rc.pin_layout.interrupt), radio_config(rc)
 {
 	assert(classes != nullptr);
 	assert(count < 116 && count > 0);
@@ -59,8 +58,7 @@ void SyncManager::EncodeMessage(char* buffer) const
 {
 	for (int i = 0; i < list_length; i++)
 	{
-		if(synced_classes[i]->bSendData == true)
-			synced_classes[i]->serialize(get_buffer_offset(buffer, i));
+		synced_classes[i]->serialize(get_buffer_offset(buffer, i));
 	}
 }
 
@@ -68,8 +66,7 @@ void SyncManager::DecodeMessage(char* buffer) const
 {
 	for (int i = 0; i < list_length; i++)
 	{
-		if(synced_classes[i]->bSendData == false)
-			synced_classes[i]->deserialize(get_buffer_offset(buffer, i));
+		synced_classes[i]->deserialize(get_buffer_offset(buffer, i));
 	}
 }
 

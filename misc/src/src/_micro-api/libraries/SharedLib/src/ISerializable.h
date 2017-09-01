@@ -14,11 +14,9 @@
 //Interface indicating that this class can be serialised and deserialised
 class ISerializable
 {
-protected:
-	/* TRUE = send data, FALSE = recv data */
-	bool bSendData;
-
 public:
+	bool bWasTXed = false;
+
 	/* determinate the size	of buffer needed to store all data of this instance */
 	virtual int get_size() const = 0;
 

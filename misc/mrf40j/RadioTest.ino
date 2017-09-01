@@ -1,5 +1,9 @@
 #include "SharedLib.h"
 
+SyncManager smUno, smLeo;
+
+TestSensor *sendSensor, *recvSensor;
+
 void setup() {
     RadioConfig rcUno, rcLeo;
 
@@ -15,11 +19,15 @@ void setup() {
     rcLeo.pin_layout.pin_cs = 10;
     rcLeo.pin_layout.interrupt = 0;
 
-    SyncManager smUno = new SyncManager(1, nullptr, rcUno);
-    SyncManager smLeo = new SyncManager(1, nullptr, rcLeo);
+    sendSensor = new TestSensor(true);
+    recvSensor = new TestSensor(false);
+
+    smUno = SyncManager(1, &sendSensor, rcUno);
+    smLeo = SyncManager(1, &recvSensor, rcLeo);
 }
 
 void loop() {
-    
+    smUno.loop();
+    smLeo.loop();
 }
 
