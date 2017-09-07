@@ -20,6 +20,7 @@
 //sync interval in miliseconds
 #define SYNC_INTERVAL 0
 
+class Mrf24j;
 class RadioConfig;
 class ISerializable;
 

@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef __SYNC_MANAGER_h
 #define __SYNC_MANAGER_h
 
@@ -20,6 +18,7 @@
 //sync interval in miliseconds
 #define SYNC_INTERVAL 0
 
+class Mrf24j;
 class RadioConfig;
 class ISerializable;
 

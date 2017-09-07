@@ -5,10 +5,11 @@
 */
 
 //shared library includes
-#define TX_SYNC_COUNT 5
-#define RX_SYNC_COUNT 5
 
-#include "SyncManager.h"
+//define these in project options
+//#define TX_SYNC_COUNT 5
+//#define RX_SYNC_COUNT 5
+#include "SharedLib.h"
 
 //local library includes
 #include "eADC.h"
@@ -18,11 +19,14 @@
 #include "SteeringControl.h"
 #include "TiltAlarm.h"
 
-
+RadioConfig rc = mega_radio_config;
+Mrf24j mrf(rc.pin_reset, rc.pin_cs, rc.interrupt);
 
 // the setup function runs once when you press reset or power the board
 void setup() {
-	
+	Serial.begin(115200);
+
+	SyncManager::setup(&rc, &mrf, nullptr, nullptr);
 }
 
 // the loop function runs over and over again until power down or reset

@@ -6,7 +6,7 @@
 #define PS_BEEP_STATE_LOW LOW
 #define PS_BEEP_LENGHT 250
 
-#include <eADC.h>
+#include "eADC.h"
 
 /// <summary>
 /// communication with external ADC (MCP3208)

@@ -14,8 +14,8 @@ struct RadioConfig
 	unsigned int buddy_address;
 };
 
-extern RadioConfig mega_radio_config{ 13, 11, 0, 0x1337, 0x6000 };
-extern RadioConfig uno_radio_config{ 13, 11, 1, 0x1337, 0x6001 };
-extern RadioConfig leo_radio_config{ 8, 10, 0, 0x1337, 0x6002 };
+const RadioConfig mega_radio_config{ 13, 11, 0, 0x1337, 0x6000 };
+const RadioConfig uno_radio_config{ 13, 11, 1, 0x1337, 0x6001 };
+const RadioConfig leo_radio_config{ 8, 10, 0, 0x1337, 0x6002 };
 
 #endif

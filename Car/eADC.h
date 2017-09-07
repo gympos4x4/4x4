@@ -26,7 +26,6 @@ public:
 	/// initiates eADC
 	/// </summary>
 	static void init() {
-		Serial.begin(115200);
 		pinMode(ADC_CSPIN, OUTPUT);
 		digitalWrite(ADC_CSPIN, HIGH);
 		SPI.begin();
