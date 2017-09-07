@@ -7,23 +7,25 @@
  *void rx_handler();
  */
 
-WirelessConnection::WirelessConnection() {}
-WirelessConnection::~WirelessConnection() {}
+RadioConfig* WirelessConnection::rc;
+Mrf24j* WirelessConnection::mrf;
+char** WirelessConnection::rx_buffer;
+bool WirelessConnection::msg_came;
 
-void WirelessConnection::setup(RadioConfig* rc, Mrf24j* mrf, char** rx_buffer, bool* _msg_came)
-{
-	rc = rc;
-	mrf = mrf;	
-	msg_came = _msg_came;
-
-	mrf->reset();
-	mrf->init();
-
-	mrf->set_pan(rc->pan);
-	mrf->address16_write(rc->my_address);
-
-	*rx_buffer = reinterpret_cast<char*>(mrf->get_rxinfo()->rx_data);
-}
+//void WirelessConnection::setup(RadioConfig* rc, Mrf24j* mrf, char** rx_buffer, bool* _msg_came)
+//{
+//	rc = rc;
+//	mrf = mrf;	
+//	msg_came = _msg_came;
+//
+//	mrf->reset();
+//	mrf->init();
+//
+//	mrf->set_pan(rc->pan);
+//	mrf->address16_write(rc->my_address);
+//
+//	*rx_buffer = reinterpret_cast<char*>(mrf->get_rxinfo()->rx_data);
+//}
 
 void WirelessConnection::loop()
 {
@@ -37,7 +39,7 @@ void WirelessConnection::send(int length, char* message)
 
 void WirelessConnection::handle_rx()
 {
-	*msg_came = true;
+	msg_came = true;
 }
 
 void WirelessConnection::handle_tx()

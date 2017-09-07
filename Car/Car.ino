@@ -26,7 +26,7 @@ Mrf24j mrf(rc.pin_reset, rc.pin_cs, rc.interrupt);
 void setup() {
 	Serial.begin(115200);
 
-	SyncManager::setup(&rc, &mrf, nullptr, nullptr);
+	SyncManager::setup(&rc, &mrf, nullptr, 0, nullptr, 0);
 }
 
 // the loop function runs over and over again until power down or reset

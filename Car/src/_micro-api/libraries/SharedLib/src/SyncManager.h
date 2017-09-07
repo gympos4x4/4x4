@@ -1,18 +1,6 @@
 #ifndef __SYNC_MANAGER_h
 #define __SYNC_MANAGER_h
 
-#if !defined(TX_SYNC_COUNT)
-#define TX_SYNC_COUNT -1
-#endif
-
-#if !defined(RX_SYNC_COUNT)
-#define RX_SYNC_COUNT -1
-#endif
-
-#if TX_SYNC_COUNT < 0 || RX_SYNC_COUNT < 0
-#error You have to define how many classes you want to sync
-#endif
-
 //how much ms to wait before skipping current data
 #define WAIT_FOR_SYNC 0
 //sync interval in miliseconds
@@ -25,7 +13,8 @@ class ISerializable;
 class SyncManager
 {
 private:
-	static ISerializable *tx_sync[TX_SYNC_COUNT], *rx_sync[RX_SYNC_COUNT];
+	static ISerializable **tx_sync, **rx_sync;
+	static int tx_sync_count, rx_sync_count;
 	static char tx_size;
 	static char tx_buffer[117], *rx_buffer;
 	static bool msg_came;
@@ -34,11 +23,11 @@ private:
 	~SyncManager() = delete;
 
 public:
-	static void setup(RadioConfig* _rc, Mrf24j* _mrf, ISerializable** _tx_sync, ISerializable** _rx_sync);
+	static void setup(RadioConfig* _rc, Mrf24j* _mrf, ISerializable** _tx_sync, int _tx_sync_coumt, ISerializable** _rx_sync, int _rx_sync_count);
 	static void loop();
-	
+
 private:
-	static void serialize();	
+	static void serialize();
 	static void deserialize();
 };
 

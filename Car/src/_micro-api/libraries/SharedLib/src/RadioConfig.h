@@ -8,7 +8,7 @@ struct RadioConfig
 	unsigned int pin_reset;
 	unsigned int pin_cs;
 	unsigned int interrupt;		//not pin, interrupt
-	
+
 	unsigned int pan;
 	unsigned int my_address;
 	unsigned int buddy_address;
