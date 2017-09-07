@@ -4,18 +4,30 @@
  Author:	Matej
 */
 
-// the setup function runs once when you press reset or power the board
-#include "SharedLib.h"
+//shared library includes
+#define TX_SYNC_COUNT 5
+#define RX_SYNC_COUNT 5
+
+#include "SyncManager.h"
+
+//local library includes
+#include "eADC.h"
 #include "Lights.h"
+#include "MotorControl.h"
+#include "ParkingSensors.h"
+#include "SteeringControl.h"
 #include "TiltAlarm.h"
 
+
+
+// the setup function runs once when you press reset or power the board
 void setup() {
-	RadioConfig rc;
 	
-	auto sm = new SyncManager(0, nullptr, rc);
 }
 
 // the loop function runs over and over again until power down or reset
 void loop() {
-  
+	//do everything that's needed
+
+
 }

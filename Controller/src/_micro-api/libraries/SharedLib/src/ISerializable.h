@@ -11,6 +11,9 @@
 
 #include <assert.h>
 
+#define SERIALIZE  (p_obj, buffer) do { memcpy(buffer, obj, sizeof(obj)); buffer += sizeof(obj); } while(0)
+#define DESERIALIZE(p_obj, buffer) do { memcpy(obj, buffer, sizeof(obj)); buffer += sizeof(obj); } while(0)
+
 //Interface indicating that this class can be serialised and deserialised
 class ISerializable
 {

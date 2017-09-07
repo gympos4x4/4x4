@@ -1,118 +1,65 @@
-#include <assert.h>
+#include "libs/mrf24j.h"
 #include "SyncManager.h"
+#include "WirelessConnection.h"
+#include "ISerializable.h"
 
-SyncManager::SyncManager(size_t count, ISerializable ** classes, RadioConfig rc)
-	: rf_radio(rc.pin_layout.pin_reset, rc.pin_layout.pin_cs, rc.pin_layout.interrupt), radio_config(rc)
+
+void SyncManager::setup(RadioConfig* _rc, Mrf24j* _mrf, ISerializable** _tx_sync, ISerializable** _rx_sync)
 {
-	assert(classes != nullptr);
-	assert(count < 116 && count > 0);
+	tx_size = 0;
 
-	if (!Serial)
+	for(int i = 0; i < TX_SYNC_COUNT; i++)
 	{
-		Serial.begin(SERIAL_BAUD_RATE);
+		tx_sync[i] = _tx_sync[i];
+		tx_size += tx_sync[i]->get_size();
 	}
 
-	list_length = count;
-
-	/* Initialize internal buffers */
-	buffer_size = 117;
-
-	synced_classes = static_cast<ISerializable**>(calloc(count, sizeof(ISerializable*)));
-	synced_classes_offsets = static_cast<uint16_t*>(calloc(count, sizeof(uint16_t)));
-
-	for (uint8_t i = 0; i < count; i++)
+	for (int i = 0; i < RX_SYNC_COUNT; i++)
 	{
-		assert(classes[i] != nullptr);
-
-		synced_classes[i] = classes[i];
-		synced_classes_offsets[i] = buffer_size;
-		buffer_size += synced_classes[i]->get_size();
+		rx_sync[i] = _rx_sync[i];
 	}
 
-	r_buffer = static_cast<char*>(malloc(buffer_size)); //reinterpret_cast<char*>(rf_radio.get_rxinfo()->rx_data);
-	t_buffer = static_cast<char*>(malloc(buffer_size));
-
-	/* Initialize radio library */
-	rf_radio.reset();
-	rf_radio.init();
-
-	rf_radio.set_pan(rc.panid);
-	rf_radio.address16_write(rc.my_address);
-
-	last_time = millis();
-}
-
-SyncManager::~SyncManager()
-{
-	free(r_buffer);
-	free(t_buffer);
-}
-
-void SyncManager::Sync()
-{
-	EncodeMessage(t_buffer);
-
-	rf_radio.send16(radio_config.buddy_address, t_buffer);
-}
-
-void SyncManager::EncodeMessage(char* buffer) const
-{
-	for (int i = 0; i < list_length; i++)
-	{
-		if(synced_classes[i]->bSendData == true)
-			synced_classes[i]->serialize(get_buffer_offset(buffer, i));
-	}
-}
-
-void SyncManager::DecodeMessage(char* buffer) const
-{
-	for (int i = 0; i < list_length; i++)
-	{
-		if(synced_classes[i]->bSendData == false)
-			synced_classes[i]->deserialize(get_buffer_offset(buffer, i));
-	}
-}
-
-void SyncManager::RecieveMessageHandler()
-{
-	Serial.println("SM::RMH");
-
-	DecodeMessage((char*)rf_radio.get_rxinfo()->rx_data);
-}
-
-void SyncManager::TransmitMessageHandler()
-{
-	Serial.println("SM::TMH");
-
-	if (!rf_radio.get_txinfo()->tx_ok)
-	{
-		Serial.write("Failed to send after ");
-		Serial.print(rf_radio.get_txinfo()->retries);
-		Serial.println(" retries\n");
-	}
-	else
-	{
-		//asi netreba robit nic, posle sa o chvilu dalsi
-	}
-}
-
-void SyncManager::interrupt_routine()
-{
-	rf_radio.interrupt_handler();
+	WirelessConnection::setup(_rc, _mrf, &rx_buffer, &msg_came);
 }
 
 void SyncManager::loop()
 {
-	//DEBUG
-	Serial.println("SyncManager loop");
+	serialize();
+	WirelessConnection::send(tx_size, tx_buffer);
 
-	rf_radio.check_flags_custom(&SyncManager::RecieveMessageHandler, &SyncManager::TransmitMessageHandler, this);
-
-	uint64_t current_time = millis();
-	if(current_time - last_time <= send_delay)
+	int last = millis();
+	while(!msg_came)
 	{
-		last_time = current_time;
+		deserialize();
+		msg_came = false;
 
-		Sync();
+		const int now = millis();
+		if (last - now > WAIT_FOR_SYNC)
+		{
+			break;
+		}
+		last = now;
+	}
+}
+
+void SyncManager::serialize()
+{
+	char* tx_ptr = tx_buffer;
+
+	for(int i = 0; i < TX_SYNC_COUNT; i++)
+	{
+		tx_sync[i]->serialize(tx_ptr);
+		tx_ptr += tx_sync[i]->get_size();
+	}
+}
+
+void SyncManager::deserialize()
+{
+	char* rx_ptr = rx_buffer;
+
+	for(int i = 0; i < RX_SYNC_COUNT; i++)
+	{
+		rx_sync[i]->deserialize(rx_ptr);
+		rx_ptr += rx_sync[i]->get_size();
 	}
 }

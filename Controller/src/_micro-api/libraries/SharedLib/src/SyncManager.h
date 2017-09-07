@@ -1,69 +1,46 @@
-// SyncManager.h
-
 #pragma once
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
-#else
-	#include "WProgram.h"
+#ifndef __SYNC_MANAGER_h
+#define __SYNC_MANAGER_h
+
+#if !defined(TX_SYNC_COUNT)
+#define TX_SYNC_COUNT -1
 #endif
 
-#include "ISerializable.h"
-#include "libs/mrf24j.h"
+#if !defined(RX_SYNC_COUNT)
+#define RX_SYNC_COUNT -1
+#endif
 
-struct RadioConfig
-{
-	word my_address;
-	word buddy_address;
-	word panid;
+#if TX_SYNC_COUNT < 0 || RX_SYNC_COUNT < 0
+#error You have to define how many classes you want to sync
+#endif
 
-	struct
-	{
-		int pin_reset = 6;
-		int pin_cs = 10;
-		int pin_interrupt = 2;
-	} pin_layout;
-};
+//how much ms to wait before skipping current data
+#define WAIT_FOR_SYNC 0
+//sync interval in miliseconds
+#define SYNC_INTERVAL 0
 
-//Main class for handling communivation of 2 devices
-//TODO: Optimise library for MTF24J to enable amplification
+class RadioConfig;
+class ISerializable;
+
 class SyncManager
 {
 private:
-	const int SERIAL_BAUD_RATE = 9600;
+	static ISerializable *tx_sync[TX_SYNC_COUNT], *rx_sync[RX_SYNC_COUNT];
+	static char tx_size;
+	static char tx_buffer[117], *rx_buffer;
+	static bool msg_came;
 
-	char* r_buffer = nullptr;		//recieve buffer
-	char* t_buffer = nullptr;		//transmit buffer
-
-	size_t list_length, buffer_size;
-	ISerializable** synced_classes;	//instances of all classes that are to be synced across devices 
-	uint16_t* synced_classes_offsets;
-
-	//time between updating data
-	const uint16_t send_delay = 100;
-	uint64_t last_time = 0;
-
-	Mrf24j rf_radio;
-	RadioConfig radio_config;
+	SyncManager() = delete;
+	~SyncManager() = delete;
 
 public:
-	explicit SyncManager(size_t count, ISerializable** classes, RadioConfig rc);
-	SyncManager() = delete;
-	~SyncManager();
-
-	void Sync();
-
-	void interrupt_routine();
-
-	void loop();
-
+	static void setup(RadioConfig* _rc, Mrf24j* _mrf, ISerializable** _tx_sync, ISerializable** _rx_sync);
+	static void loop();
+	
 private:
-	void EncodeMessage(char* buffer) const;
-	void DecodeMessage(char* buffer) const;
-
-	void RecieveMessageHandler();
-	void TransmitMessageHandler();
-
-	char* get_buffer_offset(char* buffer, int class_index) const { return buffer + synced_classes_offsets[class_index]; };
+	static void serialize();	
+	static void deserialize();
 };
 
+#endif

@@ -11,13 +11,12 @@
 
 #include <assert.h>
 
+#define SERIALIZE  (p_obj, buffer) do { memcpy(buffer, obj, sizeof(obj)); buffer += sizeof(obj); } while(0)
+#define DESERIALIZE(p_obj, buffer) do { memcpy(obj, buffer, sizeof(obj)); buffer += sizeof(obj); } while(0)
+
 //Interface indicating that this class can be serialised and deserialised
 class ISerializable
 {
-protected:
-	/* TRUE = send data, FALSE = recv data */
-	bool bSendData;
-
 public:
 	/* determinate the size	of buffer needed to store all data of this instance */
 	virtual int get_size() const = 0;

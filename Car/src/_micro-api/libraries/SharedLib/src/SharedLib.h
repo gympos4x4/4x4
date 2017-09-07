@@ -17,6 +17,8 @@
 #include "libs/mrf24j.h"
 #include "ISerializable.h"
 #include "SyncManager.h"
+#include "WirelessConnection.h"
+#include "RadioConfig.h"
 
 #endif
 

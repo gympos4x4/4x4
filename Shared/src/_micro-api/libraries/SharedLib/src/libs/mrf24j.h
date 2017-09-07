@@ -221,12 +221,11 @@ class Mrf24j
         void set_palna(boolean enabled);
 
         void send16(word dest16, char * data);
+		void send16(word dest16, byte length, char * data);
 
         void interrupt_handler(void);
 
         void check_flags(void (*rx_handler)(void), void (*tx_handler)(void));
-
-		void check_flags_custom(void(SyncManager::*rx_handler)(), void(SyncManager::*tx_handler)(void), SyncManager* instance);
 
     private:
         int _pin_reset;
