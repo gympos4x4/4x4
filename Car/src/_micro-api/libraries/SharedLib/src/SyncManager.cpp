@@ -14,8 +14,9 @@ ISerializable** SyncManager::rx_sync;
 
 bool WirelessConnection::msg_came;
 
-void SyncManager::setup(RadioConfig* _rc, Mrf24j* _mrf, ISerializable** _tx_sync, int _tx_sync_coumt, ISerializable** _rx_sync, int
-                        _rx_sync_count)
+void SyncManager::setup(RadioConfig* _rc, Mrf24j* _mrf,
+						ISerializable** _tx_sync, int _tx_sync_coumt,
+						ISerializable** _rx_sync, int _rx_sync_count)
 {
 	tx_size = 0;
 	tx_sync_count = _tx_sync_coumt;
@@ -32,7 +33,7 @@ void SyncManager::setup(RadioConfig* _rc, Mrf24j* _mrf, ISerializable** _tx_sync
 		rx_sync[i] = _rx_sync[i];
 	}
 
-	WirelessConnection::setup(_rc, _mrf, &SyncManager::rx_buffer, &SyncManager::msg_came);
+	WirelessConnection::setup(_rc, _mrf, &SyncManager::rx_buffer);
 }
 
 void SyncManager::loop()
@@ -70,9 +71,14 @@ void SyncManager::deserialize()
 {
 	char* rx_ptr = rx_buffer;
 
+	Serial.print("Car recieved ");
+	Serial.println(rx_ptr);
+
+	/*
 	for (int i = 0; i < rx_sync_count; i++)
 	{
 		rx_sync[i]->deserialize(rx_ptr);
 		rx_ptr += rx_sync[i]->get_size();
 	}
+	*/
 }

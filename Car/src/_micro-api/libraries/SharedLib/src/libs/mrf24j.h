@@ -14,8 +14,6 @@
 #endif
 #include "SPI.h"
 
-class SyncManager;
-
 #define MRF_RXMCR 0x00
 #define MRF_PANIDL 0x01
 #define MRF_PANIDH 0x02

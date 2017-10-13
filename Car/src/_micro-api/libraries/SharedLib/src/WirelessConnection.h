@@ -18,19 +18,7 @@ public:
 	static bool msg_came;
 
 public:
-	static void setup(RadioConfig *rc, Mrf24j *mrf, char** rx_buffer, bool* _msg_came)
-	{
-		rc = rc;
-		mrf = mrf;
-
-		mrf->reset();
-		mrf->init();
-
-		mrf->set_pan(rc->pan);
-		mrf->address16_write(rc->my_address);
-
-		*rx_buffer = reinterpret_cast<char*>(mrf->get_rxinfo()->rx_data);
-	}
+	static void setup(RadioConfig *rc, Mrf24j *mrf, char** rx_buffer);
 
 	static void loop();
 

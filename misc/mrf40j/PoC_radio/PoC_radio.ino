@@ -20,6 +20,7 @@ const int LENGTH_TEST = 117;
 void setup()
 {
   Serial.begin(9600);
+  Serial.println("PoC_radio");
 
   mrfUno.reset();
   mrfLeo.reset();

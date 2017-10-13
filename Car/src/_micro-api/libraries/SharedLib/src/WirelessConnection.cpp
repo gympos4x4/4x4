@@ -10,22 +10,20 @@
 RadioConfig* WirelessConnection::rc;
 Mrf24j* WirelessConnection::mrf;
 char** WirelessConnection::rx_buffer;
-bool WirelessConnection::msg_came;
 
-//void WirelessConnection::setup(RadioConfig* rc, Mrf24j* mrf, char** rx_buffer, bool* _msg_came)
-//{
-//	rc = rc;
-//	mrf = mrf;	
-//	msg_came = _msg_came;
-//
-//	mrf->reset();
-//	mrf->init();
-//
-//	mrf->set_pan(rc->pan);
-//	mrf->address16_write(rc->my_address);
-//
-//	*rx_buffer = reinterpret_cast<char*>(mrf->get_rxinfo()->rx_data);
-//}
+void WirelessConnection::setup(RadioConfig* rc, Mrf24j* mrf, char** rx_buffer)
+{
+	rc = rc;
+	mrf = mrf;
+
+	mrf->reset();
+	mrf->init();
+
+	mrf->set_pan(rc->pan);
+	mrf->address16_write(rc->my_address);
+
+	*rx_buffer = reinterpret_cast<char*>(mrf->get_rxinfo()->rx_data);
+}
 
 void WirelessConnection::loop()
 {
@@ -34,6 +32,9 @@ void WirelessConnection::loop()
 
 void WirelessConnection::send(int length, char* message)
 {
+	Serial.print("Sending");
+	Serial.println(message);
+
 	mrf->send16(rc->buddy_address, length, message);
 }
 
