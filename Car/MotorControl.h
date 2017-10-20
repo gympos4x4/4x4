@@ -1,3 +1,5 @@
+// Autor:Peter Ridilla
+
 class MotorControl{
   
   public:
