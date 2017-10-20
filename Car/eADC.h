@@ -1,4 +1,14 @@
-#pragma once
+// eADC.h
+// Author: Juraj Marcin
+
+#ifndef _EADC_h
+#define _EADC_h
+
+#if defined(ARDUINO) && ARDUINO >= 100
+	#include "arduino.h"
+#else
+	#include "WProgram.h"
+#endif
 
 #define ADC_CSPIN 9
 
@@ -21,46 +31,24 @@
 /// </example>
 
 class eADC {
+
 public:
 	/// <summary>
 	/// initiates eADC
 	/// </summary>
-	static void init() {
-		pinMode(ADC_CSPIN, OUTPUT);
-		digitalWrite(ADC_CSPIN, HIGH);
-		SPI.begin();
-		SPI.setClockDivider(SPI_CLOCK_DIV8);
-	}
+	static void init();
 
 public:
 	/// <summary>
 	/// reads ADC value on selected channel
 	/// </summary>
 	/// <param name='channel'>ADC channel (0-7)</param>
-	static uint16_t analogRead(int channel) {
-		uint8_t msb;
-		uint8_t lsb;
-
-		// shift bits to match datasheet for MCP3208
-		byte commandMSB = B00000110;
-		uint16_t commandBytes = (uint16_t)(commandMSB << 8 | channel << 6);
-
-		// select ADC
-		digitalWrite(9, LOW);
-		// send start bit and bit to specify single or differential mode (single mode chosen here)
-		SPI.transfer((commandBytes >> 8) & 0xff);
-
-		msb = SPI.transfer((byte)commandBytes & 0xff) & B00001111;
-		lsb = SPI.transfer(0x00);
-
-		digitalWrite(9, HIGH);
-
-
-		// cast before shifting the byte
-		return ((uint16_t)msb) << 8 | lsb;
-	}
+	static uint16_t analogRead(int channel);
 
 	// make constructor private
 private:
-	eADC() {}
+	eADC();
 };
+
+#endif
+

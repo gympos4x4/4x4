@@ -51,10 +51,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\Car;$(ProjectDir)src\_micro-api\libraries\SharedLib\src;c:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\SPI\src;c:\Program Files (x86)\Arduino\libraries;c:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries;C:\Users\Matej\Documents\Arduino\libraries;c:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;c:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\mega;c:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include\;c:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include\avr\;c:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.8.1\include;c:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;c:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\_micro-api\libraries\SharedLib\src;$(ProjectDir)..\..\..\..\Arduino\libraries\SPI;$(ProjectDir)..\..\..\..\Arduino\libraries;$(ProjectDir)..\..\..\..\Arduino\hardware\arduino\libraries;$(ProjectDir)..\..\..\..\Users\juraj\Documents\Arduino\libraries;$(ProjectDir)..\..\..\..\Arduino\hardware\arduino\cores\arduino;$(ProjectDir)..\..\..\..\Arduino\hardware\arduino\cores\arduino\avr-libc;$(ProjectDir)..\..\..\..\Arduino\hardware\arduino\variants\eightanaloginputs;$(ProjectDir)..\Car;$(ProjectDir)..\..\..\..\arduino\hardware\tools\avr\avr\include\;$(ProjectDir)..\..\..\..\arduino\hardware\tools\avr\avr\include\avr\;$(ProjectDir)..\..\..\..\arduino\hardware\tools\avr\avr\;$(ProjectDir)..\..\..\..\arduino\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ProjectDir)__vm\.Car.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <PreprocessorDefinitions>__AVR_ATmega2560__;_VMDEBUG=1;CAR;F_CPU=16000000L;ARDUINO=10802;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__AVR_ATmega328p__;__AVR_ATmega328P__;_VMDEBUG=1;ARDUINO=105;ARDUINO_MAIN;__AVR__;__avr__;F_CPU=16000000L;CAR;__cplusplus=201103L;GCC_VERSION=40302;ARDUINO_ARCH_AVR;ARDUINO_AVR_NANO328;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -100,18 +100,28 @@
     <None Include="src\_micro-api\libraries\SharedLib\library.properties" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="eADC.h" />
+    <ClInclude Include="Lights.h" />
+    <ClInclude Include="ParkingSensors.h" />
     <ClInclude Include="src\_micro-api\libraries\SharedLib\src\ISerializable.h" />
     <ClInclude Include="src\_micro-api\libraries\SharedLib\src\libs\mrf24j.h" />
     <ClInclude Include="src\_micro-api\libraries\SharedLib\src\RadioConfig.h" />
     <ClInclude Include="src\_micro-api\libraries\SharedLib\src\SharedLib.h" />
     <ClInclude Include="src\_micro-api\libraries\SharedLib\src\SyncManager.h" />
     <ClInclude Include="src\_micro-api\libraries\SharedLib\src\WirelessConnection.h" />
+    <ClInclude Include="SteeringControl.h" />
+    <ClInclude Include="TiltAlarm.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="eADC.cpp" />
+    <ClCompile Include="Lights.cpp" />
+    <ClCompile Include="ParkingSensors.cpp" />
     <ClCompile Include="src\_micro-api\libraries\SharedLib\src\libs\mrf24j.cpp" />
     <ClCompile Include="src\_micro-api\libraries\SharedLib\src\SharedLib.cpp" />
     <ClCompile Include="src\_micro-api\libraries\SharedLib\src\SyncManager.cpp" />
     <ClCompile Include="src\_micro-api\libraries\SharedLib\src\WirelessConnection.cpp" />
+    <ClCompile Include="SteeringControl.cpp" />
+    <ClCompile Include="TiltAlarm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.vcxproj">

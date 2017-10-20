@@ -1,4 +1,5 @@
-#pragma once
+// TiltAlarm.h
+// Author: Juraj Marcin
 
 #define TA_CHECK_COUNT 100
 #define TA_ALERT_TRESHOLD 10 // treshold as percentage; enable: value, disable: 100-value
@@ -7,6 +8,15 @@
 #define TA_PWR_MGMT_1 0x6B // PWR_MGMT_1 register
 #define TA_LED_PIN 13 // alert led pin
 #define TA_LED_BLINK_INTERVAL 500 // alert led interval [ms]
+
+#ifndef _TILTALARM_h
+#define _TILTALARM_h
+
+#if defined(ARDUINO) && ARDUINO >= 100
+	#include "arduino.h"
+#else
+	#include "WProgram.h"
+#endif
 
 #include <Wire.h>
 
@@ -86,5 +96,8 @@ private:
 
 	// make constructor private
 private:
-	TiltAlarm() {}
+	TiltAlarm();
 };
+
+#endif
+
