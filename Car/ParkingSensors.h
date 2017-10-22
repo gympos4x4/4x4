@@ -10,8 +10,8 @@
 	#include "WProgram.h"
 #endif
 
-#define PS_SENSOR_COUNT 1
-#define PS_BEEP_PIN 13
+#define PS_SENSOR_COUNT 8
+//#define PS_BEEP_PIN 13
 #define PS_BEEP_STATE_HIGH HIGH
 #define PS_BEEP_STATE_LOW LOW
 #define PS_BEEP_LENGHT 250

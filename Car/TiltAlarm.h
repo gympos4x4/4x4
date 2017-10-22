@@ -6,7 +6,7 @@
 #define TA_ALERT_ANGLE alertAngle // minimal alert angle (value;infinite)
 #define TA_MPU_ADDR 0x68 // MPU-6050 #1 IC2 address
 #define TA_PWR_MGMT_1 0x6B // PWR_MGMT_1 register
-#define TA_LED_PIN 13 // alert led pin
+#define TA_LED_PIN 13 // alert led pin TODO: update pin
 #define TA_LED_BLINK_INTERVAL 500 // alert led interval [ms]
 
 #ifndef _TILTALARM_h

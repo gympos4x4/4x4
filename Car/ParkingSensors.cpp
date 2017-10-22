@@ -7,7 +7,9 @@ void ParkingSensors::init() {
 	calibratedMax = 4096;
 	calibratedTreshold = 3072;
 	beeping = false;
+#ifdef PS_BEEDP_PIN
 	pinMode(PS_BEEP_PIN, OUTPUT);
+#endif // PS_BEEDP_PIN
 	eADC::init();
 }
 
@@ -53,10 +55,12 @@ void ParkingSensors::loop() {
 			}
 		}
 	}
+#ifdef PS_BEEP_PIN
 	if (beeping) {
 		digitalWrite(PS_BEEP_PIN, PS_BEEP_STATE_HIGH);
 	} else {
 		digitalWrite(PS_BEEP_PIN, PS_BEEP_STATE_LOW);
 	}
+#endif // PS_BEEP_PIN
 }
 

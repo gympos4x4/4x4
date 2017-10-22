@@ -10,8 +10,8 @@
 	#include "WProgram.h"
 #endif
 
-#define LI_SENSOR_PIN 0 // light sendor pin number (analog)
-#define LI_FRONT_PIN 1 // front headlights pin number (analog)
+#define LI_SENSOR_PIN 0 // light sendor pin number (analog) TODO: update pin
+#define LI_FRONT_PIN 10 // front headlights pin number (analog)
 #define LI_TRESHOLD lightTreshold // turn on lights below this value
 #define LI_CYCLE_CHANGE 16 // change headlights brightness by this value every cycle
 #define LI_DAYLIGHT 255 // normal headlights brightness

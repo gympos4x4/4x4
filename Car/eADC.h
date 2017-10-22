@@ -10,7 +10,7 @@
 	#include "WProgram.h"
 #endif
 
-#define ADC_CSPIN 9
+#define ADC_CSPIN 7
 
 #include <SPI.h>
 
