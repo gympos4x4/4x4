@@ -93,28 +93,51 @@ void Mrf24j::finish_tx(void)
 void Mrf24j::send_car_data(CarData* data)
 {
 	byte i = 11;
-	WRITE16(data->tilt)
-	WRITE8(data->battery_percentage)
+
+	for(byte iter = 0; iter < data->len; iter++)
+	{
+		WRITE8( ((byte*)data)[iter] );
+	}
+
+	//WRITE16(data->tilt)
+	//WRITE8(data->battery_percentage)
 }
 void Mrf24j::recv_ctrl_data(CtrlData* data)
 {
 	byte i = 0;
-	READ8(data->throttle)
-	READ8(data->steer)
+
+	for(byte iter = 0; iter < data->len; iter++)
+	{
+		READ8( ((byte*)data)[iter] );
+	}
+
+	//READ8(data->throttle)
+	//READ8(data->steer)
 }
 #else
 void Mrf24j::recv_car_data(CarData* data)
 {
 	byte i = 0;
-	READ16(data->tilt)
-	WRITE8(data->battery_percentage)
+
+	for(byte iter = 0; iter < data->len; iter++)
+	{
+		READ8( ((byte*)data)[iter] );
+	}
+
+	//READ16(data->tilt)
+	//WRITE8(data->battery_percentage)
 }
 void Mrf24j::send_ctrl_data(CtrlData* data)
 {
 	byte i = 11;
-	WRITE8(data->throttle)
-	WRITE8(data->steer)
-	
+
+	for(byte iter = 0; iter < data->len; iter++)
+	{
+		WRITE8( ((byte*)data)[iter] );
+	}
+
+	//WRITE8(data->throttle)
+	//WRITE8(data->steer)
 }
 #endif
 
