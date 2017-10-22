@@ -84,60 +84,46 @@ void Mrf24j::finish_tx(void)
   ==================================================================
 */
 //R/W Operators: 
-#define WRITE8(val) write_long(i++, val);
-#define WRITE16(val) write_long(i++, (val >> 8) & 0xff );write_long(i++,(val & 0xff));
-#define READ8(val) val = rx_info.rx_data[i]; i += 1;
-#define READ16(val) val = ((rx_info.rx_data[i] << 8) | rx_info.rx_data[i + 1]); i += 2;
+#define WRITE8(val) do { write_long(i++, val); } while(0)
+#define READ8(val)  do { val = rx_info.rx_data[i]; i += 1; } while(0)
 
 #ifdef CAR
 void Mrf24j::send_car_data(CarData* data)
 {
 	byte i = 11;
 
-	for(byte iter = 0; iter < data->len; iter++)
+	for(byte iter = 0; iter < sizeof(CarData); iter++)
 	{
 		WRITE8( ((byte*)data)[iter] );
 	}
-
-	//WRITE16(data->tilt)
-	//WRITE8(data->battery_percentage)
 }
 void Mrf24j::recv_ctrl_data(CtrlData* data)
 {
 	byte i = 0;
 
-	for(byte iter = 0; iter < data->len; iter++)
+	for(byte iter = 0; iter < sizeof(CtrlData); iter++)
 	{
 		READ8( ((byte*)data)[iter] );
 	}
-
-	//READ8(data->throttle)
-	//READ8(data->steer)
 }
 #else
 void Mrf24j::recv_car_data(CarData* data)
 {
 	byte i = 0;
 
-	for(byte iter = 0; iter < data->len; iter++)
+	for(byte iter = 0; iter < sizeof(CarData); iter++)
 	{
 		READ8( ((byte*)data)[iter] );
 	}
-
-	//READ16(data->tilt)
-	//WRITE8(data->battery_percentage)
 }
 void Mrf24j::send_ctrl_data(CtrlData* data)
 {
 	byte i = 11;
 
-	for(byte iter = 0; iter < data->len; iter++)
+	for(byte iter = 0; iter < sizeof(CtrlData); iter++)
 	{
 		WRITE8( ((byte*)data)[iter] );
 	}
-
-	//WRITE8(data->throttle)
-	//WRITE8(data->steer)
 }
 #endif
 
