@@ -11,6 +11,7 @@ class CarData
 	public:
 	static const uint8_t len = 2;
 	int16_t tilt;
+	int8_t battery_percentage;
 
 	/*	void deserialize(byte* stream);
 	byte* serialize();*/
