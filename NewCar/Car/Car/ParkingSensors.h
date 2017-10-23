@@ -11,6 +11,7 @@
 #endif
 
 #define PS_SENSOR_COUNT 8
+#define PS_IR_PIN 8
 //#define PS_BEEP_PIN 13
 #define PS_BEEP_STATE_HIGH HIGH
 #define PS_BEEP_STATE_LOW LOW
@@ -37,7 +38,7 @@ class ParkingSensors {
 
 	static uint16_t calibratedMin;
 	static uint16_t calibratedMax;
-	static uint16_t calibratedTreshold;
+	static uint16_t calibratedThreshold;
 	static bool beeping;
 	static uint64_t milisstart;
 
@@ -63,10 +64,10 @@ public:
 
 public:
 	/// <summary>
-	/// calibrates beeping treshold
+	/// calibrates beeping threshold
 	/// </summary>
 	/// <param name='sensor'>sensor to use for calibration</param>
-	static void calibrateTreshold(int sensor = 0);
+	static void calibrateThreshold(int sensor = 0);
 
 public:
 	/// <summary>

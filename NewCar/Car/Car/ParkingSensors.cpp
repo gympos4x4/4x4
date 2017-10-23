@@ -5,31 +5,43 @@
 void ParkingSensors::init() {
 	calibratedMin = 0;
 	calibratedMax = 4096;
-	calibratedTreshold = 3072;
+	calibratedThreshold = 3072;
 	beeping = false;
-#ifdef PS_BEEDP_PIN
+#ifdef PS_BEEP_PIN
 	pinMode(PS_BEEP_PIN, OUTPUT);
-#endif // PS_BEEDP_PIN
+#endif // PS_BEEP_PIN
+	pinMode(PS_IR_PIN, OUTPUT);
 	eADC::init();
 }
 
 void ParkingSensors::calibrateMax(int sensor = 0) {
-	calibratedMax = eADC::analogRead(sensor);
+	digitalWrite(PS_IR_PIN, HIGH);
+	eADC::analogRead(sensor);
+	digitalWrite(PS_IR_PIN, LOW);
 }
 
 void ParkingSensors::calibrateMin(int sensor = 0) {
+	digitalWrite(PS_IR_PIN, HIGH);
 	calibratedMin = eADC::analogRead(sensor);
+	digitalWrite(PS_IR_PIN, LOW);
 }
 
-void ParkingSensors::calibrateTreshold(int sensor = 0) {
-	calibratedTreshold = eADC::analogRead(sensor);
+void ParkingSensors::calibrateThreshold(int sensor = 0) {
+	digitalWrite(PS_IR_PIN, HIGH);
+	calibratedThreshold = eADC::analogRead(sensor);
+	digitalWrite(PS_IR_PIN, LOW);
 }
 
 uint16_t ParkingSensors::readsensor(int sensor) {
+	uint16_t high = 0;
+	uint16_t low = 0;
 	if (PS_SENSOR_COUNT > sensor) {
-		return map(eADC::analogRead(sensor), 0, 4096, calibratedMin, calibratedMax);
+		digitalWrite(PS_IR_PIN, HIGH);
+		high = map(eADC::analogRead(sensor), 0, 4096, calibratedMin, calibratedMax);
+		digitalWrite(PS_IR_PIN, LOW);
+		low = map(eADC::analogRead(sensor), 0, 4096, calibratedMin, calibratedMax);
 	}
-	return 0;
+	return high - low;
 }
 
 void ParkingSensors::loop() {
@@ -40,7 +52,8 @@ void ParkingSensors::loop() {
 			highest = current;
 		}
 	}
-	if (highest > calibratedTreshold) {
+#ifdef PS_BEEP_PIN
+	if (highest > calibratedThreshold) {
 		beeping = false;
 	} else {
 		if (beeping) {
@@ -55,7 +68,6 @@ void ParkingSensors::loop() {
 			}
 		}
 	}
-#ifdef PS_BEEP_PIN
 	if (beeping) {
 		digitalWrite(PS_BEEP_PIN, PS_BEEP_STATE_HIGH);
 	} else {
