@@ -81,10 +81,9 @@ void _ParkingSensors::loop() {
 
 void _ParkingSensors::update_cardata(CarData& cardata)
 {
-	auto& cdp = cardata.parking;
-	cdp.beeping = beeping;
-	cdp.calibrated_max = calibratedMax;
-	cdp.calibrated_min = calibratedMin;
-	cdp.calibrated_threshold = calibratedThreshold;
+	cardata.parking.beeping = beeping;
+	cardata.parking.calibrated_max = calibratedMax;
+	cardata.parking.calibrated_min = calibratedMin;
+	cardata.parking.calibrated_threshold = calibratedThreshold;
 }
 

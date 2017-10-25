@@ -37,8 +37,7 @@ bool _Lights::is_below_threshold() {
 
 void _Lights::update_cardata(class CarData& cardata)
 {
-	auto& cdl = cardata.lights;
-	cdl.is_below_threshold = is_below_threshold();
-	cdl.state = lightState;
-	cdl.threshold = lightTreshold;
+	cardata.lights.is_below_threshold = is_below_threshold();
+	cardata.lights.state = lightState;
+	cardata.lights.threshold = lightTreshold;
 }
