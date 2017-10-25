@@ -39,8 +39,8 @@ class _Lights {
 	int lightState;
 
 public:
-	_Lights() = default;
-	~_Lights() = default;
+	_Lights() {}
+	~_Lights() {}
 
 public:
 	/// <summary>

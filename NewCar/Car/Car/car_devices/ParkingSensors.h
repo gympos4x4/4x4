@@ -43,8 +43,8 @@ class _ParkingSensors {
 	uint64_t milisstart;
 
 public:
-	_ParkingSensors() = default;
-	~_ParkingSensors() = default;
+	_ParkingSensors() {}
+	~_ParkingSensors() {}
 
 public:
 	/// <summary>

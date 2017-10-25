@@ -51,8 +51,8 @@ class _TiltAlarm {
 	uint8_t alertAngle;
 
 public:
-	_TiltAlarm() = default;
-	~_TiltAlarm()= default;
+	_TiltAlarm() {}
+	~_TiltAlarm(){}
 
 public:
 	/// <summary>

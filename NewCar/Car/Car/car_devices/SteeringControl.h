@@ -59,8 +59,8 @@ class _SteeringControl {
 #endif // SC_SERVO2
 
 public:
-	_SteeringControl() = default;
-	~_SteeringControl() = default;
+	_SteeringControl() {}
+	~_SteeringControl() {}
 
 public:
 	/// <summary>
