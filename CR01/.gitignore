@@ -26,6 +26,8 @@
 *.sts
 *.crc
 *.crs
+*.gcode
+*.nc
 
 *.dri
 *.drl
