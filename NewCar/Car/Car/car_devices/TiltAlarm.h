@@ -21,6 +21,8 @@
 #include <Wire.h>
 #include <stdint.h>
 
+class CarData;
+
 /// <summary>
 /// alert based on current tilt angle
 /// </summary>
@@ -37,68 +39,72 @@
 /// }
 /// </code>
 /// </example>
-class TiltAlarm {
+class _TiltAlarm {
 
-	static int8_t acX, acZ;
-	static bool tiltChecks[TA_CHECK_COUNT];
-	static uint8_t checkCount;
-	static bool alreadyTilted;
-	static uint64_t lastCycle;
-	static bool ledOn;
-	static bool initDone;
-	static uint8_t alertAngle;
+	int8_t acX, acZ;
+	bool tiltChecks[TA_CHECK_COUNT];
+	uint8_t checkCount;
+	bool alreadyTilted;
+	uint64_t lastCycle;
+	bool ledOn;
+	bool initDone;
+	uint8_t alertAngle;
+
+public:
+	_TiltAlarm() = default;
+	~_TiltAlarm()= default;
 
 public:
 	/// <summary>
 	/// initiates TiltAlarm with default angle threshold
 	/// </summary>
-	static void init();
+	void init();
 
 	/// <summary>
 	/// initiates TiltAlarm with custom angle threshold
 	/// </summary>
 	/// <param name='angle'>custom angle treshold 0-90</param>
-	static void init(uint8_t angle);
+	void init(uint8_t angle);
 
 	/// <summary>
 	/// updates angle threshold value at runtime
 	/// </summary>
 	/// <param name='angle'>custom angle treshold 0-90</param>
-	static void updateAngle(uint8_t angle);
+	void updateAngle(uint8_t angle);
 
 	/// <summary>
 	/// executes one check cycle
 	/// </summary>
-	static void cycle();
+	void loop();
 
 	/// <summary>
 	/// checks if current filter values are mostly tilted
 	/// </summary>
 	/// <returns>true if condition applies</returns>
-	static bool tilted();
+	bool tilted();
 
 	/// <summary>
 	/// executes one check 
 	/// </summary>
-	static void nextCheck();
+	void nextCheck();
+
+	void update_cardata(CarData& cardata);
 
 private:
 	/// <summary>
 	/// get current angle in x axis
 	/// </summary>
 	/// <returns>returns angle in degrees</returns>
-	static int getAngle(int x, int z);
+	int getAngle(int x, int z);
 
 	/// <summary>
 	/// changes indicators state
 	/// </summary>
 	/// <param name='value'>indicators state</param>
-	static void signals(bool value);
-
-	// make constructor private
-private:
-	TiltAlarm();
+	void signals(bool value);
 };
+
+extern _TiltAlarm TiltAlarm;
 
 #endif
 

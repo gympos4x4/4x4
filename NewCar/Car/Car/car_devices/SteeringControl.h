@@ -24,6 +24,8 @@
 
 #include <Servo.h>
 
+class CarData;
+
 /// <summary>
 /// servo steering control
 /// </summary>
@@ -47,32 +49,35 @@
 /// </code>
 /// </example>
 
-class SteeringControl {
+class _SteeringControl {
 
-	static Servo servo1;
-	static uint8_t desiredAngle1;
+	Servo servo1;
+	uint8_t desiredAngle1;
 #ifdef SC_SERVO2
-	static Servo servo2;
-	static uint8_t desiredAngle2;
+	Servo servo2;
+	uint8_t desiredAngle2;
 #endif // SC_SERVO2
+
+public:
+	_SteeringControl() = default;
+	~_SteeringControl() = default;
 
 public:
 	/// <summary>
 	/// initiates SteeringControl
 	/// </summary>
-	static void init();
+	void init();
 
-public:
 	/// <summary>
 	/// steers car wheels to desired position
 	/// </summary>
 	/// <param name='percentage'>desired position (-100 - full left, 0 - center, 100 - full right)</param>
-	static void steer(int8_t percentage);
+	void steer(int8_t percentage);
 
-	// make constructor private
-private:
-	SteeringControl();
+	void update_cardata(CarData& cardata);
 };
+
+extern _SteeringControl SteeringControl;
 
 #endif
 

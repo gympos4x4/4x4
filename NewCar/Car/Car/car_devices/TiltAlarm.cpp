@@ -1,12 +1,15 @@
 // Author: Juraj Marcin
 
 #include "TiltAlarm.h"
+#include "../comm.h"
 
-void TiltAlarm::init() {
+_TiltAlarm TiltAlarm;
+
+void _TiltAlarm::init() {
 	init(20);
 }
 
-void TiltAlarm::init(uint8_t angle) {
+void _TiltAlarm::init(uint8_t angle) {
 	alertAngle = angle;
 	checkCount = 0;
 	alreadyTilted = false;
@@ -20,11 +23,11 @@ void TiltAlarm::init(uint8_t angle) {
 	initDone = true;
 }
 
-void TiltAlarm::updateAngle(uint8_t angle) {
+void _TiltAlarm::updateAngle(uint8_t angle) {
 	alertAngle = angle;
 }
 
-void TiltAlarm::cycle() {
+void _TiltAlarm::loop() {
 	nextCheck();
 	if (tilted()) {
 		// check tilt with thresholds
@@ -38,7 +41,8 @@ void TiltAlarm::cycle() {
 	lastCycle = millis();
 }
 
-bool TiltAlarm::tilted() {
+bool _TiltAlarm::tilted() {
+	//TODO: cache if performance is shit
 	unsigned char trueChecks = 0;
 	for (unsigned char i = 0; i < TA_CHECK_COUNT; i++)
 		if (tiltChecks[i])
@@ -53,7 +57,7 @@ bool TiltAlarm::tilted() {
 	return alreadyTilted;
 }
 
-void TiltAlarm::nextCheck() {
+void _TiltAlarm::nextCheck() {
 	if (!initDone)
 		return; // return if init failed or hasn't been ran
 				/*
@@ -78,11 +82,17 @@ void TiltAlarm::nextCheck() {
 	}
 }
 
-int TiltAlarm::getAngle(int x, int z) {
+void _TiltAlarm::update_cardata(CarData& cardata)
+{
+	cardata.tilt.tilt_degrees = getAngle(acX, acZ);
+	cardata.tilt.tilted = tilted();
+}
+
+int _TiltAlarm::getAngle(int x, int z) {
 	return abs(degrees(atan2(z, x)));
 }
 
-void TiltAlarm::signals(bool value) {
+void _TiltAlarm::signals(bool value) {
 	if (value) {
 		digitalWrite(TA_LED_PIN, HIGH);
 	} else {

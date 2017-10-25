@@ -7,14 +7,10 @@
 #ifndef LIB_MRF24J_H
 #define LIB_MRF24J_H
 
-#if defined(ARDUINO) && ARDUINO >= 100 // Arduino IDE version >= 1.0
 #include "Arduino.h"
-#else // older Arduino IDE versions
-#include "WProgram.h"
-#endif
-#include "SPI/SPI.h"
+#include <SPI.h>
+
 #include "comm.h"
-class SyncManager;
 
 #define MRF_RXMCR 0x00
 #define MRF_PANIDL 0x01

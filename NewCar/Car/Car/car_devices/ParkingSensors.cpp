@@ -1,8 +1,11 @@
 // Author: Juraj Marcin
 
 #include "ParkingSensors.h"
+#include "../comm.h"
 
-void ParkingSensors::init() {
+_ParkingSensors ParkingSensors;
+
+void _ParkingSensors::init() {
 	calibratedMin = 0;
 	calibratedMax = 4096;
 	calibratedThreshold = 3072;
@@ -14,25 +17,25 @@ void ParkingSensors::init() {
 	eADC::init();
 }
 
-void ParkingSensors::calibrateMax(int sensor = 0) {
+void _ParkingSensors::calibrateMax(int sensor = 0) {
 	digitalWrite(PS_IR_PIN, HIGH);
 	eADC::analogRead(sensor);
 	digitalWrite(PS_IR_PIN, LOW);
 }
 
-void ParkingSensors::calibrateMin(int sensor = 0) {
+void _ParkingSensors::calibrateMin(int sensor = 0) {
 	digitalWrite(PS_IR_PIN, HIGH);
 	calibratedMin = eADC::analogRead(sensor);
 	digitalWrite(PS_IR_PIN, LOW);
 }
 
-void ParkingSensors::calibrateThreshold(int sensor = 0) {
+void _ParkingSensors::calibrateThreshold(int sensor = 0) {
 	digitalWrite(PS_IR_PIN, HIGH);
 	calibratedThreshold = eADC::analogRead(sensor);
 	digitalWrite(PS_IR_PIN, LOW);
 }
 
-uint16_t ParkingSensors::readsensor(int sensor) {
+uint16_t _ParkingSensors::readsensor(int sensor) {
 	uint16_t high = 0;
 	uint16_t low = 0;
 	if (PS_SENSOR_COUNT > sensor) {
@@ -44,7 +47,7 @@ uint16_t ParkingSensors::readsensor(int sensor) {
 	return high - low;
 }
 
-void ParkingSensors::loop() {
+void _ParkingSensors::loop() {
 	uint16_t highest = 4096;
 	for (int i = 0; i < PS_SENSOR_COUNT; i++) {
 		uint16_t current = readsensor(i);
@@ -74,5 +77,14 @@ void ParkingSensors::loop() {
 		digitalWrite(PS_BEEP_PIN, PS_BEEP_STATE_LOW);
 	}
 #endif // PS_BEEP_PIN
+}
+
+void _ParkingSensors::update_cardata(CarData& cardata)
+{
+	auto& cdp = cardata.parking;
+	cdp.beeping = beeping;
+	cdp.calibrated_max = calibratedMax;
+	cdp.calibrated_min = calibratedMin;
+	cdp.calibrated_threshold = calibratedThreshold;
 }
 

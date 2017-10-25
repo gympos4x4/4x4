@@ -34,58 +34,57 @@
 /// }
 /// </code>
 /// </example>
-class ParkingSensors {
+class _ParkingSensors {
 
-	static uint16_t calibratedMin;
-	static uint16_t calibratedMax;
-	static uint16_t calibratedThreshold;
-	static bool beeping;
-	static uint64_t milisstart;
+	uint16_t calibratedMin;
+	uint16_t calibratedMax;
+	uint16_t calibratedThreshold;
+	bool beeping;
+	uint64_t milisstart;
+
+public:
+	_ParkingSensors() = default;
+	~_ParkingSensors() = default;
 
 public:
 	/// <summary>
 	/// initiates parking sensors
 	/// </summary>
-	static void init();
+	void init();
 
-public:
 	/// <summary>
 	/// calibrates maximum distance
 	/// </summary>
 	/// <param name='sensor'>sensor to use for calibration</param>
-	static void calibrateMax(int sensor = 0);
+	void calibrateMax(int sensor = 0);
 
-public:
 	/// <summary>
 	/// calibrates minimum distance
 	/// </summary>
 	/// <param name='sensor'>sensor to use for calibration</param>
-	static void calibrateMin(int sensor = 0);
+	void calibrateMin(int sensor = 0);
 
-public:
 	/// <summary>
 	/// calibrates beeping threshold
 	/// </summary>
 	/// <param name='sensor'>sensor to use for calibration</param>
-	static void calibrateThreshold(int sensor = 0);
+	void calibrateThreshold(int sensor = 0);
 
-public:
 	/// <summary>
 	/// reads sensor value
 	/// </summary>
 	/// <param name='sensor'>sensor to read from</param>
-	static uint16_t readsensor(int sensor);
+	uint16_t readsensor(int sensor);
 
-public:
 	/// <summary>
 	/// executes one check cycle
 	/// </summary>
-	static void loop();
+	void loop();
 
-	// make constructor private
-private:
-	ParkingSensors();
+	void update_cardata(class CarData& cardata);
 };
+
+extern _ParkingSensors ParkingSensors;
 
 #endif
 

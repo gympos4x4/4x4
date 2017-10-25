@@ -32,49 +32,49 @@
 /// }
 /// </code>
 /// </example>
-class Lights {
+class _Lights {
 
-	static int lightTreshold;
-	static bool lastCheck;
-	static int lightState;
+	int lightTreshold;
+	bool lastCheck;
+	int lightState;
+
+public:
+	_Lights() = default;
+	~_Lights() = default;
 
 public:
 	/// <summary>
 	/// initiates Lights with default treshold
 	/// </summary>
-	static void init();
+	void init();
 
-public:
 	/// <summary>
 	/// initiates Lights with custom treshold
 	/// </summary>
 	/// <param name='treshold'>headlights will turn on below this value</param>
-	static void init(int treshold);
+	void init(int treshold);
 
-public:
 	/// <summary>
 	/// updates treshold value at runtime
 	/// </summary>
 	/// <param name='treshold'>headlights will turn on below this value</param>
-	static void updateTreshold(int treshold);
+	void update_treshold(int treshold);
 
-public:
 	/// <summary>
 	/// executes one check cycle
 	/// </summary>
-	static void loop();
+	void loop();
 
-public:
 	/// <summary>
 	/// checks if current light level is below treshold value
 	/// </summary>
 	/// <returns>true if condition applies</returns>
-	static bool dark();
+	bool is_below_threshold();
 
-	// make constructor private
-private:
-	Lights();
+	void update_cardata(class CarData& cardata);
 };
+
+extern _Lights Lights;
 
 #endif
 
