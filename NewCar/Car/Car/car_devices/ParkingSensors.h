@@ -36,9 +36,9 @@
 /// </example>
 class _ParkingSensors {
 
-	uint16_t calibratedMin;
-	uint16_t calibratedMax;
-	uint16_t calibratedThreshold;
+	int16_t calibratedMin;
+	int16_t calibratedMax;
+	int16_t calibratedThreshold;
 	bool beeping;
 	uint64_t milisstart;
 
@@ -74,7 +74,7 @@ public:
 	/// reads sensor value
 	/// </summary>
 	/// <param name='sensor'>sensor to read from</param>
-	uint16_t readsensor(int sensor);
+	int16_t readsensor(int sensor);
 
 	/// <summary>
 	/// executes one check cycle

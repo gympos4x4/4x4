@@ -35,9 +35,9 @@ void _ParkingSensors::calibrateThreshold(int sensor = 0) {
 	digitalWrite(PS_IR_PIN, LOW);
 }
 
-uint16_t _ParkingSensors::readsensor(int sensor) {
-	uint16_t high = 0;
-	uint16_t low = 0;
+int16_t _ParkingSensors::readsensor(int sensor) {
+	int16_t high = 0;
+	int16_t low = 0;
 	if (PS_SENSOR_COUNT > sensor) {
 		digitalWrite(PS_IR_PIN, HIGH);
 		high = map(eADC::analogRead(sensor), 0, 4096, calibratedMin, calibratedMax);
@@ -48,7 +48,7 @@ uint16_t _ParkingSensors::readsensor(int sensor) {
 }
 
 void _ParkingSensors::loop() {
-	uint16_t highest = 4096;
+	int16_t highest = 4096;
 	for (int i = 0; i < PS_SENSOR_COUNT; i++) {
 		uint16_t current = readsensor(i);
 		if (current > highest) {
