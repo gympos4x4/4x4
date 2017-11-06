@@ -11,7 +11,7 @@
 #endif
 
 #define PS_SENSOR_COUNT 8
-#define PS_IR_PIN 8
+#define PS_IR_PIN 7
 //#define PS_BEEP_PIN 13
 #define PS_BEEP_STATE_HIGH HIGH
 #define PS_BEEP_STATE_LOW LOW

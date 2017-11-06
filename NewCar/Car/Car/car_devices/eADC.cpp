@@ -18,14 +18,14 @@ uint16_t eADC::analogRead(int channel) {
 	uint16_t commandBytes = (uint16_t)(commandMSB << 8 | channel << 6);
 
 	// select ADC
-	digitalWrite(9, LOW);
+	digitalWrite(ADC_CSPIN, LOW);
 	// send start bit and bit to specify single or differential mode (single mode chosen here)
 	SPI.transfer((commandBytes >> 8) & 0xff);
 
 	msb = SPI.transfer((byte)commandBytes & 0xff) & B00001111;
 	lsb = SPI.transfer(0x00);
 
-	digitalWrite(9, HIGH);
+	digitalWrite(ADC_CSPIN, HIGH);
 
 
 	// cast before shifting the byte
