@@ -24,4 +24,5 @@ void _SteeringControl::steer(int8_t percentage) {
 void _SteeringControl::update_cardata(CarData& cardata)
 {
 	cardata.steering.servo_angle = SteeringControl.servo1.read();
+	cardata.steering.servo2_angle = SteeringControl.servo2.read();
 }

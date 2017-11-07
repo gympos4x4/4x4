@@ -1,7 +1,7 @@
 // Autor:Peter Ridilla
 
-#define IN1 5
-#define IN2 6
+#define IN1 A3
+#define IN2 A2
 
 class MotorControl{
 	

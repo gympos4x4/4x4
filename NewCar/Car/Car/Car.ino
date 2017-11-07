@@ -16,7 +16,7 @@
 #include "car_devices/TiltAlarm.h"
 #include "car_devices/Lights.h"
 
-Mrf24j mrf(9, -1, 2);
+Mrf24j mrf(/*pin reset*/ 4, /*pin CS*/ 9, /*pin itnerrupt*/ 3);
 CarData cardata;
 CtrlData ctrldata;
 const unsigned int SYNC_INTERVAL_MS = 200;
@@ -87,12 +87,14 @@ void setup_mrf(word address, word pan)
 	mrf.set_pan(pan);
 	mrf.address16_write(address);
 	mrf.set_palna(true);
-	attachInterrupt(0, mrf_isr, CHANGE); // interrupt 0 equivalent to pin 2(INT0) on ATmega8/168/328
+	attachInterrupt(1, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
 }
 
 void update_cardata()
 {
+	//TODO: zmerat baterku
 	cardata.battery_percentage = -1;
+
 	Lights.update_cardata(cardata);
 	SteeringControl.update_cardata(cardata);
 	TiltAlarm.update_cardata(cardata);

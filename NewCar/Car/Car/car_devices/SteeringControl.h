@@ -22,7 +22,7 @@
 #define SC_S2_ZERO 90
 #define SC_S2_FULL_RIGHT 0
 
-
+#include <Servo.h>
 
 class CarData;
 
@@ -53,7 +53,7 @@ class _SteeringControl {
 
 	Servo servo1;
 	uint8_t desiredAngle1;
-#ifdef SC_SERVO2
+#ifdef SC_SERVO2_PIN
 	Servo servo2;
 	uint8_t desiredAngle2;
 #endif // SC_SERVO2
