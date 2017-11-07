@@ -50,7 +50,8 @@ int16_t _ParkingSensors::readsensor(int sensor) {
 void _ParkingSensors::loop() {
 	int16_t highest = 4096;
 	for (int i = 0; i < PS_SENSOR_COUNT; i++) {
-		uint16_t current = readsensor(i);
+		int16_t current = readsensor(i);
+		sensorData[i] = current;
 		if (current > highest) {
 			highest = current;
 		}
@@ -81,9 +82,13 @@ void _ParkingSensors::loop() {
 
 void _ParkingSensors::update_cardata(CarData& cardata)
 {
-	cardata.parking.beeping = beeping;
-	cardata.parking.calibrated_max = calibratedMax;
-	cardata.parking.calibrated_min = calibratedMin;
-	cardata.parking.calibrated_threshold = calibratedThreshold;
+	cardata.parking.sensor0data = sensorData[0];
+	cardata.parking.sensor1data = sensorData[1];
+	cardata.parking.sensor2data = sensorData[2];
+	cardata.parking.sensor3data = sensorData[3];
+	cardata.parking.sensor4data = sensorData[4];
+	cardata.parking.sensor5data = sensorData[5];
+	cardata.parking.sensor6data = sensorData[6];
+	cardata.parking.sensor7data = sensorData[7];
 }
 

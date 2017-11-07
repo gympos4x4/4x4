@@ -25,10 +25,14 @@ struct CarData
 
 	//ParkingSensor
 	struct {
-		int16_t calibrated_min;
-		int16_t calibrated_max;
-		int16_t calibrated_threshold;
-		bool beeping;
+		int16_t sensor0data;
+		int16_t sensor1data;
+		int16_t sensor2data;
+		int16_t sensor3data;
+		int16_t sensor4data;
+		int16_t sensor5data;
+		int16_t sensor6data;
+		int16_t sensor7data;
 	} parking ;
 
 	//SteeringControl
@@ -36,13 +40,13 @@ struct CarData
 		int16_t servo_angle;
 		int16_t servo2_angle;
 	} steering;
-}; //20 bytes;
+}; //29 bytes;
 
 struct CtrlData
 {
 	int8_t throttle;
 	int8_t steer;
-};
+}; //2 bytes
 
 
 #endif /* COMM_H_ */

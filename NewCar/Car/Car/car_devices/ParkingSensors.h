@@ -41,6 +41,7 @@ class _ParkingSensors {
 	int16_t calibratedThreshold;
 	bool beeping;
 	uint64_t milisstart;
+	int16_t sensorData[PS_SENSOR_COUNT];
 
 public:
 	_ParkingSensors() {}
