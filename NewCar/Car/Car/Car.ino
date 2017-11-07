@@ -22,8 +22,8 @@ Mrf24j mrf(/*pin reset*/ 4, /*pin CS*/ 9, /*pin itnerrupt*/ 3);
 CarData cardata;
 CtrlData ctrldata;
 const unsigned int SYNC_INTERVAL_MS = 200;
-
 unsigned long sync_last_time = 0;
+
 bool rxl = 0;
 
 void setup()
@@ -59,13 +59,13 @@ void loop()
 	{
 		update_cardata();
 
-		mrf.start_tx(0x4202, sizeof(cardata));
+		mrf.start_tx(0x6000, sizeof(cardata));
 		mrf.send_car_data(&cardata);
 		mrf.finish_tx();
 
 		sync_last_time = current_time;
 	}
-	digitalWrite(10,rxl);
+	//digitalWrite(10,rxl);		debug statement?
 }
 
 void mrf_isr()
@@ -75,7 +75,7 @@ void mrf_isr()
 void mrf_rx()
 {
 	mrf.recv_ctrl_data(&ctrldata);
-	rxl = !rxl;
+	//rxl = !rxl;	debug statement?
 }
 void mrf_tx()
 {
