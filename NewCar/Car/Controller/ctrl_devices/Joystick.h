@@ -21,7 +21,7 @@
 #define JOY_ADS_Y 8
 #define JOY_ADS_X 10
 
-#include "EEPROMExt.h"
+#include "../EEPROMExt.h"
 
 class Joystick {
 

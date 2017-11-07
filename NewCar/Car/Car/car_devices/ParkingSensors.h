@@ -57,19 +57,23 @@ public:
 	/// calibrates maximum distance
 	/// </summary>
 	/// <param name='sensor'>sensor to use for calibration</param>
-	void calibrateMax(int sensor = 0);
+	void calibrateMax(int sensor);
+
+	void calibrateMax() { calibrateMax(0); }
 
 	/// <summary>
 	/// calibrates minimum distance
 	/// </summary>
 	/// <param name='sensor'>sensor to use for calibration</param>
-	void calibrateMin(int sensor = 0);
+	void calibrateMin(int sensor);
+	void calibrateMin() { calibrateMin(0); }
 
 	/// <summary>
 	/// calibrates beeping threshold
 	/// </summary>
 	/// <param name='sensor'>sensor to use for calibration</param>
-	void calibrateThreshold(int sensor = 0);
+	void calibrateThreshold(int sensor);
+	void calibrateThreshold() { calibrateThreshold(0); }
 
 	/// <summary>
 	/// reads sensor value

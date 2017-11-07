@@ -9,12 +9,12 @@
 
 #include <EEPROM.h>
 #include <SPI.h>
-#include <FT_Breakout_4DLCD_FT843.h>
+#include "FTDI/FT_Breakout_4DLCD_FT843.h"
 
 #include "EEPROMExt.h"
-#include "ControllerDisplay.h"
-#include "Button.h"
-#include "Joystick.h"
+#include "ctrl_devices/ControllerDisplay.h"
+#include "ctrl_devices/Button.h"
+#include "ctrl_devices/Joystick.h"
 
 Button selectBtn(SELECT_BTN_PIN);
 Button calibBtn(CALIB_BTN_PIN);
