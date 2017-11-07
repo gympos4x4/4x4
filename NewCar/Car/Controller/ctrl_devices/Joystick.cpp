@@ -1,0 +1,90 @@
+// Author: Juraj Marcin
+
+#include "Joystick.h"
+
+Joystick::Joystick(uint16_t addressShift, uint8_t analogPinX, uint8_t analogPinY) {
+	address = addressShift;
+	xpin = analogPinX;
+	ypin = analogPinY;
+	cU = EEPROMExt.read16(address + JOY_ADS_U);
+	if (cU == 0) {
+		cU = JOY_MIN;
+	}
+	cD = EEPROMExt.read16(address + JOY_ADS_D);
+	if (cU == 0) {
+		cD = JOY_MAX;
+	}
+	cR = EEPROMExt.read16(address + JOY_ADS_R);
+	if (cR == JOY_MIN) {
+		cR = JOY_MIN;
+	}
+	cL = EEPROMExt.read16(address + JOY_ADS_L);
+	if (cL == 0) {
+		cL = JOY_MAX;
+	}
+	cY = EEPROMExt.read16(address + JOY_ADS_Y);
+	if (cY == 0) {
+		cY = abs(JOY_MAX - JOY_MIN) / 2;
+	}
+	cX = EEPROMExt.read16(address + JOY_ADS_X);
+	if (cX == 0) {
+		cX = abs(JOY_MAX - JOY_MIN) / 2;
+	}
+}
+
+int8_t Joystick::readXint8() {
+	int value = analogRead(xpin);
+	if (value > cX) {
+		return map(value, cL, cX, JOY_OUT_DL, JOY_OUT_C);
+	} else if (value < cX) {
+		return map(value, cX, cL, JOY_OUT_C, JOY_OUT_UR);
+	} else {
+		return JOY_OUT_C;
+	}
+}
+
+int8_t Joystick::readYint8() {
+	int value = analogRead(ypin);
+	if (value > cY) {
+		return map(value, cL, cY, JOY_OUT_DL, JOY_OUT_C);
+	} else if (value < cY) {
+		return map(value, cY, cL, JOY_OUT_C, JOY_OUT_UR);
+	} else {
+		return JOY_OUT_C;
+	}
+}
+
+int16_t Joystick::readXraw() {
+	return analogRead(xpin);
+}
+
+int16_t Joystick::readYraw() {
+	return analogRead(ypin);
+}
+
+void Joystick::calibrateUp() {
+	cU = readYraw();
+	EEPROMExt.write16(address + JOY_ADS_U, cU);
+}
+
+void Joystick::calibrateDown() {
+	cD = readYraw();
+	EEPROMExt.write16(address + JOY_ADS_D, cD);
+}
+
+void Joystick::calibrateRight() {
+	cR = readXraw();
+	EEPROMExt.write16(address + JOY_ADS_R, cR);
+}
+
+void Joystick::calibrateLeft() {
+	cL = readXraw();
+	EEPROMExt.write16(address + JOY_ADS_L, cL);
+}
+
+void Joystick::calibrateCenter() {
+	cY = readYraw();
+	cX = readXraw();
+	EEPROMExt.write16(address + JOY_ADS_Y, cY);
+	EEPROMExt.write16(address + JOY_ADS_X, cX);
+}

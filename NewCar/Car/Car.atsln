@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "Car", "Car\Car.cppproj", "{C81EAF1A-0A54-410B-B45E-6B0DB2E92897}"
+EndProject
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "Controller", "Controller\Controller.cppproj", "{BB8B342E-CA51-4B48-AF92-85E8B5F467A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C81EAF1A-0A54-410B-B45E-6B0DB2E92897}.Debug|AVR.Build.0 = Debug|AVR
 		{C81EAF1A-0A54-410B-B45E-6B0DB2E92897}.Release|AVR.ActiveCfg = Release|AVR
 		{C81EAF1A-0A54-410B-B45E-6B0DB2E92897}.Release|AVR.Build.0 = Release|AVR
+		{BB8B342E-CA51-4B48-AF92-85E8B5F467A0}.Debug|AVR.ActiveCfg = Debug|AVR
+		{BB8B342E-CA51-4B48-AF92-85E8B5F467A0}.Debug|AVR.Build.0 = Debug|AVR
+		{BB8B342E-CA51-4B48-AF92-85E8B5F467A0}.Release|AVR.ActiveCfg = Release|AVR
+		{BB8B342E-CA51-4B48-AF92-85E8B5F467A0}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
