@@ -20,9 +20,10 @@ void _SteeringControl::steer(int8_t percentage) {
 	servo2.write(desiredAngle2);
 #endif // SC_SERVO2_PIN
 }
-
+/* naco? preco?
 void _SteeringControl::update_cardata(CarData& cardata)
 {
 	cardata.steering.servo_angle = SteeringControl.servo1.read();
 	cardata.steering.servo2_angle = SteeringControl.servo2.read();
 }
+*/

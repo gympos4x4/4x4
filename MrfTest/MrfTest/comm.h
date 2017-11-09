@@ -29,7 +29,7 @@ struct CarData
 	} parking ;
 
 
-}; 
+};
 
 struct CtrlData
 {
@@ -39,7 +39,7 @@ struct CtrlData
 		int16_t servo_angle;
 		int16_t servo2_angle;
 	} steering;
-}; 
+};
 
 
 #endif /* COMM_H_ */

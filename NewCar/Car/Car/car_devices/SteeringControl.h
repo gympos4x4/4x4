@@ -74,7 +74,7 @@ public:
 	/// <param name='percentage'>desired position (-100 - full left, 0 - center, 100 - full right)</param>
 	void steer(int8_t percentage);
 
-	void update_cardata(CarData& cardata);
+	//void update_cardata(CarData& cardata); naco? preco?
 };
 
 extern _SteeringControl SteeringControl;

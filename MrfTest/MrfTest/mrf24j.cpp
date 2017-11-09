@@ -210,27 +210,27 @@ void Mrf24j::init(void) {
 	; // wait for soft reset to finish
 	}
 	*/
-	write_short(MRF_PACON2, 0x98); // ‚Äì Initialize FIFOEN = 1 and TXONTS = 0x6.
-	write_short(MRF_TXSTBL, 0x95); // ‚Äì Initialize RFSTBL = 0x9.
+	write_short(MRF_PACON2, 0x98); // ñ Initialize FIFOEN = 1 and TXONTS = 0x6.
+	write_short(MRF_TXSTBL, 0x95); // ñ Initialize RFSTBL = 0x9.
 
-	write_long(MRF_RFCON0, 0x03); // ‚Äì Initialize RFOPT = 0x03.
-	write_long(MRF_RFCON1, 0x01); // ‚Äì Initialize VCOOPT = 0x02.
-	write_long(MRF_RFCON2, 0x80); // ‚Äì Enable PLL (PLLEN = 1).
-	write_long(MRF_RFCON6, 0x90); // ‚Äì Initialize TXFIL = 1 and 20MRECVR = 1.
-	write_long(MRF_RFCON7, 0x80); // ‚Äì Initialize SLPCLKSEL = 0x2 (100 kHz Internal oscillator).
-	write_long(MRF_RFCON8, 0x10); // ‚Äì Initialize RFVCO = 1.
-	write_long(MRF_SLPCON1, 0x21); // ‚Äì Initialize CLKOUTEN = 1 and SLPCLKDIV = 0x01.
+	write_long(MRF_RFCON0, 0x03); // ñ Initialize RFOPT = 0x03.
+	write_long(MRF_RFCON1, 0x01); // ñ Initialize VCOOPT = 0x02.
+	write_long(MRF_RFCON2, 0x80); // ñ Enable PLL (PLLEN = 1).
+	write_long(MRF_RFCON6, 0x90); // ñ Initialize TXFIL = 1 and 20MRECVR = 1.
+	write_long(MRF_RFCON7, 0x80); // ñ Initialize SLPCLKSEL = 0x2 (100 kHz Internal oscillator).
+	write_long(MRF_RFCON8, 0x10); // ñ Initialize RFVCO = 1.
+	write_long(MRF_SLPCON1, 0x21); // ñ Initialize CLKOUTEN = 1 and SLPCLKDIV = 0x01.
 
-	//  Configuration for nonbeacon-enabled devices (see Section 3.8 ‚ÄúBeacon-Enabled and
-	//  Nonbeacon-Enabled Networks‚Äù):
+	//  Configuration for nonbeacon-enabled devices (see Section 3.8 ìBeacon-Enabled and
+	//  Nonbeacon-Enabled Networksî):
 	write_short(MRF_BBREG2, 0x80); // Set CCA mode to ED
-	write_short(MRF_CCAEDTH, 0x60); // ‚Äì Set CCA ED threshold.
-	write_short(MRF_BBREG6, 0x40); // ‚Äì Set appended RSSI value to RXFIFO.
+	write_short(MRF_CCAEDTH, 0x60); // ñ Set CCA ED threshold.
+	write_short(MRF_BBREG6, 0x40); // ñ Set appended RSSI value to RXFIFO.
 	set_interrupts();
 	set_channel(12);
 	// max power is by default.. just leave it...
-	// Set transmitter power - See ‚ÄúREGISTER 2-62: RF CONTROL 3 REGISTER (ADDRESS: 0x203)‚Äù.
-	write_short(MRF_RFCTL, 0x04); //  ‚Äì Reset RF state machine.
+	// Set transmitter power - See ìREGISTER 2-62: RF CONTROL 3 REGISTER (ADDRESS: 0x203)î.
+	write_short(MRF_RFCTL, 0x04); //  ñ Reset RF state machine.
 	write_short(MRF_RFCTL, 0x00); // part 2
 	delay(1); // delay at least 192usec
 }

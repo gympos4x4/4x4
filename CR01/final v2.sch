@@ -17658,6 +17658,17 @@ Source: www.kingbright.com</description>
 <wire x1="116.84" y1="43.18" x2="124.46" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="N$26" class="0">
+<segment>
+<pinref part="SV1" gate="G$1" pin="5"/>
+<wire x1="220.98" y1="-40.64" x2="223.52" y2="-40.64" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="-40.64" x2="223.52" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="10.16" x2="144.78" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="10.16" x2="144.78" y2="35.56" width="0.1524" layer="91"/>
+<pinref part="U1" gate="U$1" pin="PD4(XCK/T0)"/>
+<wire x1="144.78" y1="35.56" x2="124.46" y2="35.56" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>

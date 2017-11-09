@@ -1,0 +1,18 @@
+/*
+ * MrfTest.cpp
+ *
+ * Created: 16.10.2017 20:10:07
+ * Author : DELTA-PC
+ */ 
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+    /* Replace with your application code */
+    while (1) 
+    {
+    }
+}
+

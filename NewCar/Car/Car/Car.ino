@@ -18,6 +18,8 @@
 #include "car_devices/TiltAlarm.h"
 #include "car_devices/Lights.h"
 
+#define CONTROLLER_ADDRESS 0x6000
+
 Mrf24j mrf(/*pin reset*/ 4, /*pin CS*/ 9, /*pin itnerrupt*/ 3);
 CarData cardata;
 CtrlData ctrldata;
@@ -30,10 +32,10 @@ void setup()
 {
 	setup_mrf(0x6001, 0xcafe);
 
-	MotorControl::init();
+	MotorControl.init();
 	Lights.init(50);
 
-	ParkingSensors.init();
+	//ParkingSensors.init();
 	SteeringControl.init();
 	TiltAlarm.init();
 
@@ -43,23 +45,25 @@ void setup()
 
 void loop()
 {
+	unsigned long current_time = millis();
+	
 	//check if a new message came and update CarData and CtrlData if necessary
 	mrf.check_flags(&mrf_rx, &mrf_tx);
 
 	//use them data
-	MotorControl::set_throttle(ctrldata.throttle);
-	SteeringControl.steer(ctrldata.steer);
+	MotorControl.loop(ctrldata, current_time);
+	SteeringControl.steer(ctrldata.steering.servo_angle);
 
 	TiltAlarm.loop();
-	ParkingSensors.loop();
+	//ParkingSensors.loop();
 	Lights.loop();
 
-	unsigned long current_time = millis();
+
 	if(current_time - sync_last_time >= SYNC_INTERVAL_MS)
 	{
 		update_cardata();
 
-		mrf.start_tx(0x6000, sizeof(cardata));
+		mrf.start_tx(CONTROLLER_ADDRESS, sizeof(cardata));
 		mrf.send_car_data(&cardata);
 		mrf.finish_tx();
 
@@ -98,7 +102,7 @@ void update_cardata()
 	cardata.battery_percentage = -1;
 
 	Lights.update_cardata(cardata);
-	SteeringControl.update_cardata(cardata);
+	//SteeringControl.update_cardata(cardata); ??? preco?
 	TiltAlarm.update_cardata(cardata);
 	ParkingSensors.update_cardata(cardata);
 }

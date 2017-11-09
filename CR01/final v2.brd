@@ -4097,6 +4097,11 @@ design rules under a new name.</description>
 <wire x1="17.78" y1="61.2775" x2="14.1351" y2="61.2775" width="0.5" layer="1"/>
 <wire x1="14.1351" y1="61.2775" x2="13.4239" y2="60.5663" width="0.5" layer="1"/>
 </signal>
+<signal name="N$26">
+<contactref element="SV1" pad="5"/>
+<contactref element="U1" pad="2"/>
+<wire x1="33.3375" y1="7.3025" x2="13.1699" y2="38.5125" width="0" layer="19" extent="1-1"/>
+</signal>
 </signals>
 <errors>
 <approved hash="1,20,dab8a798a7a8da88"/>
