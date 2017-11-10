@@ -1,0 +1,18 @@
+/*
+ * V2Test.cpp
+ *
+ * Created: 4.11.2017 17:06:29
+ * Author : DELTA-PC
+ */ 
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+    /* Replace with your application code */
+    while (1) 
+    {
+    }
+}
+

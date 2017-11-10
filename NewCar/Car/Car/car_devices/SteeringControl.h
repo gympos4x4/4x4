@@ -13,11 +13,11 @@
 // SERVO 1 CONFIG
 #define SC_SERVO1_PIN 5
 // TODO: update angles, so it matches chassis
-#define SC_S1_FULL_LEFT 0
+#define SC_S1_FULL_LEFT 5
 #define SC_S1_ZERO 90
-#define SC_S1_FULL_RIGHT 180
+#define SC_S1_FULL_RIGHT 
 // SERVO 2 CONFIG
-#define SC_SERVO2_PIN 6
+//#define SC_SERVO2_PIN 6
 #define SC_S2_FULL_LEFT 180
 #define SC_S2_ZERO 90
 #define SC_S2_FULL_RIGHT 0

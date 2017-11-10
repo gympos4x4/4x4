@@ -2,6 +2,7 @@
 #include "mrf24j.h"
 //#include "mrf24j_c.h"
 #include <SPI.h>
+#include <Servo.h>
 #include "comm.h"
 
 
@@ -10,8 +11,8 @@ long last_time;
 long tx_interval = 1000;
 CarData cardata;
 CtrlData ctrldata;
-
-//#define LOG
+Servo servo;
+#define LOG
 
 void setup() {
 	Serial.begin(9600);
@@ -24,6 +25,7 @@ void setup() {
 	mrf.set_palna(true);
 	attachInterrupt(0, interrupt_routine, CHANGE); // interrupt 0 equivalent to pin 2(INT0) on ATmega8/168/328
 	last_time = millis();
+	servo.attach(22);
 	interrupts();
 }
 void interrupt_routine() {
@@ -38,55 +40,73 @@ void loop() {
 	
 	currentTime = millis();
 	if(currentTime - lastTxTime >= 100){
+		cardata.throttleFb = ctrldata.throttle;
 		mrf.start_tx(0x6001,sizeof(ctrldata));
 		mrf.send_ctrl_data(&ctrldata);
 		mrf.finish_tx();
 		lastTxTime = currentTime;
 	}
-	if(currentTime - lastProgTime >= 5000)
+	/*if(currentTime - lastProgTime >= 5000)
 	{
 		lastProgTime = currentTime;
 		switch(prog)
 		{
 			case 0:
 			ctrldata.throttle = 0;
-			ctrldata.steering.servo_angle = 30;
+			ctrldata.steering = 30;
 			break;
 			case 1:
-			ctrldata.steering.servo_angle = -30;
+			ctrldata.throttle = 126;
+			ctrldata.steering = -30;
 			break;
 			case 2:
-			ctrldata.steering.servo_angle = 0;
+			ctrldata.steering = 0;
 			ctrldata.throttle = 127;
 			break;
 			case 3:
 			ctrldata.throttle = 0;
-			ctrldata.steering.servo_angle = 20;
+			ctrldata.steering = 20;
 			break;
 			case 6:
 			ctrldata.throttle = -64;
 			break;
 		}
+		Serial.println(ctrldata.steering);
 		Serial.print("Program ");
 		Serial.println((int)prog);
-		if(prog < 6) prog++;
+		if(prog < 1) prog++;
 		else prog = 0;
-	}
+	}*/
+	int ain = analogRead(A0);
+	//uint8_t debug = map(ain,0,1012,5,35);
+	int8_t debug = map(ain,0,800,-126,126);
+	//ctrldata.steering = debug;
+	ctrldata.throttle = 126;
+	//Serial.println((int)debug);
+	//servo.write(debug);
 }
 
 void handle_rx() {
 	#ifdef LOG
-	Serial.print("Received data: ");
+	/*Serial.print("Received data: ");
 	mrf.recv_car_data(&cardata);
 	Serial.print("Tilt: ");
 	Serial.println(cardata.tilt.tilt_degrees);
 	Serial.print("Battery %: ");
-	Serial.println(cardata.battery_percentage);
+	Serial.println(cardata.battery_percentage);*/
+		Serial.print("Throttle fb: ");
+		Serial.println(cardata.throttleFb);
+			Serial.print("Steer fb: ");
+			Serial.println(cardata.steerFb);
 	#endif
 }
 
 void handle_tx() {
-	if(!mrf.get_txinfo()->tx_ok)
+	if(!mrf.get_txinfo()->tx_ok){
 	Serial.println("TX failed!");
-
+	if (mrf.get_txinfo()->channel_busy)
+	{
+		Serial.println("channel busy");
+	}
+	}
 }

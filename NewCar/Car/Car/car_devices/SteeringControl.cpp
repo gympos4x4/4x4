@@ -13,11 +13,11 @@ void _SteeringControl::init() {
 }
 
 void _SteeringControl::steer(int8_t percentage) {
-	desiredAngle1 = map(percentage, -100, 100, SC_S1_FULL_LEFT, SC_S1_FULL_RIGHT);
-	servo1.write(desiredAngle1);
+	//desiredAngle1 = map(percentage, -100, 100, SC_S1_FULL_LEFT, SC_S1_FULL_RIGHT);
+	servo1.write(percentage);
 #ifdef SC_SERVO2_PIN
-	desiredAngle2 = map(percentage, -100, 100, SC_S2_FULL_LEFT, SC_S2_FULL_RIGHT);
-	servo2.write(desiredAngle2);
+	//desiredAngle2 = map(percentage, -100, 100, SC_S2_FULL_LEFT, SC_S2_FULL_RIGHT);
+	servo2.write(-percentage);
 #endif // SC_SERVO2_PIN
 }
 /* naco? preco?

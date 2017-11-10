@@ -27,19 +27,17 @@ const unsigned int SYNC_INTERVAL_MS = 200;
 unsigned long sync_last_time = 0;
 
 bool rxl = 0;
-
 void setup()
 {
 	setup_mrf(0x6001, 0xcafe);
 
 	MotorControl.init();
-	Lights.init(50);
+	//Lights.init(50);
 
 	//ParkingSensors.init();
 	SteeringControl.init();
+	
 	TiltAlarm.init();
-
-	pinMode(10,OUTPUT);
 	sei();
 }
 
@@ -52,17 +50,20 @@ void loop()
 
 	//use them data
 	MotorControl.loop(ctrldata, current_time);
-	SteeringControl.steer(ctrldata.steering.servo_angle);
-
+	SteeringControl.steer(ctrldata.steering);
 	TiltAlarm.loop();
 	//ParkingSensors.loop();
-	Lights.loop();
+	//Lights.loop();
 
 
 	if(current_time - sync_last_time >= SYNC_INTERVAL_MS)
 	{
 		update_cardata();
-
+	
+	
+		cardata.throttleFb = ctrldata.throttle;
+		cardata.steerFb = ctrldata.steering;
+		
 		mrf.start_tx(CONTROLLER_ADDRESS, sizeof(cardata));
 		mrf.send_car_data(&cardata);
 		mrf.finish_tx();
@@ -101,8 +102,8 @@ void update_cardata()
 	//TODO: zmerat baterku
 	cardata.battery_percentage = -1;
 
-	Lights.update_cardata(cardata);
+	//Lights.update_cardata(cardata);
 	//SteeringControl.update_cardata(cardata); ??? preco?
-	TiltAlarm.update_cardata(cardata);
-	ParkingSensors.update_cardata(cardata);
+	//TiltAlarm.update_cardata(cardata);
+	//ParkingSensors.update_cardata(cardata);
 }

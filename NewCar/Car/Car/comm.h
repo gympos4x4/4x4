@@ -28,17 +28,15 @@ struct CarData
 		int16_t sensor_data[8];
 	} parking ;
 
-
+	int8_t throttleFb;
+	uint8_t steerFb;
 }; 
 
 struct CtrlData
 {
 	int8_t throttle;
 	//SteeringControl
-	struct{
-		int16_t servo_angle;
-		int16_t servo2_angle;
-	} steering;
+	uint8_t steering;
 }; 
 
 
