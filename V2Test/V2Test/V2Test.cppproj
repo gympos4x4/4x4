@@ -73,22 +73,25 @@
       <Value>__AVR_ATmega328P__</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
-      <Value>F_CPU=16000000L</Value>
+      <Value>F_CPU=8000000L</Value>
       <Value>__AVR__</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/DELTA-PC/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard</Value>
       <Value>../../../V2Test</Value>
-      <Value>c:/Arduino/libraries/Servo</Value>
-      <Value>c:/Arduino/libraries/SPI</Value>
-      <Value>c:/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>c:/Arduino/hardware/arduino/variants/standard</Value>
-      <Value>c:/Arduino/hardware</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -104,22 +107,25 @@
       <Value>__AVR_ATmega328P__</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
-      <Value>F_CPU=16000000L</Value>
+      <Value>F_CPU=8000000L</Value>
       <Value>__AVR__</Value>
     </ListValues>
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/DELTA-PC/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard</Value>
       <Value>../../../V2Test</Value>
-      <Value>c:/Arduino/libraries/Servo</Value>
-      <Value>c:/Arduino/libraries/SPI</Value>
-      <Value>c:/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>c:/Arduino/hardware/arduino/variants/standard</Value>
-      <Value>c:/Arduino/hardware</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -140,37 +146,37 @@
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;../../../V2Test;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;C:/Program Files (x86)/Arduino/libraries/SPI;c:/Arduino/libraries/Servo;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Arduino/hardware;c:/Arduino/hardware/arduino/variants/standard;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;../../../V2Test;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;C:/Program Files (x86)/Arduino/libraries/SPI;c:/Arduino/libraries/Servo;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Arduino/hardware;c:/Arduino/hardware/arduino/variants/standard;C:/Program Files (x86)/Arduino/libraries/Servo;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
         <ValidatedAS7>1</ValidatedAS7>
         <vm.upload.useprogrammer>1</vm.upload.useprogrammer>
-        <arduino.board.name>uno</arduino.board.name>
-        <arduino.board.desc>Arduino Uno</arduino.board.desc>
-        <arduino.board.property_bag>name=Arduino Uno
+        <arduino.board.name>car</arduino.board.name>
+        <arduino.board.desc>Car</arduino.board.desc>
+        <arduino.board.property_bag>name=Car
 upload.protocol=arduino
 upload.maximum_size=32256
 upload.speed=115200
-bootloader.low_fuses=0xff
-bootloader.high_fuses=0xde
+bootloader.low_fuses=0xE2
+bootloader.high_fuses=0xDE
 bootloader.extended_fuses=0x05
 bootloader.path=optiboot
 bootloader.file=optiboot_atmega328.hex
 bootloader.unlock_bits=0x3F
 bootloader.lock_bits=0x0F
 build.mcu=atmega328p
-build.f_cpu=16000000L
+build.f_cpu=8000000L
 build.core=arduino
 build.variant=standard
-runtime.ide.path=c:\Arduino
+runtime.ide.path=C:\Program Files (x86)\Arduino
 runtime.os=windows
-build.system.path=c:\Arduino\hardware\arduino\system
+build.system.path=C:\Program Files (x86)\Arduino\hardware\arduino\system
 runtime.ide.version=105
 target_package=arduino
 target_platform=avr
-runtime.hardware.path=c:\Arduino\hardware
-originalid=uno
-vm.platform.root.path=C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\wsmezn1v.lxt\Micro Platforms\arduino10x
+runtime.hardware.path=C:\Program Files (x86)\Arduino\hardware
+originalid=car
+vm.platform.root.path=C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\wtjzc3si.eia\Micro Platforms\arduino10x
 avrisp.name=AVR ISP
 avrisp.communication=serial
 avrisp.protocol=stk500v1
@@ -189,10 +195,10 @@ arduinoisp.name=Arduino as ISP
 arduinoisp.communication=serial
 arduinoisp.protocol=stk500v1
 arduinoisp.speed=19200
-runtime.vm.boardinfo.id=uno
-runtime.vm.boardinfo.name=uno
-runtime.vm.boardinfo.desc=Arduino Uno
-runtime.vm.boardinfo.src_location=c:\Arduino\hardware\arduino
+runtime.vm.boardinfo.id=car
+runtime.vm.boardinfo.name=car
+runtime.vm.boardinfo.desc=Car
+runtime.vm.boardinfo.src_location=C:\Program Files (x86)\Arduino\hardware\arduino
 ide.hint=For use with Arduino 0023 and 1.0.x versions
 ide.location.key=Arduino
 ide.location.ide.winreg=Arduino 1.0.x Application
@@ -203,7 +209,7 @@ ide.location.preferences=%VM_APPDATA_ROAMING%\arduino\preferences.txt
 ide.default.package=arduino
 ide.default.platform=avr
 ide.multiplatform=true
-ide.includes=Arduino.h
+ide.includes=arduino.h
 ide.platformswithoutpackage=true
 ide.includes.fallback=wprogram.h
 ide.extension=ino
@@ -215,17 +221,17 @@ ide.url=http://arduino.cc/en/Main/Software
 vm.debug=true
 software=ARDUINO
 ide.appid=arduino10x
-location.sketchbook=C:\Users\juraj\Documents\Arduino
-build.core.path=c:\Arduino\hardware\arduino\cores\arduino
-vm.core.include=Arduino.h
-build.board=AVR_UNO
-vm.boardsource.path=c:\Arduino\hardware\arduino
-runtime.platform.path=c:\Arduino\hardware\arduino
+location.sketchbook=C:\Users\DELTA-PC\Documents\Arduino
+build.core.path=C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino
+vm.core.include=arduino.h
+build.board=AVR_CAR
+vm.boardsource.path=C:\Program Files (x86)\Arduino\hardware\arduino
+runtime.platform.path=C:\Program Files (x86)\Arduino\hardware\arduino
 vm.platformname.name=avr
 build.arch=AVR
 </arduino.board.property_bag>
         <arduino.build.mcu>atmega328p</arduino.build.mcu>
-        <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
+        <arduino.build.f_cpu>8000000L</arduino.build.f_cpu>
         <arduino.build.core>arduino</arduino.build.core>
         <arduino.upload.protocol>arduino</arduino.upload.protocol>
         <arduino.upload.speed>115200</arduino.upload.speed>
@@ -233,6 +239,7 @@ build.arch=AVR
         <visualmicro.application.name>arduino10x</visualmicro.application.name>
         <visualmicro.package.name>arduino</visualmicro.package.name>
         <visualmicro.platform.name>avr</visualmicro.platform.name>
+        <arduino.upload.port>COM6</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -253,22 +260,25 @@ build.arch=AVR
       <Value>__AVR_ATmega328P__</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
-      <Value>F_CPU=16000000L</Value>
+      <Value>F_CPU=8000000L</Value>
       <Value>__AVR__</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/DELTA-PC/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard</Value>
       <Value>../../../V2Test</Value>
-      <Value>c:/Arduino/libraries/Servo</Value>
-      <Value>c:/Arduino/libraries/SPI</Value>
-      <Value>c:/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>c:/Arduino/hardware/arduino/variants/standard</Value>
-      <Value>c:/Arduino/hardware</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -284,22 +294,25 @@ build.arch=AVR
       <Value>__AVR_ATmega328P__</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
-      <Value>F_CPU=16000000L</Value>
+      <Value>F_CPU=8000000L</Value>
       <Value>__AVR__</Value>
     </ListValues>
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/DELTA-PC/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard</Value>
       <Value>../../../V2Test</Value>
-      <Value>c:/Arduino/libraries/Servo</Value>
-      <Value>c:/Arduino/libraries/SPI</Value>
-      <Value>c:/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>c:/Arduino/hardware/arduino/variants/standard</Value>
-      <Value>c:/Arduino/hardware</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/</Value>
+      <Value>c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -320,37 +333,37 @@ build.arch=AVR
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;../../../V2Test;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;C:/Program Files (x86)/Arduino/libraries/SPI;c:/Arduino/libraries/Servo;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Arduino/hardware;c:/Arduino/hardware/arduino/variants/standard;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;../../../V2Test;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;C:/Program Files (x86)/Arduino/libraries/SPI;c:/Arduino/libraries/Servo;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Arduino/hardware;c:/Arduino/hardware/arduino/variants/standard;C:/Program Files (x86)/Arduino/libraries/Servo;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
         <ValidatedAS7>1</ValidatedAS7>
         <vm.upload.useprogrammer>1</vm.upload.useprogrammer>
-        <arduino.board.name>uno</arduino.board.name>
-        <arduino.board.desc>Arduino Uno</arduino.board.desc>
-        <arduino.board.property_bag>name=Arduino Uno
+        <arduino.board.name>car</arduino.board.name>
+        <arduino.board.desc>Car</arduino.board.desc>
+        <arduino.board.property_bag>name=Car
 upload.protocol=arduino
 upload.maximum_size=32256
 upload.speed=115200
-bootloader.low_fuses=0xff
-bootloader.high_fuses=0xde
+bootloader.low_fuses=0xE2
+bootloader.high_fuses=0xDE
 bootloader.extended_fuses=0x05
 bootloader.path=optiboot
 bootloader.file=optiboot_atmega328.hex
 bootloader.unlock_bits=0x3F
 bootloader.lock_bits=0x0F
 build.mcu=atmega328p
-build.f_cpu=16000000L
+build.f_cpu=8000000L
 build.core=arduino
 build.variant=standard
-runtime.ide.path=c:\Arduino
+runtime.ide.path=C:\Program Files (x86)\Arduino
 runtime.os=windows
-build.system.path=c:\Arduino\hardware\arduino\system
+build.system.path=C:\Program Files (x86)\Arduino\hardware\arduino\system
 runtime.ide.version=105
 target_package=arduino
 target_platform=avr
-runtime.hardware.path=c:\Arduino\hardware
-originalid=uno
-vm.platform.root.path=C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\wsmezn1v.lxt\Micro Platforms\arduino10x
+runtime.hardware.path=C:\Program Files (x86)\Arduino\hardware
+originalid=car
+vm.platform.root.path=C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\wtjzc3si.eia\Micro Platforms\arduino10x
 avrisp.name=AVR ISP
 avrisp.communication=serial
 avrisp.protocol=stk500v1
@@ -369,10 +382,10 @@ arduinoisp.name=Arduino as ISP
 arduinoisp.communication=serial
 arduinoisp.protocol=stk500v1
 arduinoisp.speed=19200
-runtime.vm.boardinfo.id=uno
-runtime.vm.boardinfo.name=uno
-runtime.vm.boardinfo.desc=Arduino Uno
-runtime.vm.boardinfo.src_location=c:\Arduino\hardware\arduino
+runtime.vm.boardinfo.id=car
+runtime.vm.boardinfo.name=car
+runtime.vm.boardinfo.desc=Car
+runtime.vm.boardinfo.src_location=C:\Program Files (x86)\Arduino\hardware\arduino
 ide.hint=For use with Arduino 0023 and 1.0.x versions
 ide.location.key=Arduino
 ide.location.ide.winreg=Arduino 1.0.x Application
@@ -383,7 +396,7 @@ ide.location.preferences=%VM_APPDATA_ROAMING%\arduino\preferences.txt
 ide.default.package=arduino
 ide.default.platform=avr
 ide.multiplatform=true
-ide.includes=Arduino.h
+ide.includes=arduino.h
 ide.platformswithoutpackage=true
 ide.includes.fallback=wprogram.h
 ide.extension=ino
@@ -395,17 +408,17 @@ ide.url=http://arduino.cc/en/Main/Software
 vm.debug=true
 software=ARDUINO
 ide.appid=arduino10x
-location.sketchbook=C:\Users\juraj\Documents\Arduino
-build.core.path=c:\Arduino\hardware\arduino\cores\arduino
-vm.core.include=Arduino.h
-build.board=AVR_UNO
-vm.boardsource.path=c:\Arduino\hardware\arduino
-runtime.platform.path=c:\Arduino\hardware\arduino
+location.sketchbook=C:\Users\DELTA-PC\Documents\Arduino
+build.core.path=C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino
+vm.core.include=arduino.h
+build.board=AVR_CAR
+vm.boardsource.path=C:\Program Files (x86)\Arduino\hardware\arduino
+runtime.platform.path=C:\Program Files (x86)\Arduino\hardware\arduino
 vm.platformname.name=avr
 build.arch=AVR
 </arduino.board.property_bag>
         <arduino.build.mcu>atmega328p</arduino.build.mcu>
-        <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
+        <arduino.build.f_cpu>8000000L</arduino.build.f_cpu>
         <arduino.build.core>arduino</arduino.build.core>
         <arduino.upload.protocol>arduino</arduino.upload.protocol>
         <arduino.upload.speed>115200</arduino.upload.speed>
@@ -413,6 +426,7 @@ build.arch=AVR
         <visualmicro.application.name>arduino10x</visualmicro.application.name>
         <visualmicro.package.name>arduino</visualmicro.package.name>
         <visualmicro.platform.name>avr</visualmicro.platform.name>
+        <arduino.upload.port>COM6</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>

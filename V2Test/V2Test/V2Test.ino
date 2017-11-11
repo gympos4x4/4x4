@@ -27,6 +27,7 @@ void setup()
 	mrf.init();
 	mrf.set_pan(0xcafe);
 	mrf.address16_write(0x6001);
+	mrf.set_promiscuous(true);
 	mrf.set_palna(true);
 	attachInterrupt(1, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
 	/* add setup code here, setup code runs once when the processor starts */
@@ -34,78 +35,47 @@ void setup()
 	pinMode(A3, OUTPUT);
 	sei();
 	cardata.tilt.tilt_degrees = 50;
-//	DDRB |= 1 << PINB1;
+	//	DDRB |= 1 << PINB1;
 	MotorControl.init();
 	pinMode(1, OUTPUT);
 	pinMode(5,OUTPUT);
 }
 char rxl = 0;
 char txl = 0;
+unsigned long _time = 0;
+unsigned long lastTime = 0;
 void loop()
 {
+	_time = millis();
 	mrf.check_flags(&mrf_rx, &mrf_tx);
-	/*mrf.start_tx(0x6000, sizeof(cardata));
-	mrf.send_car_data(&cardata);
-	mrf.finish_tx();*/
 	
-	/*digitalWrite(A3, LOW);
-	digitalWrite(A2, LOW);
-	delay(3000);
-	for (int i = 0; i < 600; i++)
-	{
-	digitalWrite(A3, LOW);
-	digitalWrite(A2, LOW);
-	delay(1);
-	digitalWrite(A2,LOW);
-	digitalWrite(A3,HIGH);
-	delay(4);
-	}
-	digitalWrite(A2, LOW);
-	digitalWrite(A3, HIGH);
-	delay(3000);*/
-	
-	/*servo.write(50);
-	servo2.write(-50);
-	delay(1000);
-	servo.write(-50);
-	servo2.write(50);
-	delay(1000);*/
-	
-	ctrldata.throttle = 126;
-	MotorControl.loop(ctrldata,millis());
-	
-	//delay(100);
-	/*	mrf.recv_ctrl_data(&ctrldata);
-		if (txl)
+	if(_time - lastTime > 50){
+		mrf.read_rxdata();
+		mrf.recv_ctrl_data(&ctrldata);
+		lastTime = _time;
+		cardata.throttleFb = 86;
+		mrf.start_tx(0x6000, sizeof(cardata));
+		mrf.send_car_data(&cardata);
+		mrf.finish_tx();
+		if (rxl)
 		{
-			txl = 0;
-			digitalWrite(5,LOW);
+			rxl = 0;
+			digitalWrite(1,LOW);
 		}
-		else if(mrf.address16_read() == 0x6001 && mrf.get_pan())
+		else// if(!mrf.get_txinfo()->tx_ok)
 		{
-			txl = 1;
-			digitalWrite(5,HIGH);
-		}*/
+			rxl = 1;
+			digitalWrite(1,HIGH);
+		}
+	}
+	
+	MotorControl.loop(ctrldata,_time);
 }
 
 void mrf_rx()
 {
-
 }
 void mrf_tx()
 {
-	if(mrf.get_txinfo()->tx_ok)
-	{
-				if (rxl)
-				{
-					rxl = 0;
-					digitalWrite(1,LOW);
-				}
-				else
-				{
-					rxl = 1;
-					digitalWrite(1,HIGH);
-				}
-	}
-	
+
 }

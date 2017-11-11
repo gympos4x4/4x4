@@ -186,6 +186,8 @@ class Mrf24j
 	void set_interrupts(void);
 
 	void set_promiscuous(boolean enabled);
+	
+	bool read_rxdata();
 
 	/**
 	* Set the channel, using 802.15.4 channel numbers (11..26)

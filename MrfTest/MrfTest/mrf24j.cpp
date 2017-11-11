@@ -76,10 +76,10 @@ void Mrf24j::finish_tx(void)
 	write_short(MRF_TXNCON, (1<<MRF_TXNACKREQ | 1<<MRF_TXNTRIG));
 }
 /*==================================================================
-	======================DATA SYNC======================
-  ==================================================================
+======================DATA SYNC======================
+==================================================================
 */
-//R/W Operators: 
+//R/W Operators:
 #define WRITE8(val) do { write_long(i++, val); } while(0)
 #define READ8(val)  do { val = rx_info.rx_data[i]; i += 1; } while(0)
 
@@ -193,7 +193,7 @@ word Mrf24j::address16_read(void) {
 
 void Mrf24j::set_interrupts(void) {
 	// interrupts for rx and tx normal complete
-	write_short(MRF_INTCON, 0b11110110);
+	//write_short(MRF_INTCON, 0b11111110);
 }
 
 /** use the 802.15.4 channel numbers..
@@ -216,6 +216,9 @@ void Mrf24j::init(void) {
 	write_long(MRF_RFCON0, 0x03); // – Initialize RFOPT = 0x03.
 	write_long(MRF_RFCON1, 0x01); // – Initialize VCOOPT = 0x02.
 	write_long(MRF_RFCON2, 0x80); // – Enable PLL (PLLEN = 1).
+	
+	write_long(MRF_RFCON3,0x28); //Set tx power to -3.7 (see mrf24j40mc datasheet)
+	
 	write_long(MRF_RFCON6, 0x90); // – Initialize TXFIL = 1 and 20MRECVR = 1.
 	write_long(MRF_RFCON7, 0x80); // – Initialize SLPCLKSEL = 0x2 (100 kHz Internal oscillator).
 	write_long(MRF_RFCON8, 0x10); // – Initialize RFVCO = 1.
@@ -235,6 +238,39 @@ void Mrf24j::init(void) {
 	delay(1); // delay at least 192usec
 }
 
+/*
+Read data in FIFO without interrupt
+*/
+bool Mrf24j::read_rxdata()
+{
+	rx_disable();
+	// read start of rxfifo for, has 2 bytes more added by FCS. frame_length = m + n + 2
+	uint8_t frame_length = read_long(0x300);
+
+	// buffer all bytes in PHY Payload
+	if(bufPHY){
+		int rb_ptr = 0;
+		for (int i = 0; i < frame_length; i++) { // from 0x301 to (0x301 + frame_length -1)
+			rx_buf[rb_ptr++] = read_long(0x301 + i);
+		}
+	}
+
+	// buffer data bytes
+	int rd_ptr = 0;
+	// from (0x301 + bytes_MHR) to (0x301 + frame_length - bytes_nodata - 1)
+	for (int i = 0; i < rx_datalength(); i++) {
+		rx_info.rx_data[rd_ptr++] = read_long(0x301 + bytes_MHR + i);
+	}
+
+	rx_info.frame_length = frame_length;
+	// same as datasheet 0x301 + (m + n + 2) <-- frame_length
+	rx_info.lqi = read_long(0x301 + frame_length);
+	// same as datasheet 0x301 + (m + n + 3) <-- frame_length + 1
+	rx_info.rssi = read_long(0x301 + frame_length + 1);
+
+	rx_enable();
+}
+
 /**
 * Call this from within an interrupt handler connected to the MRFs output
 * interrupt pin.  It handles reading in any data from the module, and letting it
@@ -244,45 +280,46 @@ void Mrf24j::init(void) {
 void Mrf24j::interrupt_handler(void) {
 	uint8_t last_interrupt = read_short(MRF_INTSTAT);
 	if (last_interrupt & MRF_I_RXIF) {
-		flag_got_rx++;
-		// read out the packet data...
-		noInterrupts();
-		rx_disable();
-		// read start of rxfifo for, has 2 bytes more added by FCS. frame_length = m + n + 2
-		uint8_t frame_length = read_long(0x300);
+	flag_got_rx++;
+	// read out the packet data...
+	noInterrupts();
+	rx_disable();
+	// read start of rxfifo for, has 2 bytes more added by FCS. frame_length = m + n + 2
+	uint8_t frame_length = read_long(0x300);
 
-		// buffer all bytes in PHY Payload
-		if(bufPHY){
-			int rb_ptr = 0;
-			for (int i = 0; i < frame_length; i++) { // from 0x301 to (0x301 + frame_length -1)
-				rx_buf[rb_ptr++] = read_long(0x301 + i);
-			}
-		}
+	// buffer all bytes in PHY Payload
+	if(bufPHY){
+	int rb_ptr = 0;
+	for (int i = 0; i < frame_length; i++) { // from 0x301 to (0x301 + frame_length -1)
+	rx_buf[rb_ptr++] = read_long(0x301 + i);
+	}
+	}
 
-		// buffer data bytes
-		int rd_ptr = 0;
-		// from (0x301 + bytes_MHR) to (0x301 + frame_length - bytes_nodata - 1)
-		for (int i = 0; i < rx_datalength(); i++) {
-			rx_info.rx_data[rd_ptr++] = read_long(0x301 + bytes_MHR + i);
-		}
+	// buffer data bytes
+	int rd_ptr = 0;
+	// from (0x301 + bytes_MHR) to (0x301 + frame_length - bytes_nodata - 1)
+	for (int i = 0; i < rx_datalength(); i++) {
+	rx_info.rx_data[rd_ptr++] = read_long(0x301 + bytes_MHR + i);
+	}
 
-		rx_info.frame_length = frame_length;
-		// same as datasheet 0x301 + (m + n + 2) <-- frame_length
-		rx_info.lqi = read_long(0x301 + frame_length);
-		// same as datasheet 0x301 + (m + n + 3) <-- frame_length + 1
-		rx_info.rssi = read_long(0x301 + frame_length + 1);
+	rx_info.frame_length = frame_length;
+	// same as datasheet 0x301 + (m + n + 2) <-- frame_length
+	rx_info.lqi = read_long(0x301 + frame_length);
+	// same as datasheet 0x301 + (m + n + 3) <-- frame_length + 1
+	rx_info.rssi = read_long(0x301 + frame_length + 1);
 
-		rx_enable();
-		interrupts();
+	rx_enable();
+	interrupts();
 	}
 	if (last_interrupt & MRF_I_TXNIF) {
-		flag_got_tx++;
-		uint8_t tmp = read_short(MRF_TXSTAT);
-		// 1 means it failed, we want 1 to mean it worked.
-		tx_info.tx_ok = !(tmp & ~(1 << TXNSTAT));
-		tx_info.retries = tmp >> 6;
-		tx_info.channel_busy = (tmp & (1 << CCAFAIL));
+	flag_got_tx++;
+	uint8_t tmp = read_short(MRF_TXSTAT);
+	// 1 means it failed, we want 1 to mean it worked.
+	tx_info.tx_ok = !(tmp & ~(1 << TXNSTAT));
+	tx_info.retries = tmp >> 6;
+	tx_info.channel_busy = (tmp & (1 << CCAFAIL));
 	}
+	write_short(MRF_INTSTAT,0);
 }
 
 
@@ -350,7 +387,18 @@ boolean Mrf24j::get_bufferPHY(void) {
 */
 void Mrf24j::set_palna(boolean enabled) {
 	if (enabled) {
-		write_long(MRF_TESTMODE, 0x07); // Enable PA/LNA on MRF24J40MB module.
+		
+		//Setup PA/LNA circuitry
+		
+		byte TRISGPIO = read_short(MRF_TRISGPIO);
+		TRISGPIO |= 1 << 3; //Set GPIO3 as output;
+		write_short(MRF_TRISGPIO,TRISGPIO);
+		byte gpio = read_short(MRF_GPIO);
+		gpio |= 1 << 3; //Enable PA power supply
+		write_short(MRF_GPIO, gpio);
+		
+		write_long(MRF_TESTMODE, 0x07); // Set RF State machine into PA/LNA operation
+		
 		}else{
 		write_long(MRF_TESTMODE, 0x00); // Disable PA/LNA on MRF24J40MB module.
 	}
