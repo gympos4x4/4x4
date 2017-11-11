@@ -11,9 +11,8 @@
 #include "WProgram.h"
 #endif
 
-#define FT_CS_PIN 6
-#define FT_PDN_PIN 5
-//#define FT_INT_PIN 1 // INT1 PD3
+#define FT_CS_PIN 8
+#define FT_PD_PIN 7
 
 #define WHL_COLOR 0xFCB040
 #define WHL_MIN -100
