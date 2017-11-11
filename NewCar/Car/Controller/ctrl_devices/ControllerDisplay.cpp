@@ -22,11 +22,7 @@ uint16_t _ControllerDisplay::bootupConfigure() {
 }
 
 void _ControllerDisplay::initDisplay() {
-	#ifdef FT_INT_PIN
-	FTImpl = new FT800IMPL_SPI(FT_CS_PIN, FT_PDN_PIN, FT_INT_PIN);
-	#else
-	FTImpl = new FT800IMPL_SPI(FT_CS_PIN, FT_PDN_PIN);
-	#endif
+	FTImpl = new FT800IMPL_SPI(CD_CS_PIN, CD_PD_PIN);
 	if (bootupConfigure()) {
 		displayInitialized = false;
 		} else {

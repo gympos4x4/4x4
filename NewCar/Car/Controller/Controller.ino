@@ -1,12 +1,14 @@
 // Author: Juraj Marcin
 #define CTRL
 
-#define SELECT_BTN_PIN 1
-#define CALIB_BTN_PIN 0
-#define LAX_PIN A7
-#define LAY_PIN A6
-#define RAX_PIN A1
-#define RAY_PIN A0
+#define SELECT_BTN_PIN 6
+#define CALIB_BTN_PIN 5
+#define AX_PIN A2
+#define AY_PIN A4
+#define MRF_RES_PIN 15 //PC1
+#define MRF_CS_PIN 16 //PC0
+#define MRF_INT_PIN 3 //PD3(INT1)
+#define MRF_INT_APIN 1 //INT1(PD3)
 
 #include <EEPROM.h>
 #include <SPI.h>
@@ -26,14 +28,12 @@ unsigned long sync_last_time = 0;
 
 Button selectBtn(SELECT_BTN_PIN);
 Button calibBtn(CALIB_BTN_PIN);
-Joystick leftAnalog(0, LAX_PIN, LAY_PIN);
-Joystick rightAnalog(12, RAX_PIN, RAY_PIN);
+Joystick analog(0, AX_PIN, AY_PIN);
 
 const unsigned int FPS = 48;
 unsigned long redraw_last_time = 0;
 
-// RF_PINS: CS: PB2, RES: PB1, INT: PD2
-Mrf24j mrf(/*pin reset*/ 15, /*pin CS*/ 16, /*pin itnerrupt*/ 2);
+Mrf24j mrf(/*pin reset*/ MRF_RES_PIN, /*pin CS*/ MRF_CS_PIN, /*pin itnerrupt*/ MRF_INT_PIN);
 
 void setup() {
 	ControllerDisplay.initDisplay();
@@ -53,12 +53,11 @@ void loop() {
 	}
 	
 	if (calibBtn.GetButtonDown()) {
-		calibrateLeftAnalog();
-		calibrateRightAnalog();
+		calibrateAnalog();
 	}
 	
-	int8_t throttle = rightAnalog.readYint8();
-	int8_t steer = leftAnalog.readXint8();
+	int8_t throttle = analog.readYint8();
+	int8_t steer = analog.readXint8();
 	
 	//update controller data
 	ctrldata.steer = steer;
@@ -94,105 +93,50 @@ void loop() {
 	}
 }
 
-void calibrateLeftAnalog() {
-	leftAnalog.calibrateCenter();
+void calibrateAnalog() {
+	analog.calibrateCenter();
 	bool calibrated = false;
-	//calibrate up
-	ControllerDisplay.startDrawing();
-	ControllerDisplay.drawCalibrationNotice(0, 0);
-	ControllerDisplay.endDrawing();
-	while (!calibrated)	{
-		if (calibBtn.GetButtonDown()) {
-			leftAnalog.calibrateUp();
-			calibrated = true;
-		}
-		delay(80);
-	}
-	calibrated = false;
-	//calibrate down
-	ControllerDisplay.startDrawing();
-	ControllerDisplay.drawCalibrationNotice(0, 1);
-	ControllerDisplay.endDrawing();
-	while (!calibrated)	{
-		if (calibBtn.GetButtonDown()) {
-			leftAnalog.calibrateDown();
-			calibrated = true;
-		}
-		delay(80);
-	}
-	calibrated = false;
-	//calibrate right
-	ControllerDisplay.startDrawing();
-	ControllerDisplay.drawCalibrationNotice(0, 2);
-	ControllerDisplay.endDrawing();
-	while (!calibrated)	{
-		if (calibBtn.GetButtonDown()) {
-			leftAnalog.calibrateRight();
-			calibrated = true;
-		}
-		delay(80);
-	}
-	calibrated = false;
-	//calibrate left
-	ControllerDisplay.startDrawing();
-	ControllerDisplay.drawCalibrationNotice(0, 3);
-	ControllerDisplay.endDrawing();
-	while (!calibrated)	{
-		if (calibBtn.GetButtonDown()) {
-			leftAnalog.calibrateLeft();
-			calibrated = true;
-		}
-		delay(80);
-	}
-	calibrated = false;
-}
-
-void calibrateRightAnalog() {
-	rightAnalog.calibrateCenter();
-	bool calibrated = false;
-	//calibrate up
+	//calibrate up (RA)
 	ControllerDisplay.startDrawing();
 	ControllerDisplay.drawCalibrationNotice(1, 0);
 	ControllerDisplay.endDrawing();
 	while (!calibrated)	{
 		if (calibBtn.GetButtonDown()) {
-			rightAnalog.calibrateUp();
+			analog.calibrateUp();
 			calibrated = true;
 		}
-		delay(80);
 	}
 	calibrated = false;
-	//calibrate down
+	//calibrate down (RA)
 	ControllerDisplay.startDrawing();
 	ControllerDisplay.drawCalibrationNotice(1, 1);
 	ControllerDisplay.endDrawing();
 	while (!calibrated)	{
 		if (calibBtn.GetButtonDown()) {
-			rightAnalog.calibrateDown();
+			analog.calibrateDown();
+			calibrated = true;
+		}
+	}
+	calibrated = false;
+	//calibrate right (LA)
+	ControllerDisplay.startDrawing();
+	ControllerDisplay.drawCalibrationNotice(0, 2);
+	ControllerDisplay.endDrawing();
+	while (!calibrated)	{
+		if (calibBtn.GetButtonDown()) {
+			analog.calibrateRight();
 			calibrated = true;
 		}
 		delay(80);
 	}
 	calibrated = false;
-	//calibrate right
+	//calibrate left (LA)
 	ControllerDisplay.startDrawing();
-	ControllerDisplay.drawCalibrationNotice(1, 2);
+	ControllerDisplay.drawCalibrationNotice(0, 3);
 	ControllerDisplay.endDrawing();
 	while (!calibrated)	{
 		if (calibBtn.GetButtonDown()) {
-			rightAnalog.calibrateRight();
-			calibrated = true;
-		}
-		delay(80);
-	}
-	calibrated = false;
-	//calibrate left
-	ControllerDisplay.startDrawing();
-	ControllerDisplay.drawCalibrationNotice(1, 3);
-	ControllerDisplay.endDrawing();
-	while (!calibrated)	{
-		if (calibBtn.GetButtonDown()) {
-			rightAnalog.calibrateLeft();
+			analog.calibrateLeft();
 			calibrated = true;
 		}
 		delay(80);
@@ -207,7 +151,7 @@ void setup_mrf(word address, word pan)
 	mrf.set_pan(pan);
 	mrf.address16_write(address);
 	mrf.set_palna(true);
-	attachInterrupt(0, mrf_isr, CHANGE); // interrupt 0 equivalent to pin 2(INT0) on ATmega8/168/328
+	attachInterrupt(MRF_INT_APIN, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
 }
 
 void mrf_isr()
