@@ -45,7 +45,7 @@
 #define PRS_NEAR_COLOR 0xED1C24
 
 #include <SPI.h>
-#include <FT_Breakout_4DLCD_FT843.h>
+#include "../FTDI/FT_Breakout_4DLCD_FT843.h"
 
 class _ControllerDisplay {
 	
