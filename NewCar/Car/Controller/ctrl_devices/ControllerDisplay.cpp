@@ -330,15 +330,23 @@ void _ControllerDisplay::drawCalibrationNotice(int8_t joystick, int8_t direction
 void _ControllerDisplay::drawSignalStrenght(uint8_t signalStrenght) {
 	if (!displayInitialized)
 	return;
-	signalStrenght = map(signalStrenght, 0, 255, 0, 5);
-	uint16_t pointX = 254;
 	FTImpl->Begin(FT_LINES);
-	FTImpl->ColorRGB(0xFFFFFF);
 	FTImpl->LineWidth(3 * 16);
-	for (uint8_t i = 0; i < signalStrenght; i++) {
-		FTImpl->Vertex2f(pointX * 16, 223 * 16);
-		FTImpl->Vertex2f(pointX * 16, (223 - 9 * i) * 16);
-		pointX -= 8;
+	if (signalStrenght == 0) {
+		FTImpl->ColorRGB(BAT_WAR_COL);
+		FTImpl->Vertex2f(254 * 16, 207 * 16);
+		FTImpl->Vertex2f(238 * 16, 223 * 16);
+		FTImpl->Vertex2f(254 * 16, 223 * 16);
+		FTImpl->Vertex2f(238 * 16, 207 * 16);
+	} else {
+		FTImpl->ColorRGB(0xFFFFFF);
+		signalStrenght = map(signalStrenght, 0, 255, 1, 5);
+		uint16_t pointX = 254;
+		for (uint8_t i = 0; i < signalStrenght; i++) {
+			FTImpl->Vertex2f(pointX * 16, 223 * 16);
+			FTImpl->Vertex2f(pointX * 16, (223 - 9 * i) * 16);
+			pointX -= 8;
+		}	
 	}
 }
 
