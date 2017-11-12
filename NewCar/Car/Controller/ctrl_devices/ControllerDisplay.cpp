@@ -13,7 +13,6 @@ uint16_t _ControllerDisplay::bootupConfigure() {
 	/* Identify the chip */
 	if(FT800_CHIPID != chipid)
 	{
-		Serial.println(chipid, HEX);
 		return 1;
 	}
 	
