@@ -238,7 +238,6 @@ void _ControllerDisplay::drawFrontParkingSensors(int16_t sensor0, int16_t sensor
 	}
 	FTImpl->Vertex2f(85 * 16, sensor2 * 16);
 	FTImpl->Vertex2f(103 * 16, sensor2 * 16);
-	Serial.println(sensor2);
 	if (sensor3 > PRS_FRONT_NEAR) {
 		FTImpl->ColorRGB(PRS_NEAR_COLOR);
 		} else {
@@ -332,21 +331,28 @@ void _ControllerDisplay::drawSignalStrenght(uint8_t signalStrenght) {
 	return;
 	FTImpl->Begin(FT_LINES);
 	FTImpl->LineWidth(3 * 16);
+	uint16_t pointX = 254;
 	if (signalStrenght == 0) {
+		FTImpl->ColorRGB(0xAAAAAA);
+		signalStrenght = 4;
+		for (uint8_t i = 0; i < signalStrenght; i++) {
+			FTImpl->Vertex2f(pointX * 16, 223 * 16);
+			FTImpl->Vertex2f(pointX * 16, (223 - 9 * i) * 16);
+			pointX -= 8;
+		}
 		FTImpl->ColorRGB(BAT_WAR_COL);
 		FTImpl->Vertex2f(254 * 16, 207 * 16);
 		FTImpl->Vertex2f(238 * 16, 223 * 16);
 		FTImpl->Vertex2f(254 * 16, 223 * 16);
 		FTImpl->Vertex2f(238 * 16, 207 * 16);
-	} else {
+		} else {
 		FTImpl->ColorRGB(0xFFFFFF);
-		signalStrenght = map(signalStrenght, 0, 255, 1, 5);
-		uint16_t pointX = 254;
+		signalStrenght = map(signalStrenght, 0, 255, 1, 4);
 		for (uint8_t i = 0; i < signalStrenght; i++) {
 			FTImpl->Vertex2f(pointX * 16, 223 * 16);
 			FTImpl->Vertex2f(pointX * 16, (223 - 9 * i) * 16);
 			pointX -= 8;
-		}	
+		}
 	}
 }
 
