@@ -57,8 +57,8 @@ void _ControllerDisplay::drawMainGUI() {
 	FTImpl->LineWidth(3 * 16);
 	FTImpl->ColorRGB(0xFFFFFF);
 	FTImpl->Vertex2f(167 * 16, 187 * 16);
-	FTImpl->Vertex2f(238 * 16, 187 * 16);
-	FTImpl->Vertex2f(238 * 16, 223 * 16);
+	FTImpl->Vertex2f(220 * 16, 187 * 16);
+	FTImpl->Vertex2f(220 * 16, 223 * 16);
 	FTImpl->Vertex2f(167 * 16, 223 * 16);
 	FTImpl->Vertex2f(167 * 16, 212 * 16);
 	FTImpl->Vertex2f(162 * 16, 212 * 16);
@@ -145,7 +145,7 @@ void _ControllerDisplay::drawCarBattery(int8_t percentage) {
 	}
 	char buf[3];
 	sprintf(buf, "%3i", percentage);
-	FTImpl->Cmd_Text(233, 205, 30, FT_OPT_RIGHTX | FT_OPT_CENTERY, buf);
+	FTImpl->Cmd_Text(217, 205, 30, FT_OPT_RIGHTX | FT_OPT_CENTERY, buf);
 }
 
 void _ControllerDisplay::drawRotation(int8_t z) {
@@ -205,6 +205,7 @@ void _ControllerDisplay::drawFrontParkingSensors(int16_t sensor0, int16_t sensor
 	sensor3 = map(sensor3, 0, 4096, PRS_FRONT_MIN, PRS_FRONT_MAX);
 	FTImpl->Begin(FT_EDGE_STRIP_A);
 	FTImpl->ColorRGB(PRS_COLOR);
+	FTImpl->ColorA(0x55);
 	FTImpl->Vertex2f(24 * 16, sensor0 * 16);
 	FTImpl->Vertex2f(52 * 16, sensor0 * 16);
 	FTImpl->Vertex2f(52 * 16, sensor1 * 16);
@@ -213,6 +214,37 @@ void _ControllerDisplay::drawFrontParkingSensors(int16_t sensor0, int16_t sensor
 	FTImpl->Vertex2f(108 * 16, sensor2 * 16);
 	FTImpl->Vertex2f(108 * 16, sensor3 * 16);
 	FTImpl->Vertex2f(136 * 16, sensor3 * 16);
+	FTImpl->ColorA(0xFF);
+	FTImpl->Begin(FT_LINES);
+	FTImpl->LineWidth(5 * 16);
+	if (sensor0 > PRS_FRONT_NEAR) {
+		FTImpl->ColorRGB(PRS_NEAR_COLOR);
+		} else {
+		FTImpl->ColorRGB(PRS_COLOR);
+	}
+	FTImpl->Vertex2f(29 * 16, sensor0 * 16);
+	FTImpl->Vertex2f(47 * 16, sensor0 * 16);
+	if (sensor1 > PRS_FRONT_NEAR) {
+		FTImpl->ColorRGB(PRS_NEAR_COLOR);
+		} else {
+		FTImpl->ColorRGB(PRS_COLOR);
+	}
+	FTImpl->Vertex2f(57 * 16, sensor1 * 16);
+	FTImpl->Vertex2f(75 * 16, sensor1 * 16);
+	if (sensor2 > PRS_FRONT_NEAR) {
+		FTImpl->ColorRGB(PRS_NEAR_COLOR);
+		} else {
+		FTImpl->ColorRGB(PRS_COLOR);
+	}
+	FTImpl->Vertex2f(85 * 16, sensor2 * 16);
+	FTImpl->Vertex2f(103 * 16, sensor2 * 16);
+	if (sensor3 > PRS_FRONT_NEAR) {
+		FTImpl->ColorRGB(PRS_NEAR_COLOR);
+		} else {
+		FTImpl->ColorRGB(PRS_COLOR);
+	}
+	FTImpl->Vertex2f(113 * 16, sensor3 * 16);
+	FTImpl->Vertex2f(131 * 16, sensor3 * 16);
 }
 
 void _ControllerDisplay::drawRearParkingSensors(int16_t sensor4, int16_t sensor5, int16_t sensor6, int16_t sensor7) {
@@ -224,6 +256,7 @@ void _ControllerDisplay::drawRearParkingSensors(int16_t sensor4, int16_t sensor5
 	sensor7 = map(sensor7, 0, 4096, PRS_REAR_MIN, PRS_REAR_MAX);
 	FTImpl->Begin(FT_EDGE_STRIP_B);
 	FTImpl->ColorRGB(PRS_COLOR);
+	FTImpl->ColorA(0x55);
 	FTImpl->Vertex2f(24 * 16, sensor4 * 16);
 	FTImpl->Vertex2f(52 * 16, sensor4 * 16);
 	FTImpl->Vertex2f(52 * 16, sensor5 * 16);
@@ -232,9 +265,42 @@ void _ControllerDisplay::drawRearParkingSensors(int16_t sensor4, int16_t sensor5
 	FTImpl->Vertex2f(108 * 16, sensor6 * 16);
 	FTImpl->Vertex2f(108 * 16, sensor7 * 16);
 	FTImpl->Vertex2f(136 * 16, sensor7 * 16);
+	FTImpl->ColorA(0xFF);
+	FTImpl->Begin(FT_LINES);
+	FTImpl->LineWidth(5 * 16);
+	if (sensor4 < PRS_REAR_NEAR) {
+		FTImpl->ColorRGB(PRS_NEAR_COLOR);
+		} else {
+		FTImpl->ColorRGB(PRS_COLOR);
+	}
+	FTImpl->Vertex2f(29 * 16, sensor4 * 16);
+	FTImpl->Vertex2f(47 * 16, sensor4 * 16);
+	if (sensor5 < PRS_REAR_NEAR) {
+		FTImpl->ColorRGB(PRS_NEAR_COLOR);
+		} else {
+		FTImpl->ColorRGB(PRS_COLOR);
+	}
+	FTImpl->Vertex2f(57 * 16, sensor5 * 16);
+	FTImpl->Vertex2f(75 * 16, sensor5 * 16);
+	if (sensor6 < PRS_REAR_NEAR) {
+		FTImpl->ColorRGB(PRS_NEAR_COLOR);
+		} else {
+		FTImpl->ColorRGB(PRS_COLOR);
+	}
+	FTImpl->Vertex2f(85 * 16, sensor6 * 16);
+	FTImpl->Vertex2f(103 * 16, sensor6 * 16);
+	if (sensor7 < PRS_REAR_NEAR) {
+		FTImpl->ColorRGB(PRS_NEAR_COLOR);
+		} else {
+		FTImpl->ColorRGB(PRS_COLOR);
+	}
+	FTImpl->Vertex2f(113 * 16, sensor7 * 16);
+	FTImpl->Vertex2f(131 * 16, sensor7 * 16);
 }
 
 void _ControllerDisplay::drawCalibrationNotice(int8_t joystick, int8_t direction) {
+	if (!displayInitialized)
+	return;
 	String notice = "Move ";
 	if (joystick == 0) {
 		notice += "left";
@@ -258,6 +324,36 @@ void _ControllerDisplay::drawCalibrationNotice(int8_t joystick, int8_t direction
 	}
 	FTImpl->ColorRGB(0xFFFFFF);
 	FTImpl->Cmd_Text(240, 125, 30, FT_OPT_CENTER, notice.c_str());
+}
+
+void _ControllerDisplay::drawSignalStrenght(uint8_t signalStrenght) {
+	if (!displayInitialized)
+	return;
+	FTImpl->Begin(FT_LINES);
+	FTImpl->LineWidth(3 * 16);
+	uint16_t pointX = 254;
+	if (signalStrenght == 0) {
+		FTImpl->ColorRGB(0xAAAAAA);
+		signalStrenght = 4;
+		for (uint8_t i = 0; i < signalStrenght; i++) {
+			FTImpl->Vertex2f(pointX * 16, 223 * 16);
+			FTImpl->Vertex2f(pointX * 16, (223 - 9 * i) * 16);
+			pointX -= 8;
+		}
+		FTImpl->ColorRGB(BAT_WAR_COL);
+		FTImpl->Vertex2f(254 * 16, 207 * 16);
+		FTImpl->Vertex2f(238 * 16, 223 * 16);
+		FTImpl->Vertex2f(254 * 16, 223 * 16);
+		FTImpl->Vertex2f(238 * 16, 207 * 16);
+		} else {
+		FTImpl->ColorRGB(0xFFFFFF);
+		signalStrenght = map(signalStrenght, 0, 255, 1, 4);
+		for (uint8_t i = 0; i < signalStrenght; i++) {
+			FTImpl->Vertex2f(pointX * 16, 223 * 16);
+			FTImpl->Vertex2f(pointX * 16, (223 - 9 * i) * 16);
+			pointX -= 8;
+		}
+	}
 }
 
 void _ControllerDisplay::endDrawing() {
