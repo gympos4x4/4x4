@@ -37,8 +37,8 @@
 
 #define PRS_FRONT_MIN 0
 #define PRS_FRONT_MAX 45
-#define PRS_REAR_MIN 227
-#define PRS_REAR_MAX 272
+#define PRS_REAR_MIN 272
+#define PRS_REAR_MAX 227
 #define PRS_COLOR 0xED1C24
 
 #include <SPI.h>
