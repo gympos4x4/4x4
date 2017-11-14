@@ -23,7 +23,7 @@
 Mrf24j mrf(/*pin reset*/ 4, /*pin CS*/ 9, /*pin itnerrupt*/ 3);
 CarData cardata;
 CtrlData ctrldata;
-const unsigned int SYNC_INTERVAL_MS = 200;
+const unsigned int SYNC_INTERVAL_MS = 50;
 unsigned long sync_last_time = 0;
 
 bool rxl = 0;
@@ -59,14 +59,20 @@ void loop()
 	if(current_time - sync_last_time >= SYNC_INTERVAL_MS)
 	{
 		update_cardata();
-	
-	
+		
+		//debug stuff
 		cardata.throttleFb = ctrldata.throttle;
 		cardata.steerFb = ctrldata.steering;
+		
+		mrf.read_rxdata();
+		mrf.recv_ctrl_data(&ctrldata);
+		
 		
 		mrf.start_tx(CONTROLLER_ADDRESS, sizeof(cardata));
 		mrf.send_car_data(&cardata);
 		mrf.finish_tx();
+		
+
 
 		sync_last_time = current_time;
 	}
@@ -75,12 +81,10 @@ void loop()
 
 void mrf_isr()
 {
-	mrf.interrupt_handler();
+	//mrf.interrupt_handler(); this shouldn't happen
 }
 void mrf_rx()
 {
-	mrf.recv_ctrl_data(&ctrldata);
-	//rxl = !rxl;	debug statement?
 }
 void mrf_tx()
 {

@@ -3,14 +3,18 @@
 * copyright Karl Palsson, karlp@tweak.net.au, 2011
 * modified BSD License / apache license
 */
-#define CAR
+
 #ifndef LIB_MRF24J_H
 #define LIB_MRF24J_H
-
+#define CAR
+#if defined(ARDUINO) && ARDUINO >= 100 // Arduino IDE version >= 1.0
 #include "Arduino.h"
-#include <SPI.h>
-
+#else // older Arduino IDE versions
+#include "WProgram.h"
+#endif
+#include "SPI/SPI.h"
 #include "comm.h"
+class SyncManager;
 
 #define MRF_RXMCR 0x00
 #define MRF_PANIDL 0x01
@@ -160,7 +164,6 @@ typedef struct _tx_info_t{
 	uint8_t channel_busy:1;
 } tx_info_t;
 
-
 class Mrf24j
 {
 	public:
@@ -183,6 +186,11 @@ class Mrf24j
 	void set_interrupts(void);
 
 	void set_promiscuous(boolean enabled);
+	
+	/*
+		Read last received data. Returns false if no new data has been received.
+	*/
+	bool read_rxdata();
 
 	/**
 	* Set the channel, using 802.15.4 channel numbers (11..26)
