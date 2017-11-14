@@ -31,11 +31,11 @@ void setup()
 {
 	setup_mrf(0x6001, 0xcafe);
 
-	MotorControl.init();
+	//MotorControl.init();
 	//Lights.init(50);
 
 	//ParkingSensors.init();
-	SteeringControl.init();
+	//SteeringControl.init();
 	
 	TiltAlarm.init();
 	sei();
@@ -63,6 +63,7 @@ void loop()
 		//debug stuff
 		cardata.throttleFb = ctrldata.throttle;
 		cardata.steerFb = ctrldata.steering;
+		cardata.battery_percentage++;
 		
 		mrf.read_rxdata();
 		mrf.recv_ctrl_data(&ctrldata);
@@ -72,8 +73,6 @@ void loop()
 		mrf.send_car_data(&cardata);
 		mrf.finish_tx();
 		
-
-
 		sync_last_time = current_time;
 	}
 	//digitalWrite(10,rxl);		debug statement?

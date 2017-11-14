@@ -6,7 +6,7 @@
 
 #ifndef LIB_MRF24J_H
 #define LIB_MRF24J_H
-#define CAR
+#define CTRL
 #if defined(ARDUINO) && ARDUINO >= 100 // Arduino IDE version >= 1.0
 #include "Arduino.h"
 #else // older Arduino IDE versions
