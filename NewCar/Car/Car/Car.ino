@@ -49,8 +49,8 @@ void loop()
 	mrf.check_flags(&mrf_rx, &mrf_tx);
 
 	//use them data
-	MotorControl.loop(ctrldata, current_time);
-	SteeringControl.steer(ctrldata.steering);
+	//MotorControl.loop(ctrldata, current_time);
+	//SteeringControl.steer(ctrldata.steering);
 	TiltAlarm.loop();
 	//ParkingSensors.loop();
 	//Lights.loop();
@@ -108,6 +108,6 @@ void update_cardata()
 
 	//Lights.update_cardata(cardata);
 	//SteeringControl.update_cardata(cardata); ??? preco?
-	//TiltAlarm.update_cardata(cardata);
+	TiltAlarm.update_cardata(cardata);
 	//ParkingSensors.update_cardata(cardata);
 }

@@ -41,6 +41,8 @@
     </AsfFrameworkConfig>
     <preserveEEPROM>true</preserveEEPROM>
     <avrtool />
+    <ResetRule>0</ResetRule>
+    <EraseKey />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -56,6 +58,7 @@
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>__AVR_ATmega2560__</Value>
+      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -64,19 +67,16 @@
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
+      <Value>../../../MrfTest</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/DELTA-PC/Documents/Arduino/libraries</Value>
+      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega</Value>
-      <Value>../../../MrfTest</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -89,6 +89,7 @@
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>__AVR_ATmega2560__</Value>
+      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -97,19 +98,16 @@
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
+      <Value>../../../MrfTest</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/DELTA-PC/Documents/Arduino/libraries</Value>
+      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega</Value>
-      <Value>../../../MrfTest</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -130,7 +128,7 @@
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;../../../MrfTest;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/libraries/TFT;C:/Program Files (x86)/Arduino/libraries/TFT/utility;C:/Program Files (x86)/Arduino/libraries/MRF24j;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/mega;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Arduino/hardware;c:/Arduino/libraries/Servo;C:/Program Files (x86)/Arduino/libraries/Servo;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;../../../MrfTest;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/libraries/TFT;C:/Program Files (x86)/Arduino/libraries/TFT/utility;C:/Program Files (x86)/Arduino/libraries/MRF24j;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/mega;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Arduino/hardware;c:/Arduino/libraries/Servo;C:/Program Files (x86)/Arduino/libraries/Servo;C:/Users/Matej/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
         <ValidatedAS7>1</ValidatedAS7>
@@ -241,6 +239,7 @@ build.arch=AVR
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>__AVR_ATmega2560__</Value>
+      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -249,19 +248,16 @@ build.arch=AVR
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
+      <Value>../../../MrfTest</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/DELTA-PC/Documents/Arduino/libraries</Value>
+      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega</Value>
-      <Value>../../../MrfTest</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -274,6 +270,7 @@ build.arch=AVR
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>__AVR_ATmega2560__</Value>
+      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -282,19 +279,16 @@ build.arch=AVR
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
+      <Value>../../../MrfTest</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/DELTA-PC/Documents/Arduino/libraries</Value>
+      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega</Value>
-      <Value>../../../MrfTest</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/avr/</Value>
-      <Value>c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -315,7 +309,7 @@ build.arch=AVR
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;../../../MrfTest;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/libraries/TFT;C:/Program Files (x86)/Arduino/libraries/TFT/utility;C:/Program Files (x86)/Arduino/libraries/MRF24j;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/mega;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Arduino/hardware;c:/Arduino/libraries/Servo;C:/Program Files (x86)/Arduino/libraries/Servo;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;../../../MrfTest;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/libraries/TFT;C:/Program Files (x86)/Arduino/libraries/TFT/utility;C:/Program Files (x86)/Arduino/libraries/MRF24j;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/mega;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Arduino/hardware;c:/Arduino/libraries/Servo;C:/Program Files (x86)/Arduino/libraries/Servo;C:/Users/Matej/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
         <ValidatedAS7>1</ValidatedAS7>

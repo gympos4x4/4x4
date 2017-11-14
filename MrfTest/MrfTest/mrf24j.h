@@ -3,10 +3,10 @@
 * copyright Karl Palsson, karlp@tweak.net.au, 2011
 * modified BSD License / apache license
 */
-#define CTRL
+
 #ifndef LIB_MRF24J_H
 #define LIB_MRF24J_H
-
+#define CAR
 #if defined(ARDUINO) && ARDUINO >= 100 // Arduino IDE version >= 1.0
 #include "Arduino.h"
 #else // older Arduino IDE versions
@@ -187,6 +187,9 @@ class Mrf24j
 
 	void set_promiscuous(boolean enabled);
 	
+	/*
+		Read last received data. Returns false if no new data has been received.
+	*/
 	bool read_rxdata();
 
 	/**
