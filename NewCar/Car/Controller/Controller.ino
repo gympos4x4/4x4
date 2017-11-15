@@ -3,10 +3,10 @@
 
 #define SELECT_BTN_PIN 6
 #define CALIB_BTN_PIN 5
-#define AX_PIN A2
-#define AY_PIN A4
-#define MRF_RES_PIN 15 //PC1
-#define MRF_CS_PIN 16 //PC0
+#define AX_PIN A4
+#define AY_PIN A5
+#define MRF_RES_PIN 14 //PC0
+#define MRF_CS_PIN 17 //PC3
 #define MRF_INT_PIN 3 //PD3(INT1)
 #define MRF_INT_APIN 1 //INT1(PD3)
 

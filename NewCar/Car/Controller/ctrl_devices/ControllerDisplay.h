@@ -11,8 +11,8 @@
 #include "WProgram.h"
 #endif
 
-#define CD_CS_PIN 8
-#define CD_PD_PIN 7
+#define CD_CS_PIN 15
+#define CD_PD_PIN 16
 
 #define WHL_COLOR 0x0F75BC
 #define WHL_MIN -100
