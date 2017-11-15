@@ -2,7 +2,9 @@
 * mrf24j.cpp, Karl Palsson, 2011, karlp@tweak.net.au
 * modified bsd license / apache license
 */
-#define CAR
+
+//;_; y u no work
+
 #include "mrf24j.h"
 
 // aMaxPHYPacketSize = 127, from the 802.15.4-2006 standard.
@@ -69,7 +71,7 @@ void Mrf24j::start_tx(word dest16, byte len)
 	write_long(i++, src16 & 0xff); // src16 low
 	write_long(i++, src16 >> 8); // src16 high
 	
-	write_long(11, 0x1); //Always write first byte as '1'. This servers as data reception and integrity check.
+	write_long(11, 42); //Always write first byte as '1'. This servers as data reception and integrity check.
 
 }
 void Mrf24j::finish_tx(void)
@@ -263,7 +265,7 @@ bool Mrf24j::read_rxdata()
 	
 	//Read first byte. This should always be '1', else we know that either incorrect or no data has been received.
 	byte receivedData = read_long(0x301 + bytes_MHR);
-	if(receivedData != 1) return false;
+	//if(receivedData != 1) return false;
 	
 	//Continue reading next bytes
 	for (int i = 1; i < rx_datalength(); i++) {
@@ -277,7 +279,7 @@ bool Mrf24j::read_rxdata()
 	rx_info.rssi = read_long(0x301 + frame_length + 1);
 
 	rx_enable();
-	return true;
+	return receivedData;
 }
 
 /**

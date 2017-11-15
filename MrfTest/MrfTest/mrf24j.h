@@ -190,7 +190,7 @@ class Mrf24j
 	/*
 		Read last received data. Returns false if no new data has been received.
 	*/
-	bool read_rxdata();
+	byte read_rxdata();
 
 	/**
 	* Set the channel, using 802.15.4 channel numbers (11..26)

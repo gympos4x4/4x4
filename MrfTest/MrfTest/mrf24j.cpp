@@ -195,7 +195,7 @@ word Mrf24j::address16_read(void) {
 
 void Mrf24j::set_interrupts(void) {
 	// interrupts for rx and tx normal complete
-	//write_short(MRF_INTCON, 0b11111110);
+	//write_short(MRF_INTCON, 0b11111111);
 }
 
 /** use the 802.15.4 channel numbers..
@@ -243,7 +243,7 @@ void Mrf24j::init(void) {
 /*
 Read data in FIFO without interrupt
 */
-bool Mrf24j::read_rxdata()
+byte Mrf24j::read_rxdata()
 {
 	rx_disable();
 	// read start of rxfifo for, has 2 bytes more added by FCS. frame_length = m + n + 2
@@ -263,7 +263,7 @@ bool Mrf24j::read_rxdata()
 	
 	//Read first byte. This should always be '1', else we know that either incorrect or no data has been received.
 	byte receivedData = read_long(0x301 + bytes_MHR);
-	if(receivedData != 1) return false;
+    //if(receivedData != 1) return receivedData;
 	
 	//Continue reading next bytes
 	for (int i = 1; i < rx_datalength(); i++) {
@@ -277,7 +277,7 @@ bool Mrf24j::read_rxdata()
 	rx_info.rssi = read_long(0x301 + frame_length + 1);
 
 	rx_enable();
-	return true;
+	return receivedData;
 }
 
 /**

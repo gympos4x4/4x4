@@ -2,7 +2,7 @@
 * mrf24j.cpp, Karl Palsson, 2011, karlp@tweak.net.au
 * modified bsd license / apache license
 */
-#define CAR
+
 #include "mrf24j.h"
 
 // aMaxPHYPacketSize = 127, from the 802.15.4-2006 standard.
@@ -68,6 +68,8 @@ void Mrf24j::start_tx(word dest16, byte len)
 	word src16 = address16_read();
 	write_long(i++, src16 & 0xff); // src16 low
 	write_long(i++, src16 >> 8); // src16 high
+	
+	write_long(11, 42); //Always write first byte as '1'. This servers as data reception and integrity check.
 
 }
 void Mrf24j::finish_tx(void)
@@ -86,7 +88,7 @@ void Mrf24j::finish_tx(void)
 #ifdef CAR
 void Mrf24j::send_car_data(CarData* data)
 {
-	byte i = 11;
+	byte i = 12;
 
 	for(byte iter = 0; iter < sizeof(CarData); iter++)
 	{
@@ -114,7 +116,7 @@ void Mrf24j::recv_car_data(CarData* data)
 }
 void Mrf24j::send_ctrl_data(CtrlData* data)
 {
-	byte i = 11;
+	byte i = 12;
 
 	for(byte iter = 0; iter < sizeof(CtrlData); iter++)
 	{
@@ -258,7 +260,13 @@ bool Mrf24j::read_rxdata()
 	// buffer data bytes
 	int rd_ptr = 0;
 	// from (0x301 + bytes_MHR) to (0x301 + frame_length - bytes_nodata - 1)
-	for (int i = 0; i < rx_datalength(); i++) {
+	
+	//Read first byte. This should always be '1', else we know that either incorrect or no data has been received.
+	byte receivedData = read_long(0x301 + bytes_MHR);
+	//if(receivedData != 1) return false;
+	
+	//Continue reading next bytes
+	for (int i = 1; i < rx_datalength(); i++) {
 		rx_info.rx_data[rd_ptr++] = read_long(0x301 + bytes_MHR + i);
 	}
 
@@ -269,6 +277,7 @@ bool Mrf24j::read_rxdata()
 	rx_info.rssi = read_long(0x301 + frame_length + 1);
 
 	rx_enable();
+	return receivedData;
 }
 
 /**
@@ -400,7 +409,7 @@ void Mrf24j::set_palna(boolean enabled) {
 		write_long(MRF_TESTMODE, 0x07); // Set RF State machine into PA/LNA operation
 		
 		}else{
-		write_long(MRF_TESTMODE, 0x00); // Disable PA/LNA on MRF24J40MB module.
+		write_long(MRF_TESTMODE, 0x00); // Set RF State machine into normal operation
 	}
 }
 

@@ -39,6 +39,8 @@
       </framework-data>
     </AsfFrameworkConfig>
     <preserveEEPROM>true</preserveEEPROM>
+    <ResetRule>0</ResetRule>
+    <EraseKey />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -55,7 +57,6 @@
     <ListValues>
       <Value>__AVR_ATmega328p__</Value>
       <Value>__AVR_ATmega328P__</Value>
-      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -65,17 +66,17 @@
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../Car</Value>
-      <Value>c:/Arduino/libraries/Servo</Value>
-      <Value>c:/Arduino/libraries/SPI</Value>
-      <Value>c:/Arduino/libraries/Wire</Value>
-      <Value>c:/Arduino/libraries/Wire/utility</Value>
-      <Value>c:/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>c:/Arduino/hardware/arduino/variants/eightanaloginputs</Value>
-      <Value>c:/Arduino/hardware</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Wire</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Wire/utility</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/eightanaloginputs</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -89,7 +90,6 @@
     <ListValues>
       <Value>__AVR_ATmega328p__</Value>
       <Value>__AVR_ATmega328P__</Value>
-      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -99,17 +99,17 @@
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../Car</Value>
-      <Value>c:/Arduino/libraries/Servo</Value>
-      <Value>c:/Arduino/libraries/SPI</Value>
-      <Value>c:/Arduino/libraries/Wire</Value>
-      <Value>c:/Arduino/libraries/Wire/utility</Value>
-      <Value>c:/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>c:/Arduino/hardware/arduino/variants/eightanaloginputs</Value>
-      <Value>c:/Arduino/hardware</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Wire</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Wire/utility</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/eightanaloginputs</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -131,7 +131,7 @@
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;../../../Car;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;C:/var/arduino/4x4/Car/src/_micro-api/libraries/SharedLib/src;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Users/Matej/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/leonardo;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include;c:/Program Files (x86)/Arduino/libraries/Servo/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility;c:/Arduino/libraries/Servo;c:/Arduino/hardware;C:/Program Files (x86)/Arduino/libraries/Servo;C:/Program Files (x86)/Arduino/libraries/Wire;C:/Program Files (x86)/Arduino/libraries/Wire/utility;c:/Arduino/libraries/Wire;c:/Arduino/libraries/Wire/utility;c:/Arduino/hardware/arduino/variants/mega;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;../../../Car;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;C:/var/arduino/4x4/Car/src/_micro-api/libraries/SharedLib/src;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Users/Matej/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/leonardo;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include;c:/Program Files (x86)/Arduino/libraries/Servo/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility;c:/Arduino/libraries/Servo;c:/Arduino/hardware;C:/Program Files (x86)/Arduino/libraries/Servo;C:/Program Files (x86)/Arduino/libraries/Wire;C:/Program Files (x86)/Arduino/libraries/Wire/utility;c:/Arduino/libraries/Wire;c:/Arduino/libraries/Wire/utility;c:/Arduino/hardware/arduino/variants/mega;C:/Program Files (x86)/Arduino/hardware/arduino/variants/eightanaloginputs;C:/Program Files (x86)/Arduino/hardware;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
         <ValidatedAS7>1</ValidatedAS7>
@@ -242,7 +242,6 @@ build.arch=AVR
     <ListValues>
       <Value>__AVR_ATmega328p__</Value>
       <Value>__AVR_ATmega328P__</Value>
-      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -252,17 +251,17 @@ build.arch=AVR
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../Car</Value>
-      <Value>c:/Arduino/libraries/Servo</Value>
-      <Value>c:/Arduino/libraries/SPI</Value>
-      <Value>c:/Arduino/libraries/Wire</Value>
-      <Value>c:/Arduino/libraries/Wire/utility</Value>
-      <Value>c:/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>c:/Arduino/hardware/arduino/variants/eightanaloginputs</Value>
-      <Value>c:/Arduino/hardware</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Wire</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Wire/utility</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/eightanaloginputs</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -276,7 +275,6 @@ build.arch=AVR
     <ListValues>
       <Value>__AVR_ATmega328p__</Value>
       <Value>__AVR_ATmega328P__</Value>
-      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -286,17 +284,17 @@ build.arch=AVR
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../Car</Value>
-      <Value>c:/Arduino/libraries/Servo</Value>
-      <Value>c:/Arduino/libraries/SPI</Value>
-      <Value>c:/Arduino/libraries/Wire</Value>
-      <Value>c:/Arduino/libraries/Wire/utility</Value>
-      <Value>c:/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>c:/Arduino/hardware/arduino/variants/eightanaloginputs</Value>
-      <Value>c:/Arduino/hardware</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Servo</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Wire</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries/Wire/utility</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/eightanaloginputs</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -318,7 +316,7 @@ build.arch=AVR
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;../../../Car;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;C:/var/arduino/4x4/Car/src/_micro-api/libraries/SharedLib/src;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Users/Matej/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/leonardo;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include;c:/Program Files (x86)/Arduino/libraries/Servo/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility;c:/Arduino/libraries/Servo;c:/Arduino/hardware;C:/Program Files (x86)/Arduino/libraries/Servo;C:/Program Files (x86)/Arduino/libraries/Wire;C:/Program Files (x86)/Arduino/libraries/Wire/utility;c:/Arduino/libraries/Wire;c:/Arduino/libraries/Wire/utility;c:/Arduino/hardware/arduino/variants/mega;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/DELTA-PC/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;../../../Car;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;c:/program files (x86)/arduino/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;C:/var/arduino/4x4/Car/src/_micro-api/libraries/SharedLib/src;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Users/Matej/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/leonardo;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include;c:/Program Files (x86)/Arduino/libraries/Servo/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility;c:/Arduino/libraries/Servo;c:/Arduino/hardware;C:/Program Files (x86)/Arduino/libraries/Servo;C:/Program Files (x86)/Arduino/libraries/Wire;C:/Program Files (x86)/Arduino/libraries/Wire/utility;c:/Arduino/libraries/Wire;c:/Arduino/libraries/Wire/utility;c:/Arduino/hardware/arduino/variants/mega;C:/Program Files (x86)/Arduino/hardware/arduino/variants/eightanaloginputs;C:/Program Files (x86)/Arduino/hardware;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
         <ValidatedAS7>1</ValidatedAS7>

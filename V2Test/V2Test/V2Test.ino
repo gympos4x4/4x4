@@ -29,7 +29,7 @@ void setup()
 	mrf.address16_write(0x6001);
 	mrf.set_promiscuous(true);
 	mrf.set_palna(true);
-	attachInterrupt(1, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
+	//attachInterrupt(1, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
 	/* add setup code here, setup code runs once when the processor starts */
 	pinMode(A2, OUTPUT);
 	pinMode(A3, OUTPUT);

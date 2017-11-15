@@ -21,6 +21,7 @@ void setup_mrf(word address, word pan)
 	mrf.set_pan(pan);
 	mrf.address16_write(address);
 	mrf.set_palna(true);
+	mrf.set_promiscuous(true);
 	attachInterrupt(4, interrupt_routine, CHANGE); // interrupt 4 equivalent to pin 2 on Arduino Mega
 }
 
@@ -47,14 +48,26 @@ void loop() {
 	
 	currentTime = millis();
 	if(currentTime - lastTxTime >= 50){
-		mrf.read_rxdata();
+
+	byte response = mrf.read_rxdata();
+			Serial.print(("First byte: "));
+			Serial.println((int)response);
+	if(response == 42)
+	{
 		mrf.recv_car_data(&cardata);
 
 		Serial.print(millis()); Serial.println("ms:");
 		Serial.println(cardata.battery_percentage);
 		Serial.println(cardata.tilt.tilt_degrees);
 		Serial.println(cardata.tilt.tilted ? "Tilted" : "Not tilted");
+		Serial.println((int)cardata.throttleFb);
+		Serial.print(("First byte: "));
+		Serial.println((int)response);
 		Serial.println();
+
+		errorTime = currentTime;
+
+		}
 
 		//mrf.start_tx(0x6001,sizeof(ctrldata));
 		//mrf.send_ctrl_data(&ctrldata);

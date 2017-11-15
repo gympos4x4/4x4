@@ -23,7 +23,7 @@
 Mrf24j mrf(/*pin reset*/ 4, /*pin CS*/ 9, /*pin itnerrupt*/ 3);
 CarData cardata;
 CtrlData ctrldata;
-const unsigned int SYNC_INTERVAL_MS = 50;
+const unsigned int SYNC_INTERVAL_MS = 100;
 unsigned long sync_last_time = 0;
 
 bool rxl = 0;
@@ -36,9 +36,10 @@ void setup()
 
 	//ParkingSensors.init();
 	//SteeringControl.init();
-	
+	pinMode(1, OUTPUT);
+	digitalWrite(1, HIGH);
 	TiltAlarm.init();
-	sei();
+	//sei();
 }
 
 void loop()
@@ -46,24 +47,24 @@ void loop()
 	unsigned long current_time = millis();
 	
 	//check if a new message came and update CarData and CtrlData if necessary
-	mrf.check_flags(&mrf_rx, &mrf_tx);
+	//mrf.check_flags(&mrf_rx, &mrf_tx);
 
 	//use them data
 	//MotorControl.loop(ctrldata, current_time);
 	//SteeringControl.steer(ctrldata.steering);
-	TiltAlarm.loop();
+	//TiltAlarm.loop(); errore
 	//ParkingSensors.loop();
 	//Lights.loop();
 
 
 	if(current_time - sync_last_time >= SYNC_INTERVAL_MS)
 	{
-		update_cardata();
+		//update_cardata();
 		
 		//debug stuff
 		cardata.throttleFb = ctrldata.throttle;
 		cardata.steerFb = ctrldata.steering;
-		cardata.battery_percentage++;
+		cardata.battery_percentage = 102;
 		
 		mrf.read_rxdata();
 		mrf.recv_ctrl_data(&ctrldata);
@@ -74,6 +75,16 @@ void loop()
 		mrf.finish_tx();
 		
 		sync_last_time = current_time;
+				if (rxl)
+				{
+					rxl = 0;
+					digitalWrite(1,LOW);
+				}
+				else// if(!mrf.get_txinfo()->tx_ok)
+				{
+					rxl = 1;
+					digitalWrite(1,HIGH);
+				}
 	}
 	//digitalWrite(10,rxl);		debug statement?
 }
@@ -97,7 +108,8 @@ void setup_mrf(word address, word pan)
 	mrf.set_pan(pan);
 	mrf.address16_write(address);
 	mrf.set_palna(true);
-	attachInterrupt(1, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
+	mrf.set_promiscuous(true);
+	//attachInterrupt(1, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
 }
 
 void update_cardata()
