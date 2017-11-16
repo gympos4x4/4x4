@@ -34,24 +34,24 @@ Joystick::Joystick(uint16_t addressShift, uint8_t analogPinX, uint8_t analogPinY
 
 int8_t Joystick::readXint8() {
 	int value = analogRead(xpin);
+	if(abs(value - cX) < JOY_DEAD_ZONE) return JOY_OUT_C;
 	if (value > cX) {
-		return map(value, cL, cX, JOY_OUT_DL, JOY_OUT_C);
-	} else if (value < cX) {
-		return map(value, cX, cL, JOY_OUT_C, JOY_OUT_UR);
-	} else {
-		return JOY_OUT_C;
+		return map(value, cX, cR, JOY_OUT_C, JOY_OUT_UR);
+	} if (value < cX) {
+		return map(value, cL, cX,JOY_OUT_DL, JOY_OUT_C);
 	}
+		return JOY_OUT_C;
 }
 
 int8_t Joystick::readYint8() {
 	int value = analogRead(ypin);
+	if(abs(value - cY) < JOY_DEAD_ZONE) return JOY_OUT_C;
 	if (value > cY) {
-		return map(value, cL, cY, JOY_OUT_DL, JOY_OUT_C);
-	} else if (value < cY) {
-		return map(value, cY, cL, JOY_OUT_C, JOY_OUT_UR);
-	} else {
-		return JOY_OUT_C;
+		return map(value, cY, cU, JOY_OUT_C, JOY_OUT_UR);
+	} if (value < cY) {
+		return map(value, cD, cY, JOY_OUT_DL, JOY_OUT_C);
 	}
+		return JOY_OUT_C;
 }
 
 int16_t Joystick::readXraw() {

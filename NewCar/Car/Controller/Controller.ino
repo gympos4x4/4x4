@@ -9,6 +9,7 @@
 #define MRF_CS_PIN 16 //PC0
 #define MRF_INT_PIN 3 //PD3(INT1)
 #define MRF_INT_APIN 1 //INT1(PD3)
+ 
 
 #include <EEPROM.h>
 #include <SPI.h>
@@ -32,21 +33,23 @@ Joystick analog(0, AX_PIN, AY_PIN);
 
 const unsigned int FPS = 48;
 unsigned long redraw_last_time = 0;
+unsigned long current_time = 0;
 
 Mrf24j mrf(/*pin reset*/ MRF_RES_PIN, /*pin CS*/ MRF_CS_PIN, /*pin itnerrupt*/ MRF_INT_PIN);
 
 void setup() {
-	ControllerDisplay.initDisplay();
+	//ControllerDisplay.initDisplay();
 
 	setup_mrf(0x6000, 0xcafe);
 	sei();
 }
 
 void loop() {
+	current_time = millis();
 	//check if a new message came and update CarData if necessary
-	mrf.check_flags(&mrf_rx, &mrf_tx);
+	//mrf.check_flags(&mrf_rx, &mrf_tx);
 
-	selectBtn.cycle();
+	/*selectBtn.cycle();
 	calibBtn.cycle();
 	if (selectBtn.GetButtonDown()) {
 		//TODO: toggle RF channel
@@ -54,19 +57,18 @@ void loop() {
 	
 	if (calibBtn.GetButtonDown()) {
 		calibrateAnalog();
-	}
+	}*/
 	
-	int8_t throttle = analog.readYint8();
-	int8_t steer = analog.readXint8();
-	
-	//update controller data
-	ctrldata.steer = steer;
-	ctrldata.throttle = throttle;
+	ctrldata.throttle = analog.readYint8();
+	ctrldata.steer = analog.readXint8();
 
 	//TODO: send controller data
 	unsigned long current_time = millis();
 	if(current_time - sync_last_time >= SYNC_INTERVAL_MS)
 	{
+		mrf.read_rxdata();
+		mrf.recv_car_data(&cardata);
+
 		mrf.start_tx(0x6001, sizeof(ctrldata));
 		mrf.send_ctrl_data(&ctrldata);
 		mrf.finish_tx();
@@ -75,8 +77,8 @@ void loop() {
 	}
 
 	//don't delay so we can sync data as frequently as possible, but don't waste time redrawing every loop
-	current_time = millis();
-	if( current_time - redraw_last_time >= (1000/FPS) )
+
+	/*if( current_time - redraw_last_time >= (1000/FPS) )
 	{
 		ControllerDisplay.startDrawing();
 		ControllerDisplay.drawMainGUI();
@@ -90,7 +92,7 @@ void loop() {
 		ControllerDisplay.endDrawing();
 
 		redraw_last_time = current_time;
-	}
+	}*/
 }
 
 void calibrateAnalog() {
@@ -151,16 +153,17 @@ void setup_mrf(word address, word pan)
 	mrf.set_pan(pan);
 	mrf.address16_write(address);
 	mrf.set_palna(true);
-	attachInterrupt(MRF_INT_APIN, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
+	mrf.set_promiscuous(true);
+	//attachInterrupt(MRF_INT_APIN, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
 }
 
 void mrf_isr()
 {
-	mrf.interrupt_handler();
+	//mrf.interrupt_handler();
 }
 void mrf_rx()
 {
-	mrf.recv_car_data(&cardata);
+	//mrf.recv_car_data(&cardata);
 	//rxl = !rxl;		looks like a debug statement
 }
 void mrf_tx()

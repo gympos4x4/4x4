@@ -11,8 +11,8 @@
 
 #define JOY_MIN 0
 #define JOY_MAX 1024
-#define JOY_OUT_DL -128
-#define JOY_OUT_UR 128
+#define JOY_OUT_DL -127
+#define JOY_OUT_UR 127
 #define JOY_OUT_C 0
 #define JOY_ADS_U 0
 #define JOY_ADS_D 2
@@ -20,9 +20,10 @@
 #define JOY_ADS_L 6
 #define JOY_ADS_Y 8
 #define JOY_ADS_X 10
+#define JOY_DEAD_ZONE 24
 
 #include "../EEPROMExt.h"
-
+// lax ma vacsie napetie vpravo
 class Joystick {
 
 	private:
