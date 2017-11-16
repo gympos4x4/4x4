@@ -3,14 +3,18 @@
 * copyright Karl Palsson, karlp@tweak.net.au, 2011
 * modified BSD License / apache license
 */
-#define CTRL
+
 #ifndef LIB_MRF24J_H
 #define LIB_MRF24J_H
-
+#define CTRL
+#if defined(ARDUINO) && ARDUINO >= 100 // Arduino IDE version >= 1.0
 #include "Arduino.h"
-#include <SPI.h>
-
+#else // older Arduino IDE versions
+#include "WProgram.h"
+#endif
+#include "SPI/SPI.h"
 #include "comm.h"
+class SyncManager;
 
 #define MRF_RXMCR 0x00
 #define MRF_PANIDL 0x01
@@ -182,6 +186,11 @@ class Mrf24j
 	void set_interrupts(void);
 
 	void set_promiscuous(boolean enabled);
+	
+	/*
+		Read last received data. Returns false if no new data has been received.
+	*/
+	bool read_rxdata();
 
 	/**
 	* Set the channel, using 802.15.4 channel numbers (11..26)
@@ -220,7 +229,6 @@ class Mrf24j
 	void start_tx(word dest16, byte len);
 	//finish sending the transmission
 	void finish_tx(void);
-
 	#ifdef CAR
 	void send_car_data(CarData* data);
 	void recv_ctrl_data(CtrlData* data);
@@ -232,11 +240,10 @@ class Mrf24j
 	#error Neither CAR or CTRL is specified!
 	#endif
 	#endif
-
-
 	void interrupt_handler(void);
 
 	void check_flags(void (*rx_handler)(void), void (*tx_handler)(void));
+
 
 	private:
 	int _pin_reset;

@@ -26,5 +26,6 @@
   C:\Users\Matej\AppData\Local\Temp\VMBuilds\Controller\mega2560\Release\/ctrl_devices/Joystick.h \
   C:\Users\Matej\AppData\Local\Temp\VMBuilds\Controller\mega2560\Release\/ctrl_devices/../EEPROMExt.h \
   C:\Users\Matej\AppData\Local\Temp\VMBuilds\Controller\mega2560\Release\/mrf24j.h \
+  C:\Program\ Files\ (x86)\Arduino\libraries/SPI/SPI.h \
   C:\Users\Matej\AppData\Local\Temp\VMBuilds\Controller\mega2560\Release\/comm.h \
   C:\Users\Matej\AppData\Local\Temp\VMBuilds\Controller\mega2560\Release\/comm.h

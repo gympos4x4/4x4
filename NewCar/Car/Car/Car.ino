@@ -31,14 +31,14 @@ void setup()
 {
 	setup_mrf(0x6001, 0xcafe);
 
-	//MotorControl.init();
+	MotorControl.init();
 	//Lights.init(50);
 
 	//ParkingSensors.init();
 	//SteeringControl.init();
 	pinMode(1, OUTPUT);
 	digitalWrite(1, HIGH);
-	TiltAlarm.init();
+	//TiltAlarm.init();
 	//sei();
 }
 
@@ -50,7 +50,7 @@ void loop()
 	//mrf.check_flags(&mrf_rx, &mrf_tx);
 
 	//use them data
-	//MotorControl.loop(ctrldata, current_time);
+	MotorControl.loop(ctrldata, current_time);
 	//SteeringControl.steer(ctrldata.steering);
 	//TiltAlarm.loop(); errore
 	//ParkingSensors.loop();
@@ -59,7 +59,7 @@ void loop()
 
 	if(current_time - sync_last_time >= SYNC_INTERVAL_MS)
 	{
-		//update_cardata();
+		
 		
 		//debug stuff
 		cardata.throttleFb = ctrldata.throttle;
@@ -74,6 +74,8 @@ void loop()
 		mrf.send_car_data(&cardata);
 		mrf.finish_tx();
 		
+		update_cardata();
+
 		sync_last_time = current_time;
 				if (rxl)
 				{
@@ -119,6 +121,6 @@ void update_cardata()
 
 	//Lights.update_cardata(cardata);
 	//SteeringControl.update_cardata(cardata); ??? preco?
-	TiltAlarm.update_cardata(cardata);
+	//TiltAlarm.update_cardata(cardata);
 	//ParkingSensors.update_cardata(cardata);
 }
