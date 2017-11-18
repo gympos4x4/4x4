@@ -3,10 +3,10 @@
 
 #define SELECT_BTN_PIN 6
 #define CALIB_BTN_PIN 5
-#define AX_PIN A2
-#define AY_PIN A4
-#define MRF_RES_PIN 15 //PC1
-#define MRF_CS_PIN 16 //PC0
+#define AX_PIN A4
+#define AY_PIN A5
+#define MRF_RES_PIN 14 //PC1
+#define MRF_CS_PIN 17 //PC0
 #define MRF_INT_PIN 3 //PD3(INT1)
 #define MRF_INT_APIN 1 //INT1(PD3)
  
@@ -39,12 +39,20 @@ Mrf24j mrf(/*pin reset*/ MRF_RES_PIN, /*pin CS*/ MRF_CS_PIN, /*pin itnerrupt*/ M
 
 void setup() {
 	//ControllerDisplay.initDisplay();
-
-	setup_mrf(0x6000, 0xcafe);
+	pinMode(6,OUTPUT);
+	digitalWrite(6,HIGH);
+//	setup_mrf(0x6000, 0xcafe);
 	sei();
 }
 
 void loop() {
+
+delay(500);
+digitalWrite(MRF_CS_PIN, LOW);
+delay(500);
+digitalWrite(MRF_CS_PIN, HIGH);
+return;
+
 	current_time = millis();
 	//check if a new message came and update CarData if necessary
 	//mrf.check_flags(&mrf_rx, &mrf_tx);

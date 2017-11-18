@@ -28,7 +28,7 @@ void setup_mrf(word address, word pan)
 void setup() {
 	Serial.begin(9600);
 
-	setup_mrf(0x6000, 0xCAFE);
+	setup_mrf(0x6001, 0xCAFE);
 	
 	last_time = millis();
 	interrupts();
@@ -54,16 +54,10 @@ void loop() {
 			Serial.println((int)response);
 	if(response == 42)
 	{
-		mrf.recv_car_data(&cardata);
+		mrf.recv_ctrl_data(&ctrldata);
 
-		Serial.print(millis()); Serial.println("ms:");
-		Serial.println(cardata.battery_percentage);
-		Serial.println(cardata.tilt.tilt_degrees);
-		Serial.println(cardata.tilt.tilted ? "Tilted" : "Not tilted");
-		Serial.println((int)cardata.throttleFb);
-		Serial.print(("First byte: "));
-		Serial.println((int)response);
-		Serial.println();
+		Serial.print("throttle:");
+		Serial.println((int)ctrldata.throttle);
 
 		errorTime = currentTime;
 
@@ -94,27 +88,6 @@ void loop() {
 }
 
 void handle_rx() {
-	#ifdef LOG
-
-	Serial.print("Received data: ");
-	mrf.recv_car_data(&cardata);
-
-	//Serial.print("Tilt: ");
-	//Serial.println(cardata.tilt.tilt_degrees);
-	//Serial.print("Battery %: ");
-	//Serial.println(cardata.battery_percentage);
-	//Serial.print("Throttle fb: ");
-	//Serial.println(cardata.throttleFb);
-	//Serial.print("Steer fb: ");
-	//Serial.println(cardata.steerFb);
-	//Serial.print("LQI: ");
-	//Serial.println(mrf.get_rxinfo()->lqi);
-	//Serial.print("RSSI: ");
-	//Serial.println(mrf.get_rxinfo()->rssi);
-
-	#endif
-
-	errorTime = currentTime;
 }
 
 void handle_tx() {

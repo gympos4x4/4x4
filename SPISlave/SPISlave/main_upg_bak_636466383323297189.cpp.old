@@ -1,0 +1,18 @@
+/*
+ * SPISlave.cpp
+ *
+ * Created: 11/18/17 9:43:40 PM
+ * Author : Matej
+ */ 
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+    /* Replace with your application code */
+    while (1) 
+    {
+    }
+}
+
