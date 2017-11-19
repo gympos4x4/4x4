@@ -46,7 +46,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
       <AvrGccCpp>
-  <avrgcc.common.Device>-mmcu=atmega328p -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega328p"</avrgcc.common.Device>
+  <avrgcc.common.Device>-mmcu=atmega328p -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\gcc\dev\atmega328p"</avrgcc.common.Device>
   <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
   <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
   <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
@@ -67,13 +67,14 @@
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../SPISlave</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
+      <Value>c:/Arduino/libraries/SPI</Value>
+      <Value>c:/Arduino/libraries</Value>
+      <Value>c:/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
+      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>c:/Arduino/hardware/arduino/variants/standard</Value>
+      <Value>c:/Arduino/hardware</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -97,13 +98,14 @@
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../SPISlave</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
+      <Value>c:/Arduino/libraries/SPI</Value>
+      <Value>c:/Arduino/libraries</Value>
+      <Value>c:/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
+      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>c:/Arduino/hardware/arduino/variants/standard</Value>
+      <Value>c:/Arduino/hardware</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -119,13 +121,13 @@
   </avrgcccpp.linker.libraries.Libraries>
   <avrgcccpp.assembler.general.IncludePaths>
     <ListValues>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.2.150\include</Value>
+      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\include</Value>
     </ListValues>
   </avrgcccpp.assembler.general.IncludePaths>
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>../../../SPISlave;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Users/Matej/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/libraries;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/libb64;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/spiffs;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/umm_malloc;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/variants/generic;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/lwip/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/libc/xtensa-lx106-elf/include;{build.path}/core;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include/c++/4.8.2;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include/c++/4.8.2/xtensa-lx106-elf;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/lib/gcc/xtensa-lx106-elf/4.8.2/include;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>../../../SPISlave;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Users/Matej/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/libraries;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/libb64;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/spiffs;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/umm_malloc;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/variants/generic;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/lwip/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/libc/xtensa-lx106-elf/include;{build.path}/core;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include/c++/4.8.2;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include/c++/4.8.2/xtensa-lx106-elf;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/lib/gcc/xtensa-lx106-elf/4.8.2/include;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/standard;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Arduino/hardware;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
         <ValidatedAS7>1</ValidatedAS7>
@@ -223,7 +225,7 @@ build.arch=AVR
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
       <AvrGccCpp>
-  <avrgcc.common.Device>-mmcu=atmega328p -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega328p"</avrgcc.common.Device>
+  <avrgcc.common.Device>-mmcu=atmega328p -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\gcc\dev\atmega328p"</avrgcc.common.Device>
   <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
   <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
   <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
@@ -244,13 +246,14 @@ build.arch=AVR
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../SPISlave</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
+      <Value>c:/Arduino/libraries/SPI</Value>
+      <Value>c:/Arduino/libraries</Value>
+      <Value>c:/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
+      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>c:/Arduino/hardware/arduino/variants/standard</Value>
+      <Value>c:/Arduino/hardware</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -274,13 +277,14 @@ build.arch=AVR
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../SPISlave</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
+      <Value>c:/Arduino/libraries/SPI</Value>
+      <Value>c:/Arduino/libraries</Value>
+      <Value>c:/Arduino/hardware/arduino/libraries</Value>
+      <Value>C:/Users/juraj/Documents/Arduino/libraries</Value>
+      <Value>c:/Arduino/hardware/arduino/cores/arduino</Value>
+      <Value>c:/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>c:/Arduino/hardware/arduino/variants/standard</Value>
+      <Value>c:/Arduino/hardware</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -296,13 +300,13 @@ build.arch=AVR
   </avrgcccpp.linker.libraries.Libraries>
   <avrgcccpp.assembler.general.IncludePaths>
     <ListValues>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.2.150\include</Value>
+      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\include</Value>
     </ListValues>
   </avrgcccpp.assembler.general.IncludePaths>
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>../../../SPISlave;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Users/Matej/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/libraries;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/libb64;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/spiffs;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/umm_malloc;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/variants/generic;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/lwip/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/libc/xtensa-lx106-elf/include;{build.path}/core;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include/c++/4.8.2;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include/c++/4.8.2/xtensa-lx106-elf;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/lib/gcc/xtensa-lx106-elf/4.8.2/include;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>../../../SPISlave;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Users/Matej/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/libraries;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/libb64;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/spiffs;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/cores/esp8266/umm_malloc;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/variants/generic;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/lwip/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/sdk/libc/xtensa-lx106-elf/include;{build.path}/core;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include/c++/4.8.2;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include/c++/4.8.2/xtensa-lx106-elf;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/xtensa-lx106-elf/include;C:/Users/Matej/Documents/Arduino/hardware/esp8266com/esp8266/tools/xtensa-lx106-elf/lib/gcc/xtensa-lx106-elf/4.8.2/include;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/standard;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware;c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/standard;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;c:/Arduino/hardware;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
         <ValidatedAS7>1</ValidatedAS7>

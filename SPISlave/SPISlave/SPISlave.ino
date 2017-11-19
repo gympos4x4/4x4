@@ -1,55 +1,69 @@
-#include <SPI.h>
+/*
+SPI Slave Demo Sketch
+Connect the SPI Master device to the following pins on the esp8266:
+GPIO    NodeMCU   Name  |   Uno
+===================================
+15       D8       SS   |   D10
+13       D7      MOSI  |   D11
+12       D6      MISO  |   D12
+14       D5      SCK   |   D13
+Note: If the ESP is booting at a moment when the SPI Master has the Select line HIGH (deselected)
+the ESP8266 WILL FAIL to boot!
+See SPISlave_SafeMaster example for possible workaround
+*/
 
-char buf [100];
-volatile byte pos;
-volatile boolean process_it;
+#include "SPISlave.h"
 
-void setup (void)
+void setup()
 {
-	Serial.begin (115200);   // debugging
+Serial.begin(9600);
+Serial.setDebugOutput(true);
 
-	// have to send on master in, *slave out*
-	pinMode(MISO, OUTPUT);
-	
-	// turn on SPI in slave mode
-	SPCR |= _BV(SPE);
-	
-	// get ready for an interrupt
-	pos = 0;   // buffer empty
-	process_it = false;
+// data has been received from the master. Beware that len is always 32
+// and the buffer is autofilled with zeroes if data is less than 32 bytes long
+// It's up to the user to implement protocol for handling data length
+SPISlave.onData([](uint8_t * data, size_t len) {
+String message = String((char *)data);
+if(message.equals("Hello Slave!")) {
+SPISlave.setData("Hello Master!");
+} else if(message.equals("Are you alive?")) {
+char answer[33];
+sprintf(answer,"Alive for %u seconds!", millis() / 1000);
+SPISlave.setData(answer);
+} else {
+SPISlave.setData("Say what?");
+}
+Serial.printf("Question: %s\n", (char *)data);
+});
 
-	// now turn on interrupts
-	SPI.attachInterrupt();
+// The master has read out outgoing data buffer
+// that buffer can be set with SPISlave.setData
+SPISlave.onDataSent([]() {
+Serial.println("Answer Sent");
+});
 
-}  // end of setup
+// status has been received from the master.
+// The status register is a special register that bot the slave and the master can write to and read from.
+// Can be used to exchange small data or status information
+SPISlave.onStatus([](uint32_t data) {
+Serial.printf("Status: %u\n", data);
+SPISlave.setStatus(millis()); //set next status
+});
 
+// The master has read the status register
+SPISlave.onStatusSent([]() {
+Serial.println("Status Sent");
+});
 
-// SPI interrupt routine
-ISR (SPI_STC_vect)
-{
-	byte c = SPDR;  // grab byte from SPI Data Register
-	
-	// add to buffer if room
-	if (pos < sizeof buf)
-	{
-		buf [pos++] = c;
-		
-		// example: newline means time to process buffer
-		if (c == '\n')
-		process_it = true;
-		
-	}  // end of room available
-}  // end of interrupt routine SPI_STC_vect
+// Setup SPI Slave registers and pins
+SPISlave.begin();
 
-// main loop - wait for flag set in interrupt routine
-void loop (void)
-{
-	if (process_it)
-	{
-		buf [pos] = 0;
-		Serial.println (buf);
-		pos = 0;
-		process_it = false;
-	}  // end of flag set
-	
-} // end of loop
+// Set the status register (if the master reads it, it will read this value)
+SPISlave.setStatus(millis());
+
+// Sets the data registers. Limited to 32 bytes at a time.
+// SPISlave.setData(uint8_t * data, size_t len); is also available with the same limitation
+SPISlave.setData("Ask me a question!");
+}
+
+void loop() {}
