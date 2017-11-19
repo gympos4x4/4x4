@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="8.4.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.15875" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
@@ -3203,10 +3204,10 @@ design rules under a new name.</description>
 <param name="slThermalsForVias" value="0"/>
 <param name="dpMaxLengthDifference" value="10mm"/>
 <param name="dpGapFactor" value="2.5"/>
-<param name="checkGrid" value="0"/>
 <param name="checkAngle" value="0"/>
 <param name="checkFont" value="1"/>
 <param name="checkRestrict" value="1"/>
+<param name="checkStop" value="0"/>
 <param name="useDiameter" value="13"/>
 <param name="maxErrors" value="50"/>
 </designrules>
@@ -3321,102 +3322,102 @@ design rules under a new name.</description>
 <element name="R2" library="resistor" package="R1206" value="1k" x="32.385" y="42.2275"/>
 <element name="R4" library="resistor" package="M1206" value="1k" x="29.21" y="38.735"/>
 <element name="SV1" library="con-lsta" package="FE06" value="" x="37.1475" y="7.3025" rot="R180">
-<attribute name="MPN" value="" x="37.1475" y="7.3025" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="37.1475" y="7.3025" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MF" value="" x="37.1475" y="7.3025" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MPN" value="" x="37.1475" y="7.3025" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="37.1475" y="7.3025" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="37.1475" y="7.3025" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="SV2" library="con-lsta" package="FE06" value="" x="37.1475" y="30.1625" rot="R180">
-<attribute name="MPN" value="" x="37.1475" y="30.1625" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="37.1475" y="30.1625" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MF" value="" x="37.1475" y="30.1625" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MPN" value="" x="37.1475" y="30.1625" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="37.1475" y="30.1625" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="37.1475" y="30.1625" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="ACC" library="con-lstb" package="MA08-1" value="" x="5.715" y="50.8" rot="R90">
-<attribute name="MPN" value="" x="5.715" y="50.8" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="5.715" y="50.8" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MF" value="" x="5.715" y="50.8" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="" x="5.715" y="50.8" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="5.715" y="50.8" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="5.715" y="50.8" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="PXS0" library="custom" package="MA04-1" value="" x="7.9375" y="21.2725">
-<attribute name="MPN" value="" x="7.9375" y="21.2725" size="1.778" layer="27" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="21.2725" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="" x="7.9375" y="21.2725" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="" x="7.9375" y="21.2725" size="1.778" layer="27" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="7.9375" y="21.2725" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="21.2725" size="1.778" layer="27" display="off"/>
 </element>
 <element name="PXS1" library="custom" package="MA04-1" value="" x="7.9375" y="18.7325">
-<attribute name="MPN" value="" x="7.9375" y="18.7325" size="1.778" layer="27" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="18.7325" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="" x="7.9375" y="18.7325" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="" x="7.9375" y="18.7325" size="1.778" layer="27" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="7.9375" y="18.7325" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="18.7325" size="1.778" layer="27" display="off"/>
 </element>
 <element name="PXS2" library="custom" package="MA04-1" value="" x="7.9375" y="16.1925">
-<attribute name="MPN" value="" x="7.9375" y="16.1925" size="1.778" layer="27" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="16.1925" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="" x="7.9375" y="16.1925" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="" x="7.9375" y="16.1925" size="1.778" layer="27" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="7.9375" y="16.1925" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="16.1925" size="1.778" layer="27" display="off"/>
 </element>
 <element name="PXS3" library="custom" package="MA04-1" value="" x="7.9375" y="13.6525">
-<attribute name="MPN" value="" x="7.9375" y="13.6525" size="1.778" layer="27" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="13.6525" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="" x="7.9375" y="13.6525" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="" x="7.9375" y="13.6525" size="1.778" layer="27" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="7.9375" y="13.6525" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="13.6525" size="1.778" layer="27" display="off"/>
 </element>
 <element name="PROG" library="con-lstb" package="MA03-2" value="" x="31.115" y="18.0975" rot="R180">
-<attribute name="MPN" value="" x="31.115" y="18.0975" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="31.115" y="18.0975" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MF" value="" x="31.115" y="18.0975" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MPN" value="" x="31.115" y="18.0975" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="31.115" y="18.0975" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="31.115" y="18.0975" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="C1" library="rcl" package="E2,5-7" value="very high sensible value " x="31.115" y="55.5625"/>
 <element name="PXS4" library="custom" package="MA04-1" value="" x="7.9375" y="11.1125">
 <attribute name="MF" value="" x="7.9375" y="11.1125" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="7.9375" y="11.1125" size="1.778" layer="27" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="11.1125" size="1.778" layer="27" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="7.9375" y="11.1125" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="11.1125" size="1.778" layer="27" display="off"/>
 </element>
 <element name="PXS5" library="custom" package="MA04-1" value="" x="7.9375" y="8.5725">
 <attribute name="MF" value="" x="7.9375" y="8.5725" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="7.9375" y="8.5725" size="1.778" layer="27" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="8.5725" size="1.778" layer="27" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="7.9375" y="8.5725" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="8.5725" size="1.778" layer="27" display="off"/>
 </element>
 <element name="PXS6" library="custom" package="MA04-1" value="" x="7.9375" y="6.0325">
 <attribute name="MF" value="" x="7.9375" y="6.0325" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="7.9375" y="6.0325" size="1.778" layer="27" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="6.0325" size="1.778" layer="27" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="7.9375" y="6.0325" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="6.0325" size="1.778" layer="27" display="off"/>
 </element>
 <element name="PXS7" library="custom" package="MA04-1" value="" x="7.9375" y="3.4925">
 <attribute name="MF" value="" x="7.9375" y="3.4925" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="7.9375" y="3.4925" size="1.778" layer="27" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="3.4925" size="1.778" layer="27" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="7.9375" y="3.4925" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="7.9375" y="3.4925" size="1.778" layer="27" display="off"/>
 </element>
 <element name="Q2" library="transistor-fet" package="SOT223" value="IRFL024N\" x="6.35" y="27.305" rot="R180"/>
 <element name="U1" library="SparkFun-IC-Microcontroller" package="TQFP32-08" value="ATMEGA328P_TQFP" x="17.4625" y="36.5125">
 <attribute name="PROD_ID" value="IC-09069" x="17.4625" y="36.5125" size="1.778" layer="27" display="off"/>
 </element>
 <element name="IC1" library="burr-brown" package="SOT223" value="REG1117" x="37.465" y="37.465" rot="R270">
-<attribute name="MPN" value="REG1117" x="37.465" y="37.465" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MF" value="" x="37.465" y="37.465" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MPN" value="REG1117" x="37.465" y="37.465" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_FARNELL" value="1097566" x="37.465" y="37.465" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_NEWARK" value="14P6981" x="37.465" y="37.465" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="IC2" library="infineon" package="P-TO263-7-1" value="TLE5205-2G" x="35.2425" y="48.895" rot="R270">
-<attribute name="MPN" value="" x="35.2425" y="48.895" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MF" value="" x="35.2425" y="48.895" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MPN" value="" x="35.2425" y="48.895" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="35.2425" y="48.895" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="35.2425" y="48.895" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="U$3" library="custom" package="SO-16" value="MCP3208" x="21.9075" y="16.8275" rot="R270"/>
 <element name="Q1" library="transistor-fet" package="SOT223" value="IRFL024N\" x="11.1125" y="57.4675" rot="R180"/>
 <element name="U2" library="custom" package="SOT95P280X145-6N" value="SN74LVC2GU04DBVR" x="25.4" y="56.8325">
-<attribute name="OC_NEWARK" value="76C4185" x="25.4" y="56.8325" size="1.778" layer="27" display="off"/>
-<attribute name="OC_FARNELL" value="-" x="25.4" y="56.8325" size="1.778" layer="27" display="off"/>
-<attribute name="SUPPLIER" value="TEXAS INSTRUMENTS" x="25.4" y="56.8325" size="1.778" layer="27" display="off"/>
-<attribute name="PACKAGE" value="SOT-23-6" x="25.4" y="56.8325" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="SN74LVC2GU04DBVR" x="25.4" y="56.8325" size="1.778" layer="27" display="off"/>
+<attribute name="OC_FARNELL" value="-" x="25.4" y="56.8325" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="76C4185" x="25.4" y="56.8325" size="1.778" layer="27" display="off"/>
+<attribute name="PACKAGE" value="SOT-23-6" x="25.4" y="56.8325" size="1.778" layer="27" display="off"/>
+<attribute name="SUPPLIER" value="TEXAS INSTRUMENTS" x="25.4" y="56.8325" size="1.778" layer="27" display="off"/>
 </element>
 <element name="IC3" library="custom" package="D2PACK" value="78D2T" x="32.7025" y="63.1825" rot="R270"/>
 <element name="C2" library="rcl" package="C1206" value="100nF" x="10.795" y="36.83" rot="R90"/>
@@ -3862,7 +3863,7 @@ design rules under a new name.</description>
 <wire x1="11.7475" y1="30.48" x2="8.5725" y2="33.655" width="0.5" layer="1"/>
 <wire x1="8.5725" y1="33.655" x2="7.62" y2="33.655" width="0.5" layer="1"/>
 </signal>
-<signal name="N$10">
+<signal name="RF_CS">
 <contactref element="U1" pad="13"/>
 <contactref element="SV2" pad="2"/>
 <via x="18.0975" y="22.86" extent="1-16" drill="0.6" shape="square"/>
