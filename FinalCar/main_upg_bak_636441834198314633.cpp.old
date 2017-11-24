@@ -1,0 +1,18 @@
+/*
+ * Car.cpp
+ *
+ * Created: 21.10.2017 11:50:17
+ * Author : DELTA-PC
+ */ 
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+    /* Replace with your application code */
+    while (1) 
+    {
+    }
+}
+
