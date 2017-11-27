@@ -16469,9 +16469,9 @@ http://www.fairchildsemi.com/ds/LM/LM7805.pdf</description>
 <devices>
 <device name="" package="SOT23">
 <connects>
-<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="GND" pad="3"/>
 <connect gate="G$1" pin="VI" pad="1"/>
-<connect gate="G$1" pin="VO" pad="3"/>
+<connect gate="G$1" pin="VO" pad="2"/>
 </connects>
 <technologies>
 <technology name="">
