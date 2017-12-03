@@ -10,13 +10,14 @@
 #include "WProgram.h"
 #endif
 
-#define TA_ALERT_TRESHOLD 100 // treshold as percentage; enable: value, disable: 100-value
-#define TA_ALERT_ANGLE 25 // minimal alert angle (value;infinite)
+#define TA_ALERT_TRESHOLD 100
+#define TA_ALERT_ANGLE_POS 30
+#define TA_ALERT_ANGLE_NEG -14
 #define TA_MPU_ADDR 0x68 // MPU-6050 #1 IC2 address
 #define TA_PWR_MGMT_1 0x6B
 #define TA_ALERT_PIN 8
 //#define TA_PIEZO_PIN 8
-#define TA_ALERT_INTERVAL 250 // alert led interval [ms]
+#define TA_ALERT_INTERVAL 250
 #define TA_ALERT_ENABLED HIGH
 
 #include <Wire.h>

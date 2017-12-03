@@ -55,11 +55,11 @@ bool _TiltAlarm::check() {
 	AcY = Wire.read() << 8 | Wire.read();  // 0x3D (ACCEL_YOUT_H) & 0x3E (ACCEL_YOUT_L)
 	AcZ = Wire.read() << 8 | Wire.read();  // 0x3F (ACCEL_ZOUT_H) & 0x40 (ACCEL_ZOUT_L)
 	rotZ = getAngle(AcX, AcZ);
-	return rotZ > TA_ALERT_ANGLE;
+	return rotZ > TA_ALERT_ANGLE_POS || rotZ < TA_ALERT_ANGLE_NEG;
 }
 
 int _TiltAlarm::getAngle(int x, int z) {
-	return abs(degrees(atan2(z, x)));
+	return degrees(atan2(z, x));
 }
 
 void _TiltAlarm::signal(bool value) {
