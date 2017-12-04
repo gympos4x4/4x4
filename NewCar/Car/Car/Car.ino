@@ -20,7 +20,8 @@
 
 #define CONTROLLER_ADDRESS 0x6000
 
-//Mrf24j mrf(/*pin reset*/ 4, /*pin CS*/ 9, /*pin itnerrupt*/ 3);
+Mrf24j mrf(/*pin reset*/ 4, /*pin CS*/ 9, /*pin itnerrupt*/ 3);
+
 CarData cardata;
 CtrlData ctrldata;
 const unsigned int SYNC_INTERVAL_MS = 100;
@@ -30,108 +31,17 @@ bool rxl = 0;
 
 #include <SPI.h>
 
-class ESPSafeMaster
-{
-	private:
-	uint8_t _ss_pin;
-	void _pulseSS()
-	{
-		digitalWrite(_ss_pin, HIGH);
-		delayMicroseconds(5);
-		digitalWrite(_ss_pin, LOW);
-	}
-	public:
-	ESPSafeMaster(uint8_t pin):_ss_pin(pin) {}
-	void begin()
-	{
-		pinMode(_ss_pin, OUTPUT);
-		_pulseSS();
-	}
-
-	uint32_t readStatus()
-	{
-		_pulseSS();
-		SPI.transfer(0x04);
-		uint32_t status = (SPI.transfer(0) | ((uint32_t)(SPI.transfer(0)) << 8) | ((uint32_t)(SPI.transfer(0)) << 16) | ((uint32_t)(SPI.transfer(0)) << 24));
-		_pulseSS();
-		return status;
-	}
-
-	void writeStatus(uint32_t status)
-	{
-		_pulseSS();
-		SPI.transfer(0x01);
-		SPI.transfer(status & 0xFF);
-		SPI.transfer((status >> 8) & 0xFF);
-		SPI.transfer((status >> 16) & 0xFF);
-		SPI.transfer((status >> 24) & 0xFF);
-		_pulseSS();
-	}
-
-	void readData(uint8_t * data)
-	{
-		_pulseSS();
-		SPI.transfer(0x03);
-		SPI.transfer(0x00);
-		for(uint8_t i=0; i<32; i++) {
-			data[i] = SPI.transfer(0);
-		}
-		_pulseSS();
-	}
-
-	void writeData(uint8_t * data, size_t len)
-	{
-		uint8_t i=0;
-		_pulseSS();
-		SPI.transfer(0x02);
-		SPI.transfer(0x00);
-		while(len-- && i < 32) {
-			SPI.transfer(data[i++]);
-		}
-		while(i++ < 32) {
-			SPI.transfer(0);
-		}
-		_pulseSS();
-	}
-
-	String readData()
-	{
-		char data[33];
-		data[32] = 0;
-		readData((uint8_t *)data);
-		return String(data);
-	}
-
-	void writeData(const char * data)
-	{
-		writeData((uint8_t *)data, strlen(data));
-	}
-};
-
-ESPSafeMaster esp(9);
-
 void setup()
 {
-	//setup_mrf(0x6001, 0xcafe);
+	setup_mrf(0x6001, 0xcafe);
 
 	MotorControl.init();
-	//Lights.init(50);
+	Lights.init(50);
 
-	//ParkingSensors.init();
-	//SteeringControl.init();
-	pinMode(1, OUTPUT);
-	digitalWrite(1, LOW);
-	//TiltAlarm.init();
-	//sei();
-	SPI.begin();
-	esp.begin();
+	ParkingSensors.init();
+	SteeringControl.init();
+	TiltAlarm.init();
 	delay(1000);
-}
-void send(const char * message)
-{
-	esp.writeData(message);
-	delay(10);
-	esp.readData();
 }
 void loop()
 {
@@ -139,45 +49,63 @@ void loop()
 	
 	//check if a new message came and update CarData and CtrlData if necessary
 	//mrf.check_flags(&mrf_rx, &mrf_tx);
+	
+	if (Serial.available()) {
+		switch (Serial.readString().toInt()) {
+			case 1:
+			Serial.println("Steering:");
+			while (Serial.available() == 0) {}
+			ctrldata.steering = Serial.readString().toInt();
+			Serial.println(ctrldata.steering);
+			break;
+			case 2:
+			Serial.println("Throttle:");
+			while (Serial.available() == 0) {}
+			ctrldata.throttle = Serial.readString().toInt();
+			Serial.println(ctrldata.throttle);
+			break;
+			case 3:
+			Serial.println("Read:");
+			break;
+		}
+	}
 
 	//use them data
 	MotorControl.loop(ctrldata, current_time);
-	//SteeringControl.steer(ctrldata.steering);
-	//TiltAlarm.loop(); errore
-	//ParkingSensors.loop();
-	//Lights.loop();
-
+	SteeringControl.steer(ctrldata.steering);
+	TiltAlarm.loop();
+	ParkingSensors.loop();
+	Lights.loop();
 
 	if(current_time - sync_last_time >= SYNC_INTERVAL_MS)
 	{
-		int32_t status = esp.readStatus();
-		int8_t steer = status & 0xff;
-		int8_t throttle = (status >> 8) & 0xff;
-		ctrldata.throttle = throttle;
-		ctrldata.steering = steer;
-		//debug stuff
-		
-	/*	mrf.read_rxdata();
-		mrf.recv_ctrl_data(&ctrldata);
-		
-		
-		mrf.start_tx(CONTROLLER_ADDRESS, sizeof(cardata));
-		mrf.send_car_data(&cardata);
-		mrf.finish_tx();*/
-		
-		update_cardata();
+	if(mrf.get_pan() == 0xcafe)
+	
+	ctrldata.throttle = throttle;
+	ctrldata.steering = steer;
+	//debug stuff
+	
+	mrf.read_rxdata();
+	mrf.recv_ctrl_data(&ctrldata);
+	
+	
+	mrf.start_tx(CONTROLLER_ADDRESS, sizeof(cardata));
+	mrf.send_car_data(&cardata);
+	mrf.finish_tx();
+	
+	update_cardata();
 
-		sync_last_time = current_time;
-				if (rxl)
-				{
-					rxl = 0;
-					digitalWrite(1,LOW);
-				}
-				else// if(!mrf.get_txinfo()->tx_ok)
-				{
-					rxl = 1;
-					digitalWrite(1,HIGH);
-				}
+	sync_last_time = current_time;
+	if (rxl)
+	{
+	rxl = 0;
+	digitalWrite(1,LOW);
+	}
+	else if(!mrf.get_txinfo()->tx_ok)
+	{
+	rxl = 1;
+	digitalWrite(1,HIGH);
+	}
 	}
 	//digitalWrite(10,rxl);		debug statement?
 }
@@ -194,24 +122,24 @@ void mrf_tx()
 
 }
 
-/*void setup_mrf(word address, word pan)
+void setup_mrf(word address, word pan)
 {
-	mrf.reset();
-	mrf.init();
-	mrf.set_pan(pan);
-	mrf.address16_write(address);
-	mrf.set_palna(true);
-	mrf.set_promiscuous(true);
-	//attachInterrupt(1, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
-}*/
+mrf.reset();
+mrf.init();
+mrf.set_pan(pan);
+mrf.address16_write(address);
+mrf.set_palna(true);
+mrf.set_promiscuous(true);
+//attachInterrupt(1, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
+}
 
 void update_cardata()
 {
 	//TODO: zmerat baterku
 	cardata.battery_percentage = -1;
 
-	//Lights.update_cardata(cardata);
-	//SteeringControl.update_cardata(cardata); ??? preco?
-	//TiltAlarm.update_cardata(cardata);
-	//ParkingSensors.update_cardata(cardata);
+	Lights.update_cardata(cardata);
+	SteeringControl.update_cardata(cardata); ??? preco?
+	TiltAlarm.update_cardata(cardata);
+	ParkingSensors.update_cardata(cardata);
 }

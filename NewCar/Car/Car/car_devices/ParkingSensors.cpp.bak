@@ -19,13 +19,17 @@ int16_t _ParkingSensors::readsensor(int sensor) {
 		digitalWrite(PS_IR_PIN, HIGH);
 		low = eADC::analogRead(sensor);
 	}
-	int16_t res = high - low;
-	return res < 0 ? 0 : res;
+	return high - low;
 }
 
 void _ParkingSensors::loop() {
+	int16_t highest = 4096;
 	for (int i = 0; i < PS_SENSOR_COUNT; i++) {
-		sensorData[i] = readsensor(i);
+		int16_t current = readsensor(i);
+		sensorData[i] = current;
+		if (current > highest) {
+			highest = current;
+		}
 	}
 }
 

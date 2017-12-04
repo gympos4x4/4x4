@@ -28,6 +28,13 @@ class _ParkingSensors {
 	/// initiates parking sensors
 	/// </summary>
 	void init();
+	
+	/// <summary>
+	/// calibrates beeping threshold
+	/// </summary>
+	/// <param name='sensor'>sensor to use for calibration</param>
+	void calibrateThreshold(int sensor);
+	void calibrateThreshold() { calibrateThreshold(0); }
 
 	/// <summary>
 	/// reads sensor value

@@ -10,33 +10,20 @@
 	#include "WProgram.h"
 #endif
 
-#define LI_SENSOR_PIN A0 // light sensor pin number (analog) TODO: update pin
-#define LI_FRONT_PIN 1 // front headlights pin number (PWM)
-#define LI_TRESHOLD lightTreshold // turn on lights below this value
-#define LI_CYCLE_CHANGE 16 // change headlights brightness by this value every cycle
-#define LI_DAYLIGHT 255 // normal headlights brightness
-#define LI_NIGHTLIGHT 1023 // night headlights brightness
+#include "MCP23008.h"
 
-/// <summary>
-/// automatic headlights control
-/// </summary>
-/// <example>
-/// Example implementation
-/// <code>
-/// #include "Lights.h"
-/// void setup() {
-///		Lights::init();
-/// }
-/// void loop() {
-///		Lights::loop();
-/// }
-/// </code>
-/// </example>
+#define LI_SENSOR_PIN A0
+#define LI_FRONT_PIN 7
+#define LI_REAR_PIN 6
+#define LI_REVERSE_PIN 5
+#define LI_TRESHOLD 36 // turn on lights below this value
+
 class _Lights {
 
 	int lightTreshold;
 	bool lastCheck;
 	int lightState;
+	MCP23008 mcp;
 
 public:
 	_Lights() {}
@@ -47,18 +34,6 @@ public:
 	/// initiates Lights with default treshold
 	/// </summary>
 	void init();
-
-	/// <summary>
-	/// initiates Lights with custom treshold
-	/// </summary>
-	/// <param name='treshold'>headlights will turn on below this value</param>
-	void init(int treshold);
-
-	/// <summary>
-	/// updates treshold value at runtime
-	/// </summary>
-	/// <param name='treshold'>headlights will turn on below this value</param>
-	void update_treshold(int treshold);
 
 	/// <summary>
 	/// executes one check cycle
