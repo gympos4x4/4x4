@@ -14,8 +14,8 @@ void _Lights::init() {
 
 void _Lights::loop() {
 	bool below = is_below_threshold();
-	mcp.digitalWrite(LI_FRONT_PIN, below);
-	mcp.digitalWrite(LI_REAR_PIN, below);
+	set_front(below);
+	set_rear(below);
 }
 
 bool _Lights::is_below_threshold() {
@@ -27,4 +27,17 @@ void _Lights::update_cardata(class CarData& cardata)
 	cardata.lights.is_below_threshold = is_below_threshold();
 	cardata.lights.state = lightState;
 	cardata.lights.threshold = lightTreshold;
+}
+
+void _Lights::set_front(bool state)
+{
+	mcp.digitalWrite(LI_FRONT_PIN, state);
+}
+void _Lights::set_rear(bool state)
+{
+	mcp.digitalWrite(LI_REAR_PIN, state);
+}
+void _Lights::set_side(bool state)
+{
+	mcp.digitalWrite(LI_REVERSE_PIN, state);
 }
