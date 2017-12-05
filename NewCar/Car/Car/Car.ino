@@ -31,6 +31,8 @@ bool rxl = 0;
 
 #include <SPI.h>
 
+MCP23008 mcp;
+
 void setup()
 {
 	setup_mrf(0x6001, 0xcafe);
@@ -79,31 +81,31 @@ void loop()
 
 	if(current_time - sync_last_time >= SYNC_INTERVAL_MS)
 	{
-	if(mrf.get_pan() == 0xcafe)
-	
-	//debug stuff
-	
-	mrf.read_rxdata();
-	mrf.recv_ctrl_data(&ctrldata);
-	
-	
-	mrf.start_tx(CONTROLLER_ADDRESS, sizeof(cardata));
-	mrf.send_car_data(&cardata);
-	mrf.finish_tx();
-	
-	update_cardata();
+		if(mrf.get_pan() == 0xcafe)
+		
+		//debug stuff
+		
+		mrf.read_rxdata();
+		mrf.recv_ctrl_data(&ctrldata);
+		
+		
+		mrf.start_tx(CONTROLLER_ADDRESS, sizeof(cardata));
+		mrf.send_car_data(&cardata);
+		mrf.finish_tx();
+		
+		update_cardata();
 
-	sync_last_time = current_time;
-	if (rxl)
-	{
-	rxl = 0;
-	digitalWrite(1,LOW);
-	}
-	else if(!mrf.get_txinfo()->tx_ok)
-	{
-	rxl = 1;
-	digitalWrite(1,HIGH);
-	}
+		sync_last_time = current_time;
+		if (rxl)
+		{
+			rxl = 0;
+			digitalWrite(1,LOW);
+		}
+		else if(!mrf.get_txinfo()->tx_ok)
+		{
+			rxl = 1;
+			digitalWrite(1,HIGH);
+		}
 	}
 	//digitalWrite(10,rxl);		debug statement?
 }
@@ -122,13 +124,21 @@ void mrf_tx()
 
 void setup_mrf(word address, word pan)
 {
-mrf.reset();
-mrf.init();
-mrf.set_pan(pan);
-mrf.address16_write(address);
-mrf.set_palna(true);
-mrf.set_promiscuous(true);
-//attachInterrupt(1, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
+	mrf.reset();
+	mrf.init();
+	mcp.begin();
+	mcp.pinMode(4, INPUT);
+	mcp.pullUp(4, HIGH);
+	if (mcp.digitalRead(4)) {
+		mrf.set_channel(26);
+	} else {
+		mrf.set_channel(11);
+	}
+	mrf.set_pan(pan);
+	mrf.address16_write(address);
+	mrf.set_palna(true);
+	mrf.set_promiscuous(true);
+	//attachInterrupt(1, mrf_isr, CHANGE); // interrupt 1 equivalent to pin 3(INT1) on ATmega8/168/328
 }
 
 void update_cardata()
