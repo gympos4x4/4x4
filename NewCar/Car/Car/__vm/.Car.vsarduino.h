@@ -19,7 +19,6 @@
 #define ARDUINO_AVR_UNO
 #define ARDUINO_ARCH_AVR
 //
-void send(const char * message);
 //
 void mrf_isr();
 void mrf_rx();

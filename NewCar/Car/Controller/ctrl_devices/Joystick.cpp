@@ -6,27 +6,27 @@ Joystick::Joystick(uint16_t addressShift, uint8_t analogPinX, uint8_t analogPinY
 	address = addressShift;
 	xpin = analogPinX;
 	ypin = analogPinY;
-	cU = EEPROMExt.read16(address + JOY_ADS_U);
+	/*cU = EEPROMExt.read16(address + JOY_ADS_U);
+	cD = EEPROMExt.read16(address + JOY_ADS_D);
+	cR = EEPROMExt.read16(address + JOY_ADS_R);
+	cL = EEPROMExt.read16(address + JOY_ADS_L);
+	cY = EEPROMExt.read16(address + JOY_ADS_Y);
+	cX = EEPROMExt.read16(address + JOY_ADS_X);*/
 	if (cU == 0) {
 		cU = JOY_MIN;
 	}
-	cD = EEPROMExt.read16(address + JOY_ADS_D);
 	if (cU == 0) {
 		cD = JOY_MAX;
 	}
-	cR = EEPROMExt.read16(address + JOY_ADS_R);
 	if (cR == JOY_MIN) {
 		cR = JOY_MIN;
 	}
-	cL = EEPROMExt.read16(address + JOY_ADS_L);
 	if (cL == 0) {
 		cL = JOY_MAX;
 	}
-	cY = EEPROMExt.read16(address + JOY_ADS_Y);
 	if (cY == 0) {
 		cY = abs(JOY_MAX - JOY_MIN) / 2;
 	}
-	cX = EEPROMExt.read16(address + JOY_ADS_X);
 	if (cX == 0) {
 		cX = abs(JOY_MAX - JOY_MIN) / 2;
 	}
