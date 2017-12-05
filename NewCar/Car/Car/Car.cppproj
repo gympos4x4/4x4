@@ -878,6 +878,12 @@ ProjectDir=C:\var\arduino\4x4\NewCar\Car\Car\
     <Compile Include="car_devices\TiltAlarm.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="mrf24j.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mrf24j.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="__vm\.Car.vsarduino.h">
       <SubType>compile</SubType>
     </Compile>

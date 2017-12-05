@@ -12,7 +12,7 @@
 #else // older Arduino IDE versions
 #include "WProgram.h"
 #endif
-//#include "SPI/SPI.h"
+#include <SPI.h>
 #include "comm.h"
 class SyncManager;
 

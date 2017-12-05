@@ -23,6 +23,7 @@
 void mrf_isr();
 void mrf_rx();
 void mrf_tx();
+void setup_mrf(word address, word pan);
 void update_cardata();
 
 #include "pins_arduino.h" 

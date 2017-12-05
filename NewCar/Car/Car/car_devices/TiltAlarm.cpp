@@ -69,3 +69,8 @@ void _TiltAlarm::signal(bool value) {
 	digitalWrite(TA_ALERT_PIN, value);
 #endif
 }
+
+void _TiltAlarm::update_cardata(class CarData& cardata) {
+	cardata.tilt.tilt_degrees = rotZ;
+	cardata.tilt.tilted = tilted();
+}

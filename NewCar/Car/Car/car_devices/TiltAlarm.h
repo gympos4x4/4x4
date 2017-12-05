@@ -39,6 +39,8 @@ class _TiltAlarm {
 	void init();
 
 	void loop();
+	
+	void update_cardata(class CarData& cardata);
 
 	private:
 

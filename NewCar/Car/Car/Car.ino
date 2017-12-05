@@ -7,7 +7,7 @@
 #include <Servo.h>
 #include <SPI.h>
 
-//#include "mrf24j.h"
+#include "mrf24j.h"
 #include "comm.h"
 
 //controls
@@ -36,7 +36,7 @@ void setup()
 	setup_mrf(0x6001, 0xcafe);
 
 	MotorControl.init();
-	Lights.init(50);
+	Lights.init();
 
 	ParkingSensors.init();
 	SteeringControl.init();
@@ -81,8 +81,6 @@ void loop()
 	{
 	if(mrf.get_pan() == 0xcafe)
 	
-	ctrldata.throttle = throttle;
-	ctrldata.steering = steer;
 	//debug stuff
 	
 	mrf.read_rxdata();
@@ -139,7 +137,7 @@ void update_cardata()
 	cardata.battery_percentage = -1;
 
 	Lights.update_cardata(cardata);
-	SteeringControl.update_cardata(cardata); ??? preco?
+	//SteeringControl.update_cardata(cardata); //??? preco?
 	TiltAlarm.update_cardata(cardata);
 	ParkingSensors.update_cardata(cardata);
 }
