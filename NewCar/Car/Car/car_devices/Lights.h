@@ -40,6 +40,9 @@ public:
 	/// </summary>
 	void loop();
 
+	void set_front(bool state);
+	void set_rear(bool state);
+	void set_side(bool state);
 	/// <summary>
 	/// checks if current light level is below treshold value
 	/// </summary>
