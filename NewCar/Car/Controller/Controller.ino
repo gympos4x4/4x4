@@ -27,8 +27,8 @@ CtrlData ctrldata;
 const unsigned int SYNC_INTERVAL_MS = 20;
 unsigned long sync_last_time = 0;
 
-Button selectBtn(SELECT_BTN_PIN);
-Button calibBtn(CALIB_BTN_PIN);
+/*Button selectBtn(SELECT_BTN_PIN);
+Button calibBtn(CALIB_BTN_PIN);*/
 Joystick analog(0, AX_PIN, AY_PIN);
 
 const unsigned int FPS = 48;
@@ -39,19 +39,12 @@ Mrf24j mrf(/*pin reset*/ MRF_RES_PIN, /*pin CS*/ MRF_CS_PIN, /*pin itnerrupt*/ M
 
 void setup() {
 	//ControllerDisplay.initDisplay();
-	pinMode(6,OUTPUT);
-	digitalWrite(6,HIGH);
-//	setup_mrf(0x6000, 0xcafe);
-	sei();
+	pinMode(5,OUTPUT);
+	setup_mrf(0x6000, 0xcafe);
+	//sei();
 }
 
 void loop() {
-
-delay(500);
-digitalWrite(MRF_CS_PIN, LOW);
-delay(500);
-digitalWrite(MRF_CS_PIN, HIGH);
-return;
 
 	current_time = millis();
 	//check if a new message came and update CarData if necessary
@@ -67,13 +60,14 @@ return;
 		calibrateAnalog();
 	}*/
 	
-	ctrldata.throttle = analog.readYint8();
-	ctrldata.steer = analog.readXint8();
+	ctrldata.throttle =  -50;
+	ctrldata.steering = analog.readXint8();
 
 	//TODO: send controller data
 	unsigned long current_time = millis();
 	if(current_time - sync_last_time >= SYNC_INTERVAL_MS)
 	{
+		digitalWrite(5,mrf.get_pan() == 0xcafe);
 		mrf.read_rxdata();
 		mrf.recv_car_data(&cardata);
 
@@ -102,7 +96,7 @@ return;
 		redraw_last_time = current_time;
 	}*/
 }
-
+/*
 void calibrateAnalog() {
 	analog.calibrateCenter();
 	bool calibrated = false;
@@ -153,7 +147,7 @@ void calibrateAnalog() {
 	}
 	calibrated = false;
 }
-
+*/
 void setup_mrf(word address, word pan)
 {
 	mrf.reset();

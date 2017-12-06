@@ -18,9 +18,6 @@
 
 class _MotorControl{
 	
-	protected:
-	unsigned long lastMillis;
-	byte ctr;
 	
 	public:
 	
@@ -31,7 +28,7 @@ class _MotorControl{
 	
 	//static void set_throttle(int speed);
 	
-	void loop(CtrlData& inData, unsigned long millis);
+	void loop(CtrlData& inData);
 };
 
 extern _MotorControl MotorControl;

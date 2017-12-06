@@ -10,13 +10,13 @@
 #include "WProgram.h"
 #endif
 
-#define TA_ALERT_TRESHOLD 100
+#define TA_ALERT_TRESHOLD 25
 #define TA_ALERT_ANGLE_POS 30
 #define TA_ALERT_ANGLE_NEG -14
 #define TA_MPU_ADDR 0x68 // MPU-6050 #1 IC2 address
 #define TA_PWR_MGMT_1 0x6B
-#define TA_ALERT_PIN 8
-//#define TA_PIEZO_PIN 8
+#define TA_ALERT_PIN 7
+//#define TA_PIEZO_PIN 7
 #define TA_ALERT_INTERVAL 250
 #define TA_ALERT_ENABLED HIGH
 
@@ -39,6 +39,8 @@ class _TiltAlarm {
 	void init();
 
 	void loop();
+	
+	void update_cardata(class CarData& cardata);
 
 	private:
 

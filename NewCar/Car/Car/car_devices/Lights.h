@@ -13,9 +13,9 @@
 #include "MCP23008.h"
 
 #define LI_SENSOR_PIN A0
-#define LI_FRONT_PIN 7
+#define LI_FRONT_PIN 5
 #define LI_REAR_PIN 6
-#define LI_REVERSE_PIN 5
+#define LI_REVERSE_PIN 7
 #define LI_TRESHOLD 36 // turn on lights below this value
 
 class _Lights {

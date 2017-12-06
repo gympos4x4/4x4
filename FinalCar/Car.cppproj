@@ -57,6 +57,7 @@
     <ListValues>
       <Value>__AVR_ATmega328p__</Value>
       <Value>__AVR_ATmega328P__</Value>
+      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=10805</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -68,9 +69,9 @@
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../FinalCar</Value>
-      <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src</Value>
       <Value>C:/Arduino/libraries/Servo/src</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/SPI/src</Value>
+      <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src/utility</Value>
       <Value>C:/Arduino/libraries</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries</Value>
@@ -95,6 +96,7 @@
     <ListValues>
       <Value>__AVR_ATmega328p__</Value>
       <Value>__AVR_ATmega328P__</Value>
+      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=10805</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -106,9 +108,9 @@
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../FinalCar</Value>
-      <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src</Value>
       <Value>C:/Arduino/libraries/Servo/src</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/SPI/src</Value>
+      <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src/utility</Value>
       <Value>C:/Arduino/libraries</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries</Value>
@@ -448,6 +450,7 @@ ProjectDir=C:\var\arduino\4x4\FinalCar\
     <ListValues>
       <Value>__AVR_ATmega328p__</Value>
       <Value>__AVR_ATmega328P__</Value>
+      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=10805</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -459,9 +462,9 @@ ProjectDir=C:\var\arduino\4x4\FinalCar\
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../FinalCar</Value>
-      <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src</Value>
       <Value>C:/Arduino/libraries/Servo/src</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/SPI/src</Value>
+      <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src/utility</Value>
       <Value>C:/Arduino/libraries</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries</Value>
@@ -486,6 +489,7 @@ ProjectDir=C:\var\arduino\4x4\FinalCar\
     <ListValues>
       <Value>__AVR_ATmega328p__</Value>
       <Value>__AVR_ATmega328P__</Value>
+      <Value>_VMDEBUG=1</Value>
       <Value>ARDUINO=10805</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -497,9 +501,9 @@ ProjectDir=C:\var\arduino\4x4\FinalCar\
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../FinalCar</Value>
-      <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src</Value>
       <Value>C:/Arduino/libraries/Servo/src</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/SPI/src</Value>
+      <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src/utility</Value>
       <Value>C:/Arduino/libraries</Value>
       <Value>C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries</Value>
@@ -831,6 +835,12 @@ ProjectDir=C:\var\arduino\4x4\FinalCar\
     <Compile Include="car_devices\MotorControl.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="car_devices\TiltAlarm.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="car_devices\TiltAlarm.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="comm.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -841,12 +851,6 @@ ProjectDir=C:\var\arduino\4x4\FinalCar\
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="car_devices\eADC.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="car_devices\Lights.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="car_devices\Lights.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="car_devices\MotorControl.h">
@@ -862,12 +866,6 @@ ProjectDir=C:\var\arduino\4x4\FinalCar\
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="car_devices\SteeringControl.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="car_devices\TiltAlarm.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="car_devices\TiltAlarm.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="__vm\.Car.vsarduino.h">

@@ -5,7 +5,7 @@
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.CPP</ToolchainName>
     <ProjectGuid>{bb8b342e-ca51-4b48-af92-85e8b5f467a0}</ProjectGuid>
-    <avrdevice>atmega2560</avrdevice>
+    <avrdevice>atmega328p</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
     <Language>CPP</Language>
@@ -46,7 +46,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
       <AvrGccCpp>
-  <avrgcc.common.Device>-mmcu=atmega2560 -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\gcc\dev\atmega2560"</avrgcc.common.Device>
+  <avrgcc.common.Device>-mmcu=atmega328p -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\gcc\dev\atmega328p"</avrgcc.common.Device>
   <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
   <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
   <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
@@ -56,8 +56,8 @@
   <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>__AVR_ATmega2560__</Value>
-      <Value>_VMDEBUG=1</Value>
+      <Value>__AVR_ATmega328p__</Value>
+      <Value>__AVR_ATmega328P__</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -67,16 +67,14 @@
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../Controller</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries/EEPROM</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\include</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries/EEPROM</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries/SPI</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/libraries</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/variants/standard</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -89,8 +87,8 @@
   <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>__AVR_ATmega2560__</Value>
-      <Value>_VMDEBUG=1</Value>
+      <Value>__AVR_ATmega328p__</Value>
+      <Value>__AVR_ATmega328P__</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -100,16 +98,14 @@
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../Controller</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries/EEPROM</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\include</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries/EEPROM</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries/SPI</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/libraries</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/variants/standard</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -131,36 +127,36 @@
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>../../../Controller;c:/Arduino/libraries/EEPROM;C:/Users/juraj/Documents/Arduino/libraries/FTDI_V1.4.0_03272015(FT800);c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/Arduino/hardware;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/EEPROM/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;C:/Users/Matej/Documents/Arduino/libraries/FTDI_FT800-master;C:/Program Files (x86)/Arduino/libraries/EEPROM;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/Matej/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/leonardo;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware;c:/Arduino/hardware/arduino/variants/mega;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>../../../Controller;c:/Arduino/libraries/EEPROM;C:/Users/juraj/Documents/Arduino/libraries/FTDI_V1.4.0_03272015(FT800);c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/Arduino/hardware;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/EEPROM/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;C:/Users/Matej/Documents/Arduino/libraries/FTDI_FT800-master;C:/Program Files (x86)/Arduino/libraries/EEPROM;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/Matej/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/leonardo;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware;c:/Arduino/hardware/arduino/variants/mega;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;C:/arduino-1.0.5-r2/libraries/EEPROM;C:/arduino-1.0.5-r2/libraries/SPI;C:/arduino-1.0.5-r2/libraries;C:/arduino-1.0.5-r2/hardware/arduino/libraries;C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino;C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino/avr-libc;C:/arduino-1.0.5-r2/hardware/arduino/variants/mega;c:/arduino-1.0.5-r2/hardware/tools/avr/avr/include/;c:/arduino-1.0.5-r2/hardware/tools/avr/avr/include/avr/;c:/arduino-1.0.5-r2/hardware/tools/avr/avr/;C:/arduino-1.0.5-r2/hardware/arduino/variants/standard;C:/arduino-1.0.5-r2/hardware;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/EEPROM/src;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/SPI/src;C:/Arduino/libraries;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/cores/arduino;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/variants/standard;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr/;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
         <VM_ADDITIONAL_COMPILER_CPP_FLAGS>
         </VM_ADDITIONAL_COMPILER_CPP_FLAGS>
-        <arduino.board.name>mega2560</arduino.board.name>
-        <arduino.board.desc>Arduino Mega 2560 or Mega ADK</arduino.board.desc>
-        <arduino.board.property_bag>name=Arduino Mega 2560 or Mega ADK
-upload.protocol=wiring
-upload.maximum_size=258048
+        <arduino.board.name>uno</arduino.board.name>
+        <arduino.board.desc>Arduino Uno</arduino.board.desc>
+        <arduino.board.property_bag>name=Arduino Uno
+upload.protocol=arduino
+upload.maximum_size=32256
 upload.speed=115200
-bootloader.low_fuses=0xFF
-bootloader.high_fuses=0xD8
-bootloader.extended_fuses=0xFD
-bootloader.path=stk500v2
-bootloader.file=stk500boot_v2_mega2560.hex
+bootloader.low_fuses=0xff
+bootloader.high_fuses=0xde
+bootloader.extended_fuses=0x05
+bootloader.path=optiboot
+bootloader.file=optiboot_atmega328.hex
 bootloader.unlock_bits=0x3F
 bootloader.lock_bits=0x0F
-build.mcu=atmega2560
+build.mcu=atmega328p
 build.f_cpu=16000000L
 build.core=arduino
-build.variant=mega
-runtime.ide.path=c:\Arduino
+build.variant=standard
+runtime.ide.path=C:\arduino-1.0.5-r2
 runtime.os=windows
-build.system.path=c:\Arduino\hardware\arduino\system
+build.system.path=C:\arduino-1.0.5-r2\hardware\arduino\system
 runtime.ide.version=105
 target_package=arduino
 target_platform=avr
-runtime.hardware.path=c:\Arduino\hardware
-originalid=mega2560
+runtime.hardware.path=C:\arduino-1.0.5-r2\hardware
+originalid=uno
 vm.platform.root.path=C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\wsmezn1v.lxt\Micro Platforms\arduino10x
 avrisp.name=AVR ISP
 avrisp.communication=serial
@@ -180,10 +176,10 @@ arduinoisp.name=Arduino as ISP
 arduinoisp.communication=serial
 arduinoisp.protocol=stk500v1
 arduinoisp.speed=19200
-runtime.vm.boardinfo.id=mega2560
-runtime.vm.boardinfo.name=mega2560
-runtime.vm.boardinfo.desc=Arduino Mega 2560 or Mega ADK
-runtime.vm.boardinfo.src_location=c:\Arduino\hardware\arduino
+runtime.vm.boardinfo.id=uno
+runtime.vm.boardinfo.name=uno
+runtime.vm.boardinfo.desc=Arduino Uno
+runtime.vm.boardinfo.src_location=C:\arduino-1.0.5-r2\hardware\arduino
 ide.hint=For use with Arduino 0023 and 1.0.x versions
 ide.location.key=Arduino
 ide.location.ide.winreg=Arduino 1.0.x Application
@@ -206,32 +202,38 @@ ide.url=http://arduino.cc/en/Main/Software
 vm.debug=true
 software=ARDUINO
 ide.appid=arduino10x
-location.sketchbook=C:\Users\juraj\Documents\Arduino
-build.core.path=c:\Arduino\hardware\arduino\cores\arduino
+location.sketchbook=C:\arduino-1.0.5-r2
+build.core.path=C:\arduino-1.0.5-r2\hardware\arduino\cores\arduino
 vm.core.include=Arduino.h
-build.board=AVR_MEGA2560
-vm.boardsource.path=c:\Arduino\hardware\arduino
-runtime.platform.path=c:\Arduino\hardware\arduino
+build.board=AVR_UNO
+vm.boardsource.path=C:\arduino-1.0.5-r2\hardware\arduino
+runtime.platform.path=C:\arduino-1.0.5-r2\hardware\arduino
 vm.platformname.name=avr
 build.arch=AVR
+build.path=C:\Users\juraj\AppData\Local\Temp\VMBuilds\Controller\mega2560\Release
+build.project_name=Controller.ino
+build.project_path=C:\var\arduino\4x4\NewCar\Car\Controller
+ProjectDir=C:\var\arduino\4x4\NewCar\Car\Controller\
+builder.noino=false
+intellisense.include.paths={runtime.hardware.path}
 </arduino.board.property_bag>
-        <arduino.build.mcu>atmega2560</arduino.build.mcu>
+        <arduino.build.mcu>atmega328p</arduino.build.mcu>
         <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
         <arduino.build.core>arduino</arduino.build.core>
-        <arduino.upload.protocol>wiring</arduino.upload.protocol>
+        <arduino.upload.protocol>arduino</arduino.upload.protocol>
         <arduino.upload.speed>115200</arduino.upload.speed>
-        <arduino.upload.maximum_size>258048</arduino.upload.maximum_size>
+        <arduino.upload.maximum_size>32256</arduino.upload.maximum_size>
         <visualmicro.application.name>arduino10x</visualmicro.application.name>
         <visualmicro.package.name>arduino</visualmicro.package.name>
         <visualmicro.platform.name>avr</visualmicro.platform.name>
-        <arduino.upload.port>COM5</arduino.upload.port>
+        <arduino.upload.port>COM9</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
       <AvrGccCpp>
-  <avrgcc.common.Device>-mmcu=atmega2560 -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\gcc\dev\atmega2560"</avrgcc.common.Device>
+  <avrgcc.common.Device>-mmcu=atmega328p -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\gcc\dev\atmega328p"</avrgcc.common.Device>
   <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
   <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
   <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
@@ -241,8 +243,8 @@ build.arch=AVR
   <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>__AVR_ATmega2560__</Value>
-      <Value>_VMDEBUG=1</Value>
+      <Value>__AVR_ATmega328p__</Value>
+      <Value>__AVR_ATmega328P__</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -252,16 +254,14 @@ build.arch=AVR
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../Controller</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries/EEPROM</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\include</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries/EEPROM</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries/SPI</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/libraries</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/variants/standard</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -274,8 +274,8 @@ build.arch=AVR
   <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>__AVR_ATmega2560__</Value>
-      <Value>_VMDEBUG=1</Value>
+      <Value>__AVR_ATmega328p__</Value>
+      <Value>__AVR_ATmega328P__</Value>
       <Value>ARDUINO=105</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -285,16 +285,14 @@ build.arch=AVR
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../Controller</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries/EEPROM</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries/SPI</Value>
-      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/libraries</Value>
-      <Value>C:/Users/Matej/Documents/Arduino/libraries</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega</Value>
-      <Value>C:/Program Files (x86)/Arduino/hardware</Value>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.2.132\include</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries/EEPROM</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries/SPI</Value>
+      <Value>C:/arduino-1.0.5-r2/libraries</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/libraries</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino/avr-libc</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware/arduino/variants/standard</Value>
+      <Value>C:/arduino-1.0.5-r2/hardware</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -316,36 +314,36 @@ build.arch=AVR
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>../../../Controller;c:/Arduino/libraries/EEPROM;C:/Users/juraj/Documents/Arduino/libraries/FTDI_V1.4.0_03272015(FT800);c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/Arduino/hardware;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/EEPROM/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;C:/Users/Matej/Documents/Arduino/libraries/FTDI_FT800-master;C:/Program Files (x86)/Arduino/libraries/EEPROM;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/Matej/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/leonardo;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware;c:/Arduino/hardware/arduino/variants/mega;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>../../../Controller;c:/Arduino/libraries/EEPROM;C:/Users/juraj/Documents/Arduino/libraries/FTDI_V1.4.0_03272015(FT800);c:/Arduino/libraries/SPI;c:/Arduino/libraries;c:/Arduino/hardware/arduino/libraries;C:/Users/juraj/Documents/Arduino/libraries;c:/Arduino/hardware/arduino/cores/arduino;c:/Arduino/hardware/arduino/cores/arduino/avr-libc;c:/Arduino/hardware/arduino/variants/eightanaloginputs;c:/Arduino/hardware;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/EEPROM/src;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;C:/Users/Matej/Documents/Arduino/libraries/FTDI_FT800-master;C:/Program Files (x86)/Arduino/libraries/EEPROM;C:/Program Files (x86)/Arduino/libraries/SPI;C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/libraries;C:/Users/Matej/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/cores/arduino/avr-libc;C:/Program Files (x86)/Arduino/hardware/arduino/variants/leonardo;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/;c:/program files (x86)/arduino/hardware/tools/avr/avr/include/avr/;c:/program files (x86)/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware;c:/Arduino/hardware/arduino/variants/mega;c:/arduino/hardware/tools/avr/avr/include/;c:/arduino/hardware/tools/avr/avr/include/avr/;c:/arduino/hardware/tools/avr/avr/;C:/Program Files (x86)/Arduino/hardware/arduino/variants/mega;C:/arduino-1.0.5-r2/libraries/EEPROM;C:/arduino-1.0.5-r2/libraries/SPI;C:/arduino-1.0.5-r2/libraries;C:/arduino-1.0.5-r2/hardware/arduino/libraries;C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino;C:/arduino-1.0.5-r2/hardware/arduino/cores/arduino/avr-libc;C:/arduino-1.0.5-r2/hardware/arduino/variants/mega;c:/arduino-1.0.5-r2/hardware/tools/avr/avr/include/;c:/arduino-1.0.5-r2/hardware/tools/avr/avr/include/avr/;c:/arduino-1.0.5-r2/hardware/tools/avr/avr/;C:/arduino-1.0.5-r2/hardware/arduino/variants/standard;C:/arduino-1.0.5-r2/hardware;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/EEPROM/src;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/SPI/src;C:/Arduino/libraries;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/cores/arduino;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/variants/standard;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr/;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/juraj/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
         <VM_ADDITIONAL_COMPILER_CPP_FLAGS>
         </VM_ADDITIONAL_COMPILER_CPP_FLAGS>
-        <arduino.board.name>mega2560</arduino.board.name>
-        <arduino.board.desc>Arduino Mega 2560 or Mega ADK</arduino.board.desc>
-        <arduino.board.property_bag>name=Arduino Mega 2560 or Mega ADK
-upload.protocol=wiring
-upload.maximum_size=258048
+        <arduino.board.name>uno</arduino.board.name>
+        <arduino.board.desc>Arduino Uno</arduino.board.desc>
+        <arduino.board.property_bag>name=Arduino Uno
+upload.protocol=arduino
+upload.maximum_size=32256
 upload.speed=115200
-bootloader.low_fuses=0xFF
-bootloader.high_fuses=0xD8
-bootloader.extended_fuses=0xFD
-bootloader.path=stk500v2
-bootloader.file=stk500boot_v2_mega2560.hex
+bootloader.low_fuses=0xff
+bootloader.high_fuses=0xde
+bootloader.extended_fuses=0x05
+bootloader.path=optiboot
+bootloader.file=optiboot_atmega328.hex
 bootloader.unlock_bits=0x3F
 bootloader.lock_bits=0x0F
-build.mcu=atmega2560
+build.mcu=atmega328p
 build.f_cpu=16000000L
 build.core=arduino
-build.variant=mega
-runtime.ide.path=c:\Arduino
+build.variant=standard
+runtime.ide.path=C:\arduino-1.0.5-r2
 runtime.os=windows
-build.system.path=c:\Arduino\hardware\arduino\system
+build.system.path=C:\arduino-1.0.5-r2\hardware\arduino\system
 runtime.ide.version=105
 target_package=arduino
 target_platform=avr
-runtime.hardware.path=c:\Arduino\hardware
-originalid=mega2560
+runtime.hardware.path=C:\arduino-1.0.5-r2\hardware
+originalid=uno
 vm.platform.root.path=C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\wsmezn1v.lxt\Micro Platforms\arduino10x
 avrisp.name=AVR ISP
 avrisp.communication=serial
@@ -365,10 +363,10 @@ arduinoisp.name=Arduino as ISP
 arduinoisp.communication=serial
 arduinoisp.protocol=stk500v1
 arduinoisp.speed=19200
-runtime.vm.boardinfo.id=mega2560
-runtime.vm.boardinfo.name=mega2560
-runtime.vm.boardinfo.desc=Arduino Mega 2560 or Mega ADK
-runtime.vm.boardinfo.src_location=c:\Arduino\hardware\arduino
+runtime.vm.boardinfo.id=uno
+runtime.vm.boardinfo.name=uno
+runtime.vm.boardinfo.desc=Arduino Uno
+runtime.vm.boardinfo.src_location=C:\arduino-1.0.5-r2\hardware\arduino
 ide.hint=For use with Arduino 0023 and 1.0.x versions
 ide.location.key=Arduino
 ide.location.ide.winreg=Arduino 1.0.x Application
@@ -391,29 +389,41 @@ ide.url=http://arduino.cc/en/Main/Software
 vm.debug=true
 software=ARDUINO
 ide.appid=arduino10x
-location.sketchbook=C:\Users\juraj\Documents\Arduino
-build.core.path=c:\Arduino\hardware\arduino\cores\arduino
+location.sketchbook=C:\arduino-1.0.5-r2
+build.core.path=C:\arduino-1.0.5-r2\hardware\arduino\cores\arduino
 vm.core.include=Arduino.h
-build.board=AVR_MEGA2560
-vm.boardsource.path=c:\Arduino\hardware\arduino
-runtime.platform.path=c:\Arduino\hardware\arduino
+build.board=AVR_UNO
+vm.boardsource.path=C:\arduino-1.0.5-r2\hardware\arduino
+runtime.platform.path=C:\arduino-1.0.5-r2\hardware\arduino
 vm.platformname.name=avr
 build.arch=AVR
+build.path=C:\Users\juraj\AppData\Local\Temp\VMBuilds\Controller\mega2560\Release
+build.project_name=Controller.ino
+build.project_path=C:\var\arduino\4x4\NewCar\Car\Controller
+ProjectDir=C:\var\arduino\4x4\NewCar\Car\Controller\
+builder.noino=false
+intellisense.include.paths={runtime.hardware.path}
 </arduino.board.property_bag>
-        <arduino.build.mcu>atmega2560</arduino.build.mcu>
+        <arduino.build.mcu>atmega328p</arduino.build.mcu>
         <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
         <arduino.build.core>arduino</arduino.build.core>
-        <arduino.upload.protocol>wiring</arduino.upload.protocol>
+        <arduino.upload.protocol>arduino</arduino.upload.protocol>
         <arduino.upload.speed>115200</arduino.upload.speed>
-        <arduino.upload.maximum_size>258048</arduino.upload.maximum_size>
+        <arduino.upload.maximum_size>32256</arduino.upload.maximum_size>
         <visualmicro.application.name>arduino10x</visualmicro.application.name>
         <visualmicro.package.name>arduino</visualmicro.package.name>
         <visualmicro.platform.name>avr</visualmicro.platform.name>
-        <arduino.upload.port>COM5</arduino.upload.port>
+        <arduino.upload.port>COM9</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="comm.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="comm.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Controller.ino">
       <SubType>compile</SubType>
     </Compile>

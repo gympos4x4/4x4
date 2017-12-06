@@ -402,10 +402,10 @@ void Mrf24j::set_palna(boolean enabled) {
 		//Setup PA/LNA circuitry
 		
 		byte TRISGPIO = read_short(MRF_TRISGPIO);
-		TRISGPIO |= 1 << 3; //Set GPIO3 as output;
+		TRISGPIO |= 1 << 0; //Set GPIO0 as output;
 		write_short(MRF_TRISGPIO,TRISGPIO);
 		byte gpio = read_short(MRF_GPIO);
-		gpio |= 1 << 3; //Enable PA power supply
+		gpio |= 1 << 0; //Enable PA power supply
 		write_short(MRF_GPIO, gpio);
 		
 		write_long(MRF_TESTMODE, 0x07); // Set RF State machine into PA/LNA operation

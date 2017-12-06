@@ -9,14 +9,14 @@ struct CarData
 	int8_t battery_percentage;
 
 	//TiltAlarm
-	struct 
+	struct
 	{
 		int16_t tilt_degrees;
 		bool tilted;
 	} tilt;
 
 	//Lights
-	struct  
+	struct
 	{
 		int16_t threshold;
 		int16_t state;
@@ -28,18 +28,16 @@ struct CarData
 		int16_t sensor_data[8];
 	} parking ;
 
-	//SteeringControl
-	struct{
-		int16_t servo_angle;
-		int16_t servo2_angle;
-	} steering;
-}; //29 bytes;
+	int8_t throttleFb;
+	uint8_t steerFb;
+};
 
 struct CtrlData
 {
 	int8_t throttle;
-	int8_t steer;
-}; //2 bytes
+	//SteeringControl
+	uint8_t steering;
+};
 
 
 #endif /* COMM_H_ */

@@ -10,38 +10,55 @@
 _MotorControl MotorControl;
 
 void _MotorControl::init(){
-	ctr = 0;
 	pinMode(IN1, OUTPUT);
 	pinMode(IN2, OUTPUT);
+	pinMode(3, OUTPUT);
 }
 
-void _MotorControl::loop(CtrlData& inData, unsigned long millis)
+void _MotorControl::loop(CtrlData& inData)
 {
+	if(inData.throttle > 0) //go forward
+	{
+		digitalWrite(IN1,HIGH);
+		digitalWrite(IN2,LOW);
+	}
+	else if (inData.throttle == 0) {
+		digitalWrite(IN1,LOW);
+		digitalWrite(IN2,LOW);
+	}
+	else //go backward
+	{
+		digitalWrite(IN1,LOW);
+		digitalWrite(IN2,HIGH);
+	}
+	analogWrite(3, abs(inData.throttle * 2));
+	/*
 	if(millis - lastMillis >= PWM_PERIOD)
 	{
-		lastMillis = millis;
-		if(inData.throttle != 0 && ctr < (abs(inData.throttle) / 20)) //if ctr is within duty cycle:
-		{
-			if(inData.throttle >= 0) //go forward
-			{
-				digitalWrite(IN1,HIGH);
-				digitalWrite(IN2,LOW);
-			}
-			else //go backward
-			{
-				digitalWrite(IN1,LOW);
-				digitalWrite(IN2,HIGH);
-			}
-		}
-		else
-		{
-			digitalWrite(IN1,LOW);
-			digitalWrite(IN2,LOW);
-		}
-		
-		if(ctr < 5)ctr++;
-		else ctr = 0;
+	lastMillis = millis;
+	if(inData.throttle != 0 && ctr < (abs(inData.throttle) / 20)) //if ctr is within duty cycle:
+	{
+	if(inData.throttle >= 0) //go forward
+	{
+	digitalWrite(IN1,HIGH);
+	digitalWrite(IN2,LOW);
 	}
+	else //go backward
+	{
+	digitalWrite(IN1,LOW);
+	digitalWrite(IN2,HIGH);
+	}
+	}
+	else
+	{
+	digitalWrite(IN1,LOW);
+	digitalWrite(IN2,LOW);
+	}
+	
+	if(ctr < 5)ctr++;
+	else ctr = 0;
+	}
+	*/
 }
 
 /*void MotorControl::set_throttle(int speed){

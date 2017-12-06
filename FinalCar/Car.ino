@@ -34,7 +34,7 @@ bool rxl = 0;
 void setup()
 {
 	//setup_mrf(0x6001, 0xcafe);
-		TiltAlarm.init();
+	TiltAlarm.init();
 	Lights.init();
 	//ParkingSensors.init();
 	//SteeringControl.init();
@@ -45,12 +45,12 @@ void setup()
 bool light;
 void loop()
 {
-//digitalWrite(1, analogRead(A0) < 102 && light);
-//light = !light;
-Lights.loop();
-TiltAlarm.loop();
-delay(5);
-return;
+	//digitalWrite(1, analogRead(A0) < 102 && light);
+	//light = !light;
+	Lights.loop();
+	TiltAlarm.loop();
+	delay(5);
+	return;
 	unsigned long current_time = millis();
 	
 	//check if a new message came and update CarData and CtrlData if necessary
