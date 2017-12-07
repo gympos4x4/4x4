@@ -1,0 +1,18 @@
+/*
+ * MrfTestCar.cpp
+ *
+ * Created: 6.12.2017 23:37:19
+ * Author : DELTA-PC
+ */ 
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+    /* Replace with your application code */
+    while (1) 
+    {
+    }
+}
+

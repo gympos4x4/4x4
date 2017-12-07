@@ -1,5 +1,5 @@
 #define CAR
-
+#define F_CPU 16000000UL
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -19,27 +19,29 @@
 #include "car_devices/Lights.h"
 
 #define CONTROLLER_ADDRESS 0x6000
+#define SPKR_PIN TA_ALERT_PIN
 
-Mrf24j mrf(/*pin reset*/ 4, /*pin CS*/ 9, /*pin itnerrupt*/ 3);
+Mrf24j mrf(/*pin reset*/ 4, /*pin CS*/ 9, /*pin itnerrupt*/ 2);
 
 CarData cardata;
 CtrlData ctrldata;
-const unsigned int SYNC_INTERVAL_MS = 100;
+const unsigned int SYNC_INTERVAL_MS = 10;
 unsigned long sync_last_time = 0;
 
 #include <SPI.h>
 
 MCP23008 mcp;
+bool shouldSendData = true;
 
 void setup()
 {
+	pinMode(SPKR_PIN, OUTPUT);
 	setup_mrf(0x6001, 0xcafe);
-
-	MotorControl.init();
+	//MotorControl.init();
 	Lights.init();
 
 	ParkingSensors.init();
-	SteeringControl.init();
+	//SteeringControl.init();
 	TiltAlarm.init();
 	Serial.begin(9600);
 	delay(1000);
@@ -52,28 +54,28 @@ void loop()
 	//mrf.check_flags(&mrf_rx, &mrf_tx);
 
 	//use them data
-	MotorControl.loop(ctrldata);
-	SteeringControl.steer(ctrldata.steering);
+	//MotorControl.loop(ctrldata);
+	//SteeringControl.steer(ctrldata.steering);
 	TiltAlarm.loop();
 	ParkingSensors.loop();
 	Lights.loop();
-	Serial.println((int)ctrldata.throttle);
+	
 
 	if(current_time - sync_last_time >= SYNC_INTERVAL_MS)
 	{
-		if(mrf.get_pan() == 0xcafe)
-		
+		/*if(mrf.get_pan() == 0xcafe)
+		Serial.println("PAN ok");*/
+		/*if(cardata.battery_percentage >= 100)
+		cardata.battery_percentage = 0;
+		else
+		cardata.battery_percentage++;*/
+		//Serial.println((int)ctrldata.throttle);
 		//debug stuff
-		
-		//mrf.read_rxdata();
-		mrf.recv_ctrl_data(&ctrldata);
-		
+		update_cardata();
 		
 		mrf.start_tx(CONTROLLER_ADDRESS, sizeof(cardata));
 		mrf.send_car_data(&cardata);
 		mrf.finish_tx();
-		
-		update_cardata();
 
 		sync_last_time = current_time;
 	}
@@ -82,7 +84,12 @@ void loop()
 
 void mrf_isr()
 {
-	//mrf.interrupt_handler(); this shouldn't happen
+	/*cli();
+	Serial.println("Int0 Triggered");
+	//mrf.interrupt_handler();// this shouldn't happen
+	Serial.print("INTSTAT: ");
+	Serial.println(mrf.read_short(MRF_INTSTAT));
+	sei();*/
 }
 void mrf_rx()
 {
@@ -96,12 +103,19 @@ void setup_mrf(word address, word pan)
 {
 	mrf.reset();
 	mrf.init();
-	mcp.begin();
+/*	mcp.begin();
 	mcp.pinMode(4, INPUT);
 	mcp.pullUp(4, HIGH);
 	if (mcp.digitalRead(4)) {
-		mrf.set_channel(26);
-	}
+		mrf.set_channel(17);
+		for (int i = 0; i < 10; i++)
+		{
+			digitalWrite(SPKR_PIN, HIGH);
+			delay(100);
+			digitalWrite(SPKR_PIN, LOW);
+			delay(100);
+		}
+	}*/
 	mrf.set_pan(pan);
 	mrf.address16_write(address);
 	mrf.set_palna(true);
@@ -112,7 +126,8 @@ void setup_mrf(word address, word pan)
 void update_cardata()
 {
 	//TODO: zmerat baterku
-	cardata.battery_percentage = -1;
+	//cardata.battery_percentage = -1;
+	cardata.battery_percentage = (analogRead(A1) - 614) / 2;       //100 = 840, 0 = 614
 
 	Lights.update_cardata(cardata);
 	//SteeringControl.update_cardata(cardata); //??? preco?
